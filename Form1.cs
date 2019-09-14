@@ -21,5 +21,10 @@ namespace Do_An
         {
 
         }
+
+        private void Button7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
