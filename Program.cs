@@ -17,6 +17,8 @@ namespace Do_An
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+            Button Btn = new Button();
+
         }
     }
 }
