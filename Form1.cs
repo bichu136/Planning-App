@@ -10,24 +10,20 @@ using System.Windows.Forms;
 
 namespace Do_An
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
+
         }
 
-        private void Button3_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void Button7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Button8_Click(object sender, EventArgs e)
+        private void CalendarPanel_Paint(object sender, PaintEventArgs e)
         {
 
         }
