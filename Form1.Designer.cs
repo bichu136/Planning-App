@@ -115,11 +115,6 @@
             this.calendarPanel.ResumeLayout(false);
             this.btnPanel.ResumeLayout(false);
             this.ResumeLayout(false);
-
-        }
-        private void InitializeDynamicComponent()
-        {
-            
         }
         #endregion
 
