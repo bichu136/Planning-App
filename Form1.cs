@@ -27,5 +27,20 @@ namespace Do_An
         {
 
         }
+
+        private void RecordBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddJobs_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

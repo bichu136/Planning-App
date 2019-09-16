@@ -31,10 +31,10 @@
             this.calendarPanel = new System.Windows.Forms.Panel();
             this.dayGeneratePanel = new System.Windows.Forms.Panel();
             this.btnPanel = new System.Windows.Forms.Panel();
-            this.recordBtn = new System.Windows.Forms.Button();
-            this.AddJobs = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.makePlanBtn = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.AddJobs = new System.Windows.Forms.Button();
+            this.recordBtn = new System.Windows.Forms.Button();
             this.calendarPanel.SuspendLayout();
             this.btnPanel.SuspendLayout();
             this.SuspendLayout();
@@ -66,23 +66,14 @@
             this.btnPanel.Size = new System.Drawing.Size(132, 291);
             this.btnPanel.TabIndex = 1;
             // 
-            // recordBtn
+            // makePlanBtn
             // 
-            this.recordBtn.Location = new System.Drawing.Point(4, 4);
-            this.recordBtn.Name = "recordBtn";
-            this.recordBtn.Size = new System.Drawing.Size(125, 38);
-            this.recordBtn.TabIndex = 0;
-            this.recordBtn.Text = "Record Jobs";
-            this.recordBtn.UseVisualStyleBackColor = true;
-            // 
-            // AddJobs
-            // 
-            this.AddJobs.Location = new System.Drawing.Point(3, 48);
-            this.AddJobs.Name = "AddJobs";
-            this.AddJobs.Size = new System.Drawing.Size(125, 38);
-            this.AddJobs.TabIndex = 0;
-            this.AddJobs.Text = "Add new job";
-            this.AddJobs.UseVisualStyleBackColor = true;
+            this.makePlanBtn.Location = new System.Drawing.Point(3, 230);
+            this.makePlanBtn.Name = "makePlanBtn";
+            this.makePlanBtn.Size = new System.Drawing.Size(125, 58);
+            this.makePlanBtn.TabIndex = 0;
+            this.makePlanBtn.Text = "Create your daily plan";
+            this.makePlanBtn.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -92,15 +83,27 @@
             this.button2.TabIndex = 0;
             this.button2.Text = "Show Your result";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
-            // makePlanBtn
+            // AddJobs
             // 
-            this.makePlanBtn.Location = new System.Drawing.Point(3, 230);
-            this.makePlanBtn.Name = "makePlanBtn";
-            this.makePlanBtn.Size = new System.Drawing.Size(125, 58);
-            this.makePlanBtn.TabIndex = 0;
-            this.makePlanBtn.Text = "Create your daily plan";
-            this.makePlanBtn.UseVisualStyleBackColor = true;
+            this.AddJobs.Location = new System.Drawing.Point(3, 48);
+            this.AddJobs.Name = "AddJobs";
+            this.AddJobs.Size = new System.Drawing.Size(125, 38);
+            this.AddJobs.TabIndex = 0;
+            this.AddJobs.Text = "Add new job";
+            this.AddJobs.UseVisualStyleBackColor = true;
+            this.AddJobs.Click += new System.EventHandler(this.AddJobs_Click);
+            // 
+            // recordBtn
+            // 
+            this.recordBtn.Location = new System.Drawing.Point(4, 4);
+            this.recordBtn.Name = "recordBtn";
+            this.recordBtn.Size = new System.Drawing.Size(125, 38);
+            this.recordBtn.TabIndex = 0;
+            this.recordBtn.Text = "Record Jobs";
+            this.recordBtn.UseVisualStyleBackColor = true;
+            this.recordBtn.Click += new System.EventHandler(this.RecordBtn_Click);
             // 
             // MainForm
             // 
@@ -115,6 +118,7 @@
             this.calendarPanel.ResumeLayout(false);
             this.btnPanel.ResumeLayout(false);
             this.ResumeLayout(false);
+
         }
         #endregion
 
