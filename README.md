@@ -23,10 +23,10 @@
     - Thời gian kết thúc(Có thể NULL
 
 ## Các chức năng
-- thêm 1 công việc mới
-- tạo bảng kế hoạch
-- record thời gian làm 1 công việc để lưu vào bảng thực trạng.
-- đưa ra biểu đồ thống kê các việc làm dựa trên điểm tính chất của mỗi việc làm.
-- cho xem lịch trình Hằng ngày,
-- xác định mục tiêu trong tháng dựa trên các công việc Dài Ngày.
-- Thông báo deadline và thời điểm bắt đầu trc vài ngày.
+- Thêm 1 công việc mới
+- Tạo bảng kế hoạch
+- Record thời gian làm 1 công việc để lưu vào bảng thực trạng.
+- Đưa ra biểu đồ thống kê các việc làm dựa trên điểm tính chất của mỗi việc làm.
+- Cho xem lịch trình hằng ngày,
+- Xác định mục tiêu trong tháng dựa trên các công việc dài Ngày.
+- Thông báo deadline và thời điểm bắt đầu trước vài ngày.
