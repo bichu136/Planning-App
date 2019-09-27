@@ -30,3 +30,9 @@
 - Cho xem lịch trình hằng ngày.
 - Xác định mục tiêu trong tháng dựa trên các công việc dài Ngày.
 - Thông báo deadline và thời điểm bắt đầu trước vài ngày.
+## Các thành viên nhóm:
+
+- Trần Hữu Anh Khoa
+> MSSV: 18520937.
+> Khoa: Khoa học máy tính.
+> Email:
