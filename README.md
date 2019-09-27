@@ -1,32 +1,44 @@
-# Chương Trình Quản lý kế hoạch
+# Phần mềm Planning App
 
 ## Mô tả
- >  Phần mềm giúp bạn theo dõi lịch trình và thống kê lịch trình của bạn.
+ > Thời buổi công nghệ tiên tiến, xã hội ngày càng phát triển, để bắt kịp nhịp
+ > độ của cuộc sống mỗi ngày chúng ta phải học tập, làm việc, rèn luyện rất nhiều.
+ > Do đó app ra đời đáp ứng nhu cầu của mỗi cá nhân. Lấy ý tưởng từ các trò chơi,
+ > app được thiết kế để người dùng có thể trải nghiệm như một nhân vật trong game
+ > RPG giúp tạo động lực cho người dùng để hoàn thành các mục tiêu trong học
+ > tập, công việc và đời sống.
+
+## Tính năng nổi bật
+ > Thêm các thói quen, mục tiêu hằng này, mục việc cần làm
+ > Tạo một nhân vật theo cách riêng của bạn
+ > Thực hiện các công việc đề ra để thăng cấp nhân vật của bạn, mở khóa đặc tính như áo giáp
+   thú nuôi, kỹ năng và thậm chí là nhiệm vụ
+ > Kết nối với bạn bè để đánh quái vật, sử dụng vàng của bạn để nhận các phần
+   thưởng trong game (như trang bị, các giải thưởng tùy chỉnh,vv...)
 
 ## 1/Cơ sở dữ liệu
-  1. Bảng công việc
-    1. Mã công Việc (Khóa chính)
-    2. Tên công việc
-    3. Loại công Việc (Dài ngày, Hằng ngày, Ngắn ngày)
-    4. Tính chất (Thư giản, Việc chân tay, Việc Trí óc)
-    5. Trạng thái (Đang chờ, Đang làm, Hoàn thành, Drop)
-    6. Ngày thực hiện cuối cùng
+  1. Bảng Công việc
+    ..* Mã Công Việc(Khóa chính)
+    ..* Tên Công việc
+    ..* Loại Công Việc(Dài ngày, Hằng ngày, Làm một lần,vv..)
+    ..* Tính chất(Thói quen, Học tập, Công việc, Việc nhà,vv..)
+    ..* Trạng thái(Đang chờ, Đang làm, Hoàn thành, Drop)
+    ..* Ngày thực hiện cuối cùng
   2. Bảng kế hoạch
-    - Id (Khóa chính)
-    - Mã công việc (Kéo từ Khóa mã công việc của bảng 1)
-    - Thời gian bắt đầu (Không thể NULL)
-    - Thời gian kết thúc (Có thể NULL)
+    ..* Id(Khóa chính)
+    ..* Mã Công việc(Kéo từ Khóa Mã Công việc của bảng 1)
+    ..* Thời gian bắt đầu (Ko thể NULL)
+    ..* Thời gian kết thúc(Có thể NULL)
   3. Bảng thực trạng
-    - Id (Khóa chính)
-    - Mã công việc (Kéo từ Khóa mã công việc của bảng 1)
-    - Thời gian bắt đầu (Không thể NULL)
-    - Thời gian kết thúc (Có thể NULL)
+    ..* Id(Khóa chính)
+    ..* Mã Công việc(Kéo từ Khóa Mã Công việc của bảng 1)
+    ..* Thời gian bắt đầu (Ko thể NULL)
+    ..* Thời gian kết thúc(Có thể NULL)
 
 ## Các chức năng
 - Thêm 1 công việc mới
-- Tạo bảng kế hoạch
-- Ghi nhận thời gian làm 1 công việc để lưu vào bảng thực trạng.
-- Đưa ra biểu đồ thống kê các việc làm dựa trên điểm tính chất của mỗi việc làm.
-- Cho xem lịch trình hằng ngày.
-- Xác định mục tiêu trong tháng dựa trên các công việc dài Ngày.
-- Thông báo deadline và thời điểm bắt đầu trước vài ngày.
+- Tăng điểm khi hoàn thành công việc, trừ điểm khi không hoàn thành
+- Các việc đã hoàn thành sẽ được tích điểm vào các hạng mục thành tựu khác nhau
+- Cho xem các công việc theo các hạng mục
+- Lọc các công việc để hiển thị (theo loại, mức độ)
+- Hiển thị deadline cho các công việc
