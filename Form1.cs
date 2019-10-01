@@ -15,7 +15,7 @@ namespace Do_An
         public MainForm()
         {
             InitializeComponent();
-
+            SQLiteManage manager = new SQLiteManage();
         }
 
         private void Form1_Load(object sender, EventArgs e)
