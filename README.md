@@ -52,6 +52,10 @@
 > MSSV: 18520937.
 > Khoa: Khoa học máy tính.
 > Email:
+- Trần Nguyễn Thanh Nguyên
+> MSSV: 18521168
+> Khoa: Khoa học máy tính
+> Email:
 =======
 - Tăng điểm khi hoàn thành công việc, trừ điểm khi không hoàn thành
 - Các việc đã hoàn thành sẽ được tích điểm vào các hạng mục thành tựu khác nhau
