@@ -47,14 +47,13 @@
 - Xác định mục tiêu trong tháng dựa trên các công việc dài Ngày.
 - Thông báo deadline và thời điểm bắt đầu trước vài ngày.
 ## Các thành viên nhóm:
-
 - Trần Hữu Anh Khoa
 > MSSV: 18520937.
 > Khoa: Khoa học máy tính.
 > Email:
 - Trần Nguyễn Thanh Nguyên
-> MSSV: 18521168
-> Khoa: Khoa học máy tính
+> MSSV: 18521168.
+> Khoa: Khoa học máy tính.
 > Email:
 =======
 - Tăng điểm khi hoàn thành công việc, trừ điểm khi không hoàn thành
