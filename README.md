@@ -63,5 +63,5 @@
 - Hiển thị deadline cho các công việc
 ## ROADMAP:
 
- ![alt text](https://github.com/bichu136/Planning-App/UI/Road_map.png "Road map")
+ ![alt text](https://github.com/bichu136/Planning-App/raw/master/UI/Road_map.png "Road map")
 >>>>>>> 136b7cab4915d2143cd345d06dc2e0e53f0d7859
