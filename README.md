@@ -6,7 +6,7 @@
  > Do đó app ra đời đáp ứng nhu cầu của mỗi cá nhân. Lấy ý tưởng từ các trò chơi,
  > app được thiết kế để người dùng có thể trải nghiệm như một nhân vật trong game
  > RPG giúp tạo động lực cho người dùng để hoàn thành các mục tiêu trong học
- > tập, công việc và đời sống.
+ > tập, công việc và đời sống.136b7cab4915d2143cd345d06dc2e0e53f0d7859
 
 ## Tính năng nổi bật
  - Thêm các thói quen, mục tiêu hằng này, mục việc cần làm
@@ -61,4 +61,7 @@
 - Cho xem các công việc theo các hạng mục
 - Lọc các công việc để hiển thị (theo loại, mức độ)
 - Hiển thị deadline cho các công việc
+## ROADMAP:
+
+ ![alt text](https://github.com/bichu136/Planning-App/UI/Road_map.png "Road map")
 >>>>>>> 136b7cab4915d2143cd345d06dc2e0e53f0d7859
