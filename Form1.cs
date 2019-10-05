@@ -15,7 +15,16 @@ namespace Do_An
         public MainForm()
         {
             InitializeComponent();
-            SQLiteManage manager = new SQLiteManage();
+            Program.manager = new SQLiteManage();
+            //manager.InsertToTTD("DO_AN", "Thuc hien do an mon hoc lap trinh truc quan",2,3,4,5,"DO_AN","1","1");
+            //manager.InsertToRecord("DO_AN", DateTime.Today.ToString(), DateTime.Today.ToString(), DateTime.Today.ToString(), "note here");
+            MessageBox.Show(Program.manager.LoadFromTable());
+            this.FormClosing += MainForm_FormClosing;
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Program.manager.Close();
         }
 
         private void Form1_Load(object sender, EventArgs e)

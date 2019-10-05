@@ -8,15 +8,19 @@ namespace Do_An
 {
     static class Program
     {
+        static public SQLiteManage manager;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
+
+            manager = new SQLiteManage();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
         }
+
     }
 }
