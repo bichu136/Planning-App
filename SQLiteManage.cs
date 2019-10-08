@@ -12,67 +12,109 @@ namespace Do_An
         private SQLiteConnection cnn;
         private SQLiteCommand cmd;
         private SQLiteDataAdapter DB;
-        private SQLiteDataReader reader;
-        private List<Jobs> Data;
-        public enum Table{ Record = 1,ThingToDo = 0,Ex = 1};
+        public SQLiteDataReader reader;
+        private List<ThingsToDo> Data;
+
         public SQLiteManage()
         {
-            cnn= new SQLiteConnection("Data Source=database.db;Version=3;");
+            cnn = new SQLiteConnection("Data Source=database.db;Version=3;");
             cmd = new SQLiteCommand(cnn);
             cnn.Open();
-            
-            //tao cac bang nếu không có.
-            cmd.CommandText = "CREATE TABLE if not exists Ex            (ID          TEXT PRIMARY KEY," +
-                                                                        "Row1        TEXT," +
-                                                                        "Row2        TEXT );";
-            cmd.ExecuteNonQuery();
-            cmd.CommandText +="CREATE TABLE if not exists ThingToDo     (ID          TEXT PRIMARY KEY," +
-                                                                        "Name        TEXT," +
-                                                                        "Type        INTERGER," +
-                                                                        "Status      INTERGER," +
-                                                                        "Stat        INTERGER," +
-                                                                        "Score       INTERGER," +
-                                                                        "ExID        TEXT," +
-                                                                        "LastUpDate  TEXT,"+
-                                                                        "FOREIGN KEY(ExID) " +
-                                                                        "REFERENCES Ex(ID) );";
-            cmd.ExecuteNonQuery();
-            cmd.CommandText +="CREATE TABLE if not exists Record       (ID          INTEGER PRIMARY KEY AUTOINCREMENT," +
-                                                                       "TTDID       TEXT," +
-                                                                       "TimeBegin   TEXT," +
-                                                                       "Date        TEXT," +
-                                                                       "Durations   TEXT," +
-                                                                       "Note        TEXT," +
-                                                                       "FOREIGN KEY(TTDID) " +
-                                                                       "REFERENCES ThingToDo(ID) );";
-            cmd.ExecuteNonQuery();
-        }
-        public void InsertToEx(String ID,String r1,String r2)
-        {
-            cmd.CommandText = "insert into Ex (ID,Row1,Row2) Values (\""+ ID + "\",\"" + r1 + "\",\"" + r2+"\")";
-            cmd.ExecuteNonQuery();       
-        }
-        public void InsertToTTD(String ID,String Name, int Type,int Status,int Stat,int Score, String ExID, String row1, String row2)
-        {
-            InsertToEx(ExID, row1, row2);
-            cmd.CommandText = "insert into ThingToDo (ID,Name,Type,Status,Stat,Score,LastUpDate) Values (\"" + ID + "\",\"" + Name + "\"," + Type + "," + Status + "," + Stat + ","+Score+",\""+DateTime.Now.ToString()+"\")";
-            cmd.ExecuteNonQuery();
-        }
-        public void InsertToRecord(String TTDID,String TimeBegin,String Date,String Duration,String Note)
-        {
-            cmd.CommandText = "insert into Record (TTDID,TimeBegin,Date,Durations,Note) Values (\"" + TTDID + "\",\"" + TimeBegin + "\",\"" + Date + "\",\"" +Duration + "\",\""+Note+"\")";
-            cmd.ExecuteNonQuery();
-        }
-        public String LoadFromTable()
-        {
-            //thực hiện lệnh
-            cmd = cnn.CreateCommand();
-            cmd.CommandText = "select * from ThingToDo";
+            //bool flag;
+            cmd.CommandText = "SELECT name FROM sqlite_master WHERE type='table' AND name='Type'";
             reader = cmd.ExecuteReader();
-            //bắt đầu đọc 
-            reader.Read();
-            String res = reader.GetTextReader(0).ReadToEnd();
-            res += " " + reader.GetInt32(3);
+            if (reader.HasRows == false)
+            {
+                reader.Close();
+                //tao cac bang nếu không có.
+                cmd.CommandText = "CREATE TABLE if not exists Stats         (ID          INTEGER PRIMARY KEY," +
+                                                                            "Name        TEXT," +
+                                                                            "Description TEXT );";
+                cmd.ExecuteNonQuery();
+                cmd.CommandText = "CREATE TABLE if not exists TTD_Stats     (TTDID       TEXT ," +
+                                                                            "StatsID      INTEGER ," +
+                                                                            "Score       INTEGER," +
+                                                                            "primary key (TTD,STatsID)" +
+                                                                            "FOREIGN KEY (StatsID) references  Stats(ID), " +
+                                                                            "Foreign key (TTDID)   references  ThingToDo(ID));";
+                cmd.ExecuteNonQuery();
+                cmd.CommandText = "CREATE TABLE if not exists ThingToDo     (ID          TEXT PRIMARY KEY," +
+                                                                            "Name        TEXT," +
+                                                                            "Status      INTERGER," +
+                                                                            "LastUpDate  TEXT," +
+                                                                            "Type        INTEGER," +
+                                                                            "TxtRow1     TEXT," +
+                                                                            "TxtRow2     TEXT," +
+                                                                            "TxtRow3     TEXT," +
+                                                                            "TxtRow4     TEXT," +
+                                                                            "TxtRow5     TEXT," +
+                                                                            "IntRow1     INTEGER," +
+                                                                            "IntRow2     INTEGER," +
+                                                                            "IntRow3     INTEGER," +
+                                                                            "IntRow4     INTEGER," +
+                                                                            "IntRow5     INTEGER," +
+                                                                            "FOREIGN KEY(Type) " +
+                                                                            "REFERENCES Type(ID) );";
+                cmd.ExecuteNonQuery();
+                cmd.CommandText = "CREATE TABLE if not exists Type          (ID          INTEGER PRIMARY KEY AUTOINCREMENT," +
+                                                                            "Name        TEXT," +
+                                                                            "TxtRows     Integer," +
+                                                                            "IntRows     Integer);";
+                cmd.ExecuteNonQuery();
+                cmd.CommandText = "CREATE TABLE if not exists Record       (ID          INTEGER PRIMARY KEY AUTOINCREMENT," +
+                                                                           "TTDID       TEXT," +
+                                                                           "TimeBegin   TEXT," +
+                                                                           "Date        TEXT," +
+                                                                           "Durations   TEXT," +
+                                                                           "Note        TEXT," +
+                                                                           "FOREIGN KEY(TTDID) " +
+                                                                           "REFERENCES ThingToDo(ID) );";
+                cmd.ExecuteNonQuery();
+                cmd.CommandText = "insert into Type (Name,TxtRows,IntRows) values (\"Objective\",0,2);";
+                cmd.ExecuteNonQuery();
+                cmd.CommandText = "insert into Type (Name,TxtRows,IntRows) values (\"Daily\",0,1);";
+                cmd.ExecuteNonQuery();
+                cmd.CommandText = "insert into Type (Name,TxtRows,IntRows) values (\"Event\",2,0);";
+                cmd.ExecuteNonQuery();
+                cmd.CommandText = "insert into Type (Name,TxtRows,IntRows) values (\"Project\",1,0);";
+                cmd.ExecuteNonQuery();
+            }
+            else
+            {
+                reader.Close();
+            }
+        }
+        public object[] getTypes()
+        {
+            cmd.CommandText = "select * from Type";
+            reader = cmd.ExecuteReader();
+            List<String> a = new List<String>();
+            while (reader.Read())
+            {
+                a.Add(reader.GetString(1));
+            }
+            string[] res = new string[a.Count];
+            for (int i = 0; i < a.Count; i++)
+            {
+                res[i] = a[i];
+            }
+            reader.Close();
+            return res;
+        }
+        public string[] getStatList()
+        {
+            cmd.CommandText = "select * from Stats";
+            reader = cmd.ExecuteReader();
+            List<String> a = new List<String>();
+            while (reader.Read())
+            {
+                a.Add(reader.GetString(1));
+            }
+            string[] res = new string[a.Count];
+            for (int i = 0; i < a.Count; i++)
+            {
+                res[i] = a[i];
+            }
             reader.Close();
             return res;
         }
@@ -80,6 +122,17 @@ namespace Do_An
         {
             //đóng kết nối 
             cnn.Close();
+        }
+        public void StartReadFrom(String TableName, string[] columns)
+        {
+            string buffer = "";
+            for (int i = 0; i < columns.Length; i++)
+            {
+                buffer += columns[i];
+                if (i + 1 < columns.Length) buffer += ",";
+            }
+            cmd.CommandText = "select " + buffer + " from Stats";
+            reader = cmd.ExecuteReader();
         }
     }
 }

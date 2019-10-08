@@ -8,17 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Do_An
 {
+    
     public partial class MainForm : Form
     {
+        private AddThingToDoForm addThingToDoForm;
         public MainForm()
         {
             InitializeComponent();
-            Program.manager = new SQLiteManage();
             //manager.InsertToTTD("DO_AN", "Thuc hien do an mon hoc lap trinh truc quan",2,3,4,5,"DO_AN","1","1");
             //manager.InsertToRecord("DO_AN", DateTime.Today.ToString(), DateTime.Today.ToString(), DateTime.Today.ToString(), "note here");
-            MessageBox.Show(Program.manager.LoadFromTable());
+            //MessageBox.Show(Program.manager.LoadFromTable());
             this.FormClosing += MainForm_FormClosing;
         }
 
@@ -44,7 +46,8 @@ namespace Do_An
 
         private void AddJobs_Click(object sender, EventArgs e)
         {
-
+            addThingToDoForm = new AddThingToDoForm();
+            addThingToDoForm.ShowDialog();
         }
 
         private void Button2_Click(object sender, EventArgs e)
