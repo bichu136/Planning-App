@@ -11,10 +11,8 @@
 ## Tính năng nổi bật
  - Thêm các thói quen, mục tiêu hằng này, mục việc cần làm
  - Tạo một nhân vật theo cách riêng của bạn
- - Thực hiện các công việc đề ra để thăng cấp nhân vật của bạn, mở khóa đặc tính như áo giáp
-   thú nuôi, kỹ năng và thậm chí là nhiệm vụ
- - Kết nối với bạn bè để đánh quái vật, sử dụng vàng của bạn để nhận các phần
-   thưởng trong game (như trang bị, các giải thưởng tùy chỉnh,vv...)
+ - Thực hiện các công việc đề ra để thăng cấp nhân vật của bạn, mở khóa nhiệm vụ
+ - Làm quest để nhận các phần thưởng
 
 ## Cơ sở dữ liệu
 1. Bảng Công việc
