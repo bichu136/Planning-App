@@ -6,7 +6,7 @@
  > Do đó app ra đời đáp ứng nhu cầu của mỗi cá nhân. Lấy ý tưởng từ các trò chơi,
  > app được thiết kế để người dùng có thể trải nghiệm như một nhân vật trong game
  > RPG giúp tạo động lực cho người dùng để hoàn thành các mục tiêu trong học
- > tập, công việc và đời sống.136b7cab4915d2143cd345d06dc2e0e53f0d7859
+ > tập, công việc và đời sống.
 
 ## Tính năng nổi bật
  - Thêm các thói quen, mục tiêu hằng này, mục việc cần làm
