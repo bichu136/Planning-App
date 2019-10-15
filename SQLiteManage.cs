@@ -34,7 +34,7 @@ namespace Do_An
                 cmd.CommandText = "CREATE TABLE if not exists TTD_Stats     (TTDID       TEXT ," +
                                                                             "StatsID      INTEGER ," +
                                                                             "Score       INTEGER," +
-                                                                            "primary key (TTDID,STatsID)" +
+                                                                            "primary key (TTDID,StatsID)" +
                                                                             "FOREIGN KEY (StatsID) references  Stats(ID), " +
                                                                             "Foreign key (TTDID)   references  ThingToDo(ID));";
                 cmd.ExecuteNonQuery();
