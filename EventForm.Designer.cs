@@ -98,6 +98,7 @@
             this.Add_Button.TabIndex = 6;
             this.Add_Button.Text = "Add Event";
             this.Add_Button.UseVisualStyleBackColor = true;
+            this.Add_Button.Click += new System.EventHandler(this.Add_Button_Click);
             // 
             // Cancel_Button
             // 
@@ -124,9 +125,15 @@
             this.Controls.Add(this.Onwaiting_Label);
             this.Name = "EventForm";
             this.Text = "EventForm";
+            //this.Load += EventForm_Load;
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void EventForm_Load(object sender, System.EventArgs e)
+        {
+            throw new System.NotImplementedException();
         }
 
         #endregion

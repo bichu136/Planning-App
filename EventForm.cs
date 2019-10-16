@@ -15,6 +15,14 @@ namespace Do_An
         public EventForm()
         {
             InitializeComponent();
+
+        }
+        private AddEventForm addEventForm;
+
+        private void Add_Button_Click(object sender, EventArgs e)
+        {
+            addEventForm = new AddEventForm();
+            addEventForm.ShowDialog();
         }
     }
 }
