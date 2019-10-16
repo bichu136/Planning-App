@@ -54,5 +54,15 @@ namespace Do_An
         {
 
         }
+
+        private void btnPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
