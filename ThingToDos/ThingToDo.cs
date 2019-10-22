@@ -10,26 +10,35 @@ namespace Do_An
 	{
 		protected string ID;
 		protected string Name;
-		protected int Stat;
-		protected int Score;
+		protected int[] Stats;
+		protected List<int> Score;
 		protected int Status;
 		protected DateTime lastupdate;
-		/*public ThingsToDo(string id, string name,int stat,int score,DateTime lastup) // Constructor : hàm khởi tạo giá trị mặc định có tham số
+        public ThingsToDo()
+        {
+
+        }
+		public ThingsToDo(string id, string name, List<int> score,DateTime lastup) // Constructor : hàm khởi tạo giá trị mặc định có tham số
         {
             ID = id;
             Name = name;
-            Stat = stat;
             Score = score;
             Status = 1;
             lastupdate = lastup;
-        }*/
+        }
 		public void update() // phương thức update
 		{
 			lastupdate = DateTime.Now; // cập nhật lastupdate = thời gian hiện tại
 		}
-		virtual public int getTotalScore(int Minute)
+		virtual public List<int> getTotalScore(int Minute)
 		{
-			return Minute * Score;
+            List<int> Scores = this.Score;
+            for (int i = 0; i < Scores.Count; i++)
+            {
+                Scores[i] *= Minute;
+            }
+
+			return Scores;
 		}
 		virtual public void updateStatus()
 		{

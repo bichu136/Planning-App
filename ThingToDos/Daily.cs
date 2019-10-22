@@ -9,7 +9,14 @@ namespace Do_An
 	class Daily : ThingsToDo
 	{
 		int factor;
-		public override int getTotalScore(int Minute)
+        public Daily(string id, string name, List<int> score, DateTime lastup,int factor): base(id, name,score, lastup)
+        {
+            this.factor = factor;
+        }
+
+        public int Factor { get => factor; }
+
+        public override List<int> getTotalScore(int Minute)
 		{
 			return base.getTotalScore(Minute);
 		}

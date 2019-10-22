@@ -16,5 +16,10 @@ namespace Do_An
         {
             InitializeComponent();
         }
+
+        private void Ongoing_Panel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

@@ -71,6 +71,7 @@
             this.Ongoing_Panel.Name = "Ongoing_Panel";
             this.Ongoing_Panel.Size = new System.Drawing.Size(318, 174);
             this.Ongoing_Panel.TabIndex = 3;
+            this.Ongoing_Panel.Paint += new System.Windows.Forms.PaintEventHandler(this.Ongoing_Panel_Paint);
             // 
             // Passed_Label
             // 

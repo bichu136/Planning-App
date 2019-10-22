@@ -9,7 +9,7 @@ namespace Do_An
 	class Event : ThingsToDo
 	{
 		DateTime BeginTime;
-		public override int getTotalScore(int Minute)
+		public override List<int> getTotalScore(int Minute)
 		{
 			return base.getTotalScore(Minute);
 		}

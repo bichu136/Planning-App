@@ -27,7 +27,7 @@ namespace Do_An
             {
                 reader.Close();
                 //tao cac bang nếu không có.
-                cmd.CommandText = "CREATE TABLE if not exists Stats         (ID          INTEGER PRIMARY KEY," +
+                cmd.CommandText = "CREATE TABLE if not exists Stats         (ID          INTEGER PRIMARY KEY AUTOINCREMENT," +
                                                                             "Name        TEXT," +
                                                                             "Description TEXT );";
                 cmd.ExecuteNonQuery();
@@ -131,8 +131,38 @@ namespace Do_An
                 buffer += columns[i];
                 if (i + 1 < columns.Length) buffer += ",";
             }
-            cmd.CommandText = "select " + buffer + " from Stats";
+            cmd.CommandText = "select " + buffer + " from " + TableName;
             reader = cmd.ExecuteReader();
+        }
+        public void InsertTo(String TableName, string[] values)
+        {
+            String Values = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                Values += values[i];
+                if (i < values.Length - 1) { Values += ","; }
+            }
+            cmd.CommandText = "insert into " + TableName + " values (" + Values + ");";
+            cmd.ExecuteNonQuery();
+        }
+        public void InsertTo(String TableName, string[] columns, string[] values)
+        {
+            String Column = "";
+            String Values = "";
+            if (columns.Length != values.Length) throw new MissingMemberException();
+
+            for (int i = 0; i < columns.Length; i++)
+            {
+                Column += columns[i];
+                Values += "'" + values[i];
+                if (i < columns.Length - 1) { Column += ","; Values += "',"; } else Values += "'";
+            }
+            cmd.CommandText = "insert into " + TableName + " (" + Column + ") values (" + Values + ");";
+            cmd.ExecuteNonQuery();
+        }
+        public void InsertThingToDo(ThingsToDo input)
+        {
+
         }
     }
 }

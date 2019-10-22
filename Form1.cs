@@ -64,5 +64,11 @@ namespace Do_An
         {
 
         }
+
+        private void makePlanBtn_Click(object sender, EventArgs e)
+        {
+            
+        }
+
     }
 }

@@ -10,13 +10,14 @@ namespace Do_An
 	{
 		int Current;
 		int Goal;
-		public Objective(int c, int g)
+		public Objective(string id,string name, List<int> score,DateTime lastup, int g):base(id,name,score, lastup)
 		{
-			Current = c;
+			Current = 0;
 			Goal = g;
 		}
-		public override int getTotalScore(int Minute)
+		public override List<int> getTotalScore(int Minute)
 		{
+
 			return base.getTotalScore(Minute);
 		}
 		public override void updateStatus()
