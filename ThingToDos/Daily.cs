@@ -22,11 +22,20 @@ namespace Do_An
 		}
 		public override void updateStatus()
 		{
-			if (lastupdate /*chỗ này cộng 1 khoảng thời gian*/< DateTime.Now)
+            base.updateStatus();
+			if (lastupdate.AddMonths(1)< DateTime.Now)
 			{
 				Status = -1;
 				return;
 			}
 		}
-	}
+        public override void InsertToDatabase()
+        {
+            int type = 1;
+            List<string> columns = new List<string>() {"ID","Name","Status","lastupdate","IntRow1","Type"};
+            List<string> values = new List<string>() { ID, Name, Status.ToString(), lastupdate.ToString("yyyy'-'MM'-'dd HH:mm:ss"), factor.ToString(),type.ToString() };
+            Program.manager.InsertTo("ThingToDo", columns,values);
+            base.InsertToDatabase();
+        }
+    }
 }

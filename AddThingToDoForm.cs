@@ -18,20 +18,17 @@ namespace Do_An
         public AddThingToDoForm()
         {
             InitializeComponent();
-            Ex1Lbl.Hide();
-            Ex2Lbl.Hide();
-            Ex1TxtBox.Hide();
-            Ex2TxtBox.Hide();
-
+            HideExComponent();
             Scores = new List<int>();
             //----------Add Events----------//
             NewStatBtn.Click += AddNewStat;
             StatsCbBox.TextChanged += StatsChange;
             ScoreTxtBox.KeyPress += OnlyNumberPress;
+            ScoreTxtBox.TextChanged += ScoreChange;
             TypeCbBox.TextChanged += TypeChange;
             TypeCbBox.Items.AddRange(Program.manager.getTypes());
             TypeCbBox.SelectedIndex = 0;
-            
+            AddBtn.Click += AddThingsToDo;
             Program.manager.StartReadFrom("Stats",new string[] {"name" });
             while (Program.manager.reader.Read())
             {
@@ -64,7 +61,7 @@ namespace Do_An
             addBtn.Click += (object Sender, EventArgs E) =>{
                 Buffer1 = NameTxtBox.Text;
                 Buffer2 = DesTxtBox.Text;
-                Program.manager.InsertTo("Stats", new string[] { "Name", "Description" }, new string[] { Buffer1, Buffer2 });
+                //Program.manager.InsertTo("Stats", new string[] { "Name", "Description" }, new string[] { Buffer1, Buffer2 });
                 this.StatsCbBox.Items.Add(NameTxtBox.Text);
                 Scores.Add(0);
             };
@@ -79,6 +76,16 @@ namespace Do_An
 
         private void TypeChange(object sender, EventArgs e)
         {
+            HideExComponent();
+            try
+            {
+                RemoveKeyPressEvent(Ex1TxtBox);
+                RemoveKeyPressEvent(Ex2TxtBox);
+            }
+            catch(Exception exp)
+            {
+
+            }
             switch (TypeCbBox.SelectedIndex)
             {
                 case 0:
@@ -98,43 +105,61 @@ namespace Do_An
 
         private void ProjectShow()
         {
-            Ex1Lbl.Text = "factor";
-            Ex1TxtBox.KeyPress += OnlyNumberPress;
-            RemoveClickEvent(AddBtn);
-            AddBtn.Click += AddDaily;
+            Ex1Lbl.Text = "Dealine";
+            Ex1Lbl.Show(); 
+            Ex1DateTime.Show();
         }
 
         private void EventShow()
         {
-            Ex1Lbl.Text = "factor";
-            Ex1TxtBox.KeyPress += OnlyNumberPress;
-            RemoveClickEvent(AddBtn);
-            AddBtn.Click += AddDaily;
+            Ex1Lbl.Text = "Begin At";
+            Ex1Lbl.Show();
+            Ex1DateTime.Show();
+            //Ex2Lbl.Text = "End At";
+            //Ex2Lbl.Show();
+            //Ex2DateTime.Show();
         }
 
         private void DailyShow()
         {
             Ex1Lbl.Text = "factor";
+            Ex1Lbl.Show();
             Ex1TxtBox.KeyPress += OnlyNumberPress;
-            RemoveClickEvent(AddBtn);
-            AddBtn.Click += AddDaily;
+            Ex1TxtBox.Show();
         }
 
-        private void AddDaily(object sender, EventArgs e)
+        private void AddThingsToDo(object sender, EventArgs e)
         {
-            Daily  daily = new Daily(IDTxtBox.Text, NameTxtBox.Text, Scores, DateTime.Now, Convert.ToInt32(Ex1TxtBox.Text));
-            Program.manager.InsertTo("ThingsToDo",new string[]{"ID","Name","stat","", },new string[] { });
+            ThingsToDo input;
+            switch (TypeCbBox.SelectedIndex)
+            {
+                case 0:
+                    input = new Objective(IDTxtBox.Text,NameTxtBox.Text,Scores,DateTime.Now,Convert.ToInt32(Ex1TxtBox.Text)) ;
+                    break;
+                case 1:
+                    input = new Daily(IDTxtBox.Text, NameTxtBox.Text, Scores, DateTime.Now, Convert.ToInt32(Ex1TxtBox.Text));
+                    break;
+                case 2:
+                    input = new Event(IDTxtBox.Text, NameTxtBox.Text, Scores, DateTime.Now, Ex1DateTime.Value);
+                    break;
+                case 3:
+                    input = new Project(IDTxtBox.Text, NameTxtBox.Text, Scores, DateTime.Now, Ex1DateTime.Value);
+
+                    break;
+                default:
+                    input = new ThingsToDo();
+                    break;
+            }
+            Program.manager.Data.Add(input);
+            input.InsertToDatabase();
         }
 
         private void ObjectiveShow()
         {
-            RemoveClickEvent(AddBtn);
-            AddBtn.Click += AddObjective;
-        }
-        private void AddObjective(object sender, EventArgs e)
-        {
-            Objective objective = new Objective(IDTxtBox.Text, NameTxtBox.Text, Scores, DateTime.Now, Convert.ToInt32(Ex2TxtBox.Text));
-            Program.manager.InsertThingToDo(objective);
+            Ex1Lbl.Text = "Goal";
+            Ex1Lbl.Show();
+            Ex1TxtBox.KeyPress += OnlyNumberPress;
+            Ex1TxtBox.Show();
         }
         private void StatsChange(object sender, EventArgs e)
         {
@@ -143,17 +168,27 @@ namespace Do_An
         
         private void ScoreChange(object sender,EventArgs e)
         {
+            if(ScoreTxtBox.Text!="")
             Scores[StatsCbBox.SelectedIndex] = Convert.ToInt32(ScoreTxtBox.Text);
         }
-        private void RemoveClickEvent(Button b)
+        private void RemoveKeyPressEvent(TextBox b)
         {
-            FieldInfo f1 = typeof(Control).GetField("EventClick",
+            FieldInfo f1 = typeof(Control).GetField("KeyPress",
                 BindingFlags.Static | BindingFlags.NonPublic);
             object obj = f1.GetValue(b);
             PropertyInfo pi = b.GetType().GetProperty("Events",
                 BindingFlags.NonPublic | BindingFlags.Instance);
             EventHandlerList list = (EventHandlerList)pi.GetValue(b, null);
             list.RemoveHandler(obj, list[obj]);
+        }
+        private void HideExComponent()
+        {
+            Ex1Lbl.Hide();
+            Ex2Lbl.Hide();
+            Ex1TxtBox.Hide();
+            Ex2TxtBox.Hide();
+            Ex1DateTime.Hide();
+            Ex2DateTime.Hide();
         }
     }
 }

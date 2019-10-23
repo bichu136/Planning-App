@@ -44,7 +44,8 @@
             this.Ex1TxtBox = new System.Windows.Forms.TextBox();
             this.Ex2Lbl = new System.Windows.Forms.Label();
             this.Ex2TxtBox = new System.Windows.Forms.TextBox();
-            this.ExDateTime = new System.Windows.Forms.DateTimePicker();
+            this.Ex1DateTime = new System.Windows.Forms.DateTimePicker();
+            this.Ex2DateTime = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // TypeCbBox
@@ -140,7 +141,7 @@
             // 
             // AddBtn
             // 
-            this.AddBtn.Location = new System.Drawing.Point(375, 216);
+            this.AddBtn.Location = new System.Drawing.Point(361, 216);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(137, 23);
             this.AddBtn.TabIndex = 7;
@@ -150,7 +151,7 @@
             // Ex1Lbl
             // 
             this.Ex1Lbl.AutoSize = true;
-            this.Ex1Lbl.Location = new System.Drawing.Point(13, 161);
+            this.Ex1Lbl.Location = new System.Drawing.Point(13, 186);
             this.Ex1Lbl.Name = "Ex1Lbl";
             this.Ex1Lbl.Size = new System.Drawing.Size(46, 17);
             this.Ex1Lbl.TabIndex = 10;
@@ -158,7 +159,7 @@
             // 
             // Ex1TxtBox
             // 
-            this.Ex1TxtBox.Location = new System.Drawing.Point(65, 161);
+            this.Ex1TxtBox.Location = new System.Drawing.Point(79, 183);
             this.Ex1TxtBox.Name = "Ex1TxtBox";
             this.Ex1TxtBox.Size = new System.Drawing.Size(100, 22);
             this.Ex1TxtBox.TabIndex = 11;
@@ -166,7 +167,7 @@
             // Ex2Lbl
             // 
             this.Ex2Lbl.AutoSize = true;
-            this.Ex2Lbl.Location = new System.Drawing.Point(171, 164);
+            this.Ex2Lbl.Location = new System.Drawing.Point(13, 161);
             this.Ex2Lbl.Name = "Ex2Lbl";
             this.Ex2Lbl.Size = new System.Drawing.Size(46, 17);
             this.Ex2Lbl.TabIndex = 10;
@@ -174,24 +175,32 @@
             // 
             // Ex2TxtBox
             // 
-            this.Ex2TxtBox.Location = new System.Drawing.Point(223, 164);
+            this.Ex2TxtBox.Location = new System.Drawing.Point(79, 158);
             this.Ex2TxtBox.Name = "Ex2TxtBox";
             this.Ex2TxtBox.Size = new System.Drawing.Size(114, 22);
             this.Ex2TxtBox.TabIndex = 11;
             // 
-            // ExDateTime
+            // Ex1DateTime
             // 
-            this.ExDateTime.Location = new System.Drawing.Point(223, 163);
-            this.ExDateTime.Name = "ExDateTime";
-            this.ExDateTime.Size = new System.Drawing.Size(200, 22);
-            this.ExDateTime.TabIndex = 12;
+            this.Ex1DateTime.Location = new System.Drawing.Point(79, 183);
+            this.Ex1DateTime.Name = "Ex1DateTime";
+            this.Ex1DateTime.Size = new System.Drawing.Size(200, 22);
+            this.Ex1DateTime.TabIndex = 12;
+            // 
+            // Ex2DateTime
+            // 
+            this.Ex2DateTime.Location = new System.Drawing.Point(79, 157);
+            this.Ex2DateTime.Name = "Ex2DateTime";
+            this.Ex2DateTime.Size = new System.Drawing.Size(200, 22);
+            this.Ex2DateTime.TabIndex = 12;
             // 
             // AddThingToDoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(524, 251);
-            this.Controls.Add(this.ExDateTime);
+            this.Controls.Add(this.Ex2DateTime);
+            this.Controls.Add(this.Ex1DateTime);
             this.Controls.Add(this.Ex2TxtBox);
             this.Controls.Add(this.Ex1TxtBox);
             this.Controls.Add(this.Ex2Lbl);
@@ -241,6 +250,7 @@
         private System.Windows.Forms.TextBox Ex1TxtBox;
         private System.Windows.Forms.Label Ex2Lbl;
         private System.Windows.Forms.TextBox Ex2TxtBox;
-        private System.Windows.Forms.DateTimePicker ExDateTime;
+        private System.Windows.Forms.DateTimePicker Ex1DateTime;
+        private System.Windows.Forms.DateTimePicker Ex2DateTime;
     }
 }

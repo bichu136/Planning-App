@@ -9,13 +9,17 @@ namespace Do_An
 	class Event : ThingsToDo
 	{
 		DateTime BeginTime;
+        public Event(string id,string name, List<int> score,DateTime lastup,DateTime beginTime) : base(id, name, score, lastup)
+        {
+            BeginTime = beginTime;
+        }
 		public override List<int> getTotalScore(int Minute)
 		{
 			return base.getTotalScore(Minute);
 		}
 		public void UpdateStatus(bool flag = false)
 		{
-			if (DateTime.Now < /*một khoảng thời gian +*/BeginTime)
+			if (DateTime.Now < BeginTime)
 			{
 				Status = (flag) ? 1 : 2;
 				return;
@@ -29,5 +33,13 @@ namespace Do_An
 				else Status = -2;
 			}
 		}
-	}
+        public override void InsertToDatabase()
+        {
+            int type = 2;
+            List<string> columns = new List<string>() { "ID", "Name", "Status", "lastupdate", "TxtRow1", "Type" };
+            List<string> values = new List<string>() { ID, Name, Status.ToString(), lastupdate.ToString("yyyy'-'MM'-'dd HH:mm:ss"), BeginTime.ToString("yyyy'-'MM'-'dd HH: mm:ss"), type.ToString() };
+            Program.manager.InsertTo("ThingToDo", columns, values);
+            base.InsertToDatabase();
+        }
+    }
 }

@@ -10,10 +10,10 @@ namespace Do_An
 	{
 		protected string ID;
 		protected string Name;
-		protected int[] Stats;
 		protected List<int> Score;
 		protected int Status;
 		protected DateTime lastupdate;
+        public enum statuses { Ongoing = 1, Done = 0, Dropped = -1, Waiting=2, Missed=-2 }
         public ThingsToDo()
         {
 
@@ -40,6 +40,17 @@ namespace Do_An
 
 			return Scores;
 		}
+        public virtual void InsertToDatabase()
+        {
+            //add TTD_Stats thoi tai cai do chung dc.
+            for(int i = 0; i < Score.Count; i++)
+            {
+                if (Score[i] != 0)
+                {
+                    Program.manager.InsertTo("TTD_Stats", new List<string> { ID, i.ToString(), Score[i].ToString() });
+                }
+            }
+        }
 		virtual public void updateStatus()
 		{
 

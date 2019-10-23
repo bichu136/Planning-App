@@ -13,10 +13,11 @@ namespace Do_An
         private SQLiteCommand cmd;
         private SQLiteDataAdapter DB;
         public SQLiteDataReader reader;
-        private List<ThingsToDo> Data;
+        public List<ThingsToDo> Data;
 
         public SQLiteManage()
         {
+            Data = new List<ThingsToDo>();
             cnn = new SQLiteConnection("Data Source=database.db;Version=3;");
             cmd = new SQLiteCommand(cnn);
             cnn.Open();
@@ -134,35 +135,31 @@ namespace Do_An
             cmd.CommandText = "select " + buffer + " from " + TableName;
             reader = cmd.ExecuteReader();
         }
-        public void InsertTo(String TableName, string[] values)
+        public void InsertTo(String TableName, List<string> values)
         {
             String Values = "";
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < values.Count; i++)
             {
                 Values += values[i];
-                if (i < values.Length - 1) { Values += ","; }
+                if (i < values.Count - 1) { Values += "','"; }
             }
-            cmd.CommandText = "insert into " + TableName + " values (" + Values + ");";
+            cmd.CommandText = "insert into " + TableName + " values ('" + Values + "');";
             cmd.ExecuteNonQuery();
         }
-        public void InsertTo(String TableName, string[] columns, string[] values)
+        public void InsertTo(String TableName, List<string> columns, List<string> values)
         {
             String Column = "";
             String Values = "";
-            if (columns.Length != values.Length) throw new MissingMemberException();
+            if (columns.Count != values.Count) throw new MissingMemberException();
 
-            for (int i = 0; i < columns.Length; i++)
+            for (int i = 0; i < columns.Count; i++)
             {
                 Column += columns[i];
                 Values += "'" + values[i];
-                if (i < columns.Length - 1) { Column += ","; Values += "',"; } else Values += "'";
+                if (i < columns.Count - 1) { Column += ","; Values += "',"; } else Values += "'";
             }
             cmd.CommandText = "insert into " + TableName + " (" + Column + ") values (" + Values + ");";
             cmd.ExecuteNonQuery();
-        }
-        public void InsertThingToDo(ThingsToDo input)
-        {
-
         }
     }
 }

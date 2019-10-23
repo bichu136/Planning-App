@@ -10,9 +10,9 @@ namespace Do_An
 	{
 		int Current;
 		int Goal;
-		public Objective(string id,string name, List<int> score,DateTime lastup, int g):base(id,name,score, lastup)
+		public Objective(string id,string name, List<int> score,DateTime lastup, int g,int c = 0):base(id,name,score, lastup)
 		{
-			Current = 0;
+			Current = c;
 			Goal = g;
 		}
 		public override List<int> getTotalScore(int Minute)
@@ -22,16 +22,25 @@ namespace Do_An
 		}
 		public override void updateStatus()
 		{
-			if (lastupdate /*chỗ này cộng 1 khoảng thời gian*/ < DateTime.Now)
+			if (lastupdate.AddMonths(1) < DateTime.Now)
 			{
-				Status = -1;
+				Status = (int)statuses.Dropped;
 				return;
 			}
 			if (Current > Goal)
 			{
-				Status = 0;
+				Status = (int)statuses.Done;
 				return;
 			}
 		}
-	}
+        public override void InsertToDatabase()
+        {
+            int type = 0;
+            List<string> columns = new List<string>() { "ID", "Name", "Status", "lastupdate", "IntRow1","IntRow2", "Type" };
+            List<string> values = new List<string>() { ID, Name, Status.ToString(), lastupdate.ToString("yyyy'-'MM'-'dd HH:mm:ss"), Current.ToString(),Goal.ToString(), type.ToString() };
+            Program.manager.InsertTo("ThingToDo", columns, values);
+            base.InsertToDatabase();
+        }
+        
+    }
 }
