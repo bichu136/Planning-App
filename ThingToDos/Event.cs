@@ -24,7 +24,7 @@ namespace Do_An
 			{
 				if (Status == 1)
 				{
-					Status = 0;
+					Status = 0;  // 
 				}
 				else Status = -2;
 			}
