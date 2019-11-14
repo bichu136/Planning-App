@@ -8,15 +8,13 @@ namespace Do_An
 {
 	class Daily : ThingsToDo
 	{
-		int factor;
-        public Daily(string id, string name, List<int> score, DateTime lastup,int factor): base(id, name,score, lastup)
+		private int factor;
+        public int Factor { get => factor; }
+        public Daily(string id, string name, Dictionary<string,int> score, DateTime lastup,int factor): base(id, name,score, lastup)
         {
             this.factor = factor;
         }
-
-        public int Factor { get => factor; }
-
-        public override List<int> getTotalScore(int Minute)
+        public override Dictionary<string,int> getTotalScore(int Minute)
 		{
 			return base.getTotalScore(Minute);
 		}
@@ -29,13 +27,9 @@ namespace Do_An
 				return;
 			}
 		}
-        public override void InsertToDatabase()
+        public bool IsDone()
         {
-            int type = 1;
-            List<string> columns = new List<string>() {"ID","Name","Status","lastupdate","IntRow1","Type"};
-            List<string> values = new List<string>() { ID, Name, Status.ToString(), lastupdate.ToString("yyyy'-'MM'-'dd HH:mm:ss"), factor.ToString(),type.ToString() };
-            Program.manager.InsertTo("ThingToDo", columns,values);
-            base.InsertToDatabase();
+            return true;
         }
     }
 }

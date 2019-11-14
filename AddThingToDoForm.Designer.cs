@@ -1,4 +1,6 @@
-﻿namespace Do_An
+﻿using System.Windows.Forms;
+
+namespace Do_An
 {
     partial class AddThingToDoForm
     {
@@ -222,6 +224,7 @@
             this.MinimizeBox = false;
             this.Name = "AddThingToDoForm";
             this.Text = "AddThingToDoForm";
+            this.Load += new System.EventHandler(this.AddThingToDoForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -252,5 +255,25 @@
         private System.Windows.Forms.TextBox Ex2TxtBox;
         private System.Windows.Forms.DateTimePicker Ex1DateTime;
         private System.Windows.Forms.DateTimePicker Ex2DateTime;
+
+        public ComboBox TypeCbBox1 { get => TypeCbBox; set => TypeCbBox = value; }
+        public Label TypeLbl1 { get => TypeLbl; set => TypeLbl = value; }
+        public Label IDLbl1 { get => IDLbl; set => IDLbl = value; }
+        public Label NameLbl1 { get => NameLbl; set => NameLbl = value; }
+        public Label Stat1 { get => Stat; set => Stat = value; }
+        public TextBox NameTxtBox1 { get => NameTxtBox; set => NameTxtBox = value; }
+        public TextBox IDTxtBox1 { get => IDTxtBox; set => IDTxtBox = value; }
+        public ComboBox StatsCbBox1 { get => StatsCbBox; set => StatsCbBox = value; }
+        public Button NewStatBtn1 { get => NewStatBtn; set => NewStatBtn = value; }
+        public TextBox ScoreTxtBox1 { get => ScoreTxtBox; set => ScoreTxtBox = value; }
+        public TextBox ScoreTxtBox2 { get => ScoreTxtBox; set => ScoreTxtBox = value; }
+        public Label Label1 { get => label1; set => label1 = value; }
+        public Button AddBtn1 { get => AddBtn; set => AddBtn = value; }
+        public Label Ex1Lbl1 { get => Ex1Lbl; set => Ex1Lbl = value; }
+        public TextBox Ex1TxtBox1 { get => Ex1TxtBox; set => Ex1TxtBox = value; }
+        public Label Ex2Lbl1 { get => Ex2Lbl; set => Ex2Lbl = value; }
+        public TextBox Ex2TxtBox1 { get => Ex2TxtBox; set => Ex2TxtBox = value; }
+        public DateTimePicker Ex1DateTime1 { get => Ex1DateTime; set => Ex1DateTime = value; }
+        public DateTimePicker Ex2DateTime1 { get => Ex2DateTime; set => Ex2DateTime = value; }
     }
 }

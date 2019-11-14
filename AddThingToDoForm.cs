@@ -14,29 +14,43 @@ namespace Do_An
     public partial class AddThingToDoForm : Form
     {
         bool flag;
-        private List<int> Scores;
+        private Dictionary<string,int> Scores;
+        StatData statData = new StatData();
+        TypeData typeData = new TypeData();
+        StatData data = new StatData();
         public AddThingToDoForm()
         {
             InitializeComponent();
             HideExComponent();
-            Scores = new List<int>();
+
+            Scores = new Dictionary<string, int>();
             //----------Add Events----------//
             NewStatBtn.Click += AddNewStat;
-            StatsCbBox.TextChanged += StatsChange;
+
             ScoreTxtBox.KeyPress += OnlyNumberPress;
             ScoreTxtBox.TextChanged += ScoreChange;
-            TypeCbBox.TextChanged += TypeChange;
-            TypeCbBox.Items.AddRange(Program.manager.getTypes());
-            TypeCbBox.SelectedIndex = 0;
-            AddBtn.Click += AddThingsToDo;
-            Program.manager.StartReadFrom("Stats",new string[] {"name" });
-            while (Program.manager.reader.Read())
-            {
-                StatsCbBox.Items.Add(Program.manager.reader.GetString(0));
-                Scores.Add(0);
-            }
-            Program.manager.reader.Close();
+            TypeCbBox.KeyPress += SkipKeyPress;
+            StatsCbBox.KeyPress += SkipKeyPress;
 
+            TypeCbBox.DataSource = typeData.ReadDataTable();
+            TypeCbBox.DisplayMember = "Name";
+            TypeCbBox.TextChanged += TypeChange;
+
+            TypeCbBox.SelectedIndex = 1;
+            AddBtn.Click += AddThingsToDo;
+            //in load event
+            StatsCbBox.DataSource = statData.ReadDataTable();
+            StatsCbBox.DisplayMember = "Name";
+            StatsCbBox.TextChanged += StatsChange;
+            
+            foreach(var item in StatsCbBox.Items)
+            {
+                Scores.Add(item.ToString(), 0);
+            }
+        }
+        private void SkipKeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
 
         private void OnlyNumberPress(object sender, KeyPressEventArgs e)
@@ -49,8 +63,6 @@ namespace Do_An
 
         private void AddNewStat(object sender, EventArgs e)
         {
-            string Buffer1 = "";
-            string Buffer2 = "";
             Form addStat= new Form();
             Label Namelbl = new Label() { Location = new Point(10, 10),AutoSize=true, Text = "Name" };
             TextBox NameTxtBox = new TextBox();
@@ -58,12 +70,14 @@ namespace Do_An
             Button addBtn = new Button() { Text = "Add", Location = new Point(NameTxtBox.Location.X,NameTxtBox.Location.Y+NameTxtBox.Size.Height+2),AutoSize=true };
             RichTextBox DesTxtBox = new RichTextBox() {Location= new Point(NameLbl.Location.X,Namelbl.Location.Y+Namelbl.Size.Height+50),Size = new Size(addStat.Size.Width-Location.X-10,addStat.Size.Height-Location.Y-50) };
             Label Deslbl = new Label() { Location = new Point(DesTxtBox.Location.X, DesTxtBox.Location.Y - 50), Text = "Description",AutoSize=true };
-            addBtn.Click += (object Sender, EventArgs E) =>{
-                Buffer1 = NameTxtBox.Text;
-                Buffer2 = DesTxtBox.Text;
-                //Program.manager.InsertTo("Stats", new string[] { "Name", "Description" }, new string[] { Buffer1, Buffer2 });
-                this.StatsCbBox.Items.Add(NameTxtBox.Text);
-                Scores.Add(0);
+            addBtn.Click += (object Sender, EventArgs E) =>{                
+                List<string> buffer = new List<string>() { NameTxtBox.Text, DesTxtBox.Text };
+               
+                data.Insert(buffer);
+                //Program.manager.Insert("Stats", new List<string> { "Name", "Description" }, new List<string> { Buffer1, Buffer2 });
+                this.StatsCbBox.DataSource = data.ReadDataTable();
+                Scores.Add(NameTxtBox.Text, 0);
+                addStat.Close();
             };
             addStat.Controls.Add(Namelbl);
             addStat.Controls.Add(NameTxtBox);
@@ -71,7 +85,6 @@ namespace Do_An
             addStat.Controls.Add(DesTxtBox);
             addStat.Controls.Add(Deslbl);
             addStat.ShowDialog();
-            
         }
 
         private void TypeChange(object sender, EventArgs e)
@@ -131,27 +144,35 @@ namespace Do_An
         private void AddThingsToDo(object sender, EventArgs e)
         {
             ThingsToDo input;
+            ThingsToDoData data;
+            Do_An.TTDStatsData StatData = new TTDStatsData();
             switch (TypeCbBox.SelectedIndex)
             {
                 case 0:
                     input = new Objective(IDTxtBox.Text,NameTxtBox.Text,Scores,DateTime.Now,Convert.ToInt32(Ex1TxtBox.Text)) ;
+                    data = new ObjectiveData();
                     break;
                 case 1:
                     input = new Daily(IDTxtBox.Text, NameTxtBox.Text, Scores, DateTime.Now, Convert.ToInt32(Ex1TxtBox.Text));
+                    data = new DailyData();
                     break;
                 case 2:
                     input = new Event(IDTxtBox.Text, NameTxtBox.Text, Scores, DateTime.Now, Ex1DateTime.Value);
+                    data = new EventData();
                     break;
                 case 3:
                     input = new Project(IDTxtBox.Text, NameTxtBox.Text, Scores, DateTime.Now, Ex1DateTime.Value);
-
+                    data = new ProjectData();
                     break;
                 default:
                     input = new ThingsToDo();
+                    data = new ThingsToDoData();
                     break;
             }
-            Program.manager.Data.Add(input);
-            input.InsertToDatabase();
+            //Program.manager.Data.Add(input);
+            data.Insert(input);
+            StatData.Insert(input);
+            this.Close();
         }
 
         private void ObjectiveShow()
@@ -163,13 +184,20 @@ namespace Do_An
         }
         private void StatsChange(object sender, EventArgs e)
         {
-            ScoreTxtBox.Text = Scores[StatsCbBox.SelectedIndex].ToString();
+            ScoreTxtBox.Text = Scores[StatsCbBox.Text].ToString();
         }
         
         private void ScoreChange(object sender,EventArgs e)
         {
             if(ScoreTxtBox.Text!="")
-            Scores[StatsCbBox.SelectedIndex] = Convert.ToInt32(ScoreTxtBox.Text);
+            try
+            {
+                Scores[StatsCbBox.Text] = Convert.ToInt32(ScoreTxtBox.Text);
+            }
+            catch (Exception exp)
+            {
+                
+            }
         }
         private void RemoveKeyPressEvent(TextBox b)
         {
@@ -189,6 +217,11 @@ namespace Do_An
             Ex2TxtBox.Hide();
             Ex1DateTime.Hide();
             Ex2DateTime.Hide();
+        }
+
+        private void AddThingToDoForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
