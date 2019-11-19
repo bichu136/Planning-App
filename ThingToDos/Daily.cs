@@ -8,19 +8,28 @@ namespace Do_An
 {
 	class Daily : ThingsToDo
 	{
-		int factor;
-		public override int getTotalScore(int Minute)
+		private int factor;
+        public int Factor { get => factor; }
+        public Daily(string id, string name, Dictionary<string,int> score, DateTime lastup,int factor): base(id, name,score, lastup)
+        {
+            this.factor = factor;
+        }
+        public override Dictionary<string,int> getTotalScore(int Minute)
 		{
 			return base.getTotalScore(Minute);
 		}
 		public override void updateStatus()
 		{
-			if (lastupdate /*chỗ này cộng 1 khoảng thời gian*/< DateTime.Now)
+            base.updateStatus();
+			if (lastupdate.AddMonths(1)< DateTime.Now)
 			{
 				Status = -1;
 				return;
 			}
-
 		}
-	}
+        public bool IsDone()
+        {
+            return true;
+        }
+    }
 }

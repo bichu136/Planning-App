@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace Do_An
 {
-    public partial class EventForm : Form
+    public partial class DeadlineForm : Form
     {
-        public EventForm()
+        public DeadlineForm()
         {
             InitializeComponent();
         }
 
-        private void Ongoing_Panel_Paint(object sender, PaintEventArgs e)
+        private void Ongoing_Label_Click(object sender, EventArgs e)
         {
 
         }

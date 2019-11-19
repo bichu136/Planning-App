@@ -8,26 +8,22 @@ namespace Do_An
 {
 	class Project : ThingsToDo
 	{
-        DateTime Deadline;
-        public static double Map(this double value, double fromSource, double toSource, double fromDestination, double toDestination)
+		DateTime Deadline;
+        public DateTime deadline { get => Deadline; }
+        public Project(string id,string name, Dictionary<string,int> score, DateTime lastup, DateTime Deadline) : base(id, name, score, lastup)
         {
-            return (value - fromSource) / (toSource - fromSource) * (toDestination - fromDestination) + fromDestination;
+            this.Deadline = Deadline;
         }
-        public override int getTotalScore(int Minute)
+		public override Dictionary<string,int> getTotalScore(int Minute)
 		{
-            TimeSpan Temp = Deadline.Subtract (lastupdate);
-            double a = 0;
-            if ( Temp.Days > 60 ) { a = 1.5; }
-            else if (Temp.Days <3) { a = 0; }
-            else {
-                    double b = (Convert.ToDouble(Temp.Days));
-                    a = b.Map(3, 60, 0.25, 1.5);
-            }
-            return Convert.ToInt32(a*(Convert.ToDouble(base.getTotalScore(Minute))));
+            return base.getTotalScore(Minute);
 		}
-        public override void updateStatus()
-        {
-            
-        }
+        //public override void InsertToDatabase()
+        //{
+        //    int type = 4;
+        
+        //    Program.manager.InsertTo("ThingToDo", columns, values);
+        //    base.InsertToDatabase();
+        //}
     }
 }
