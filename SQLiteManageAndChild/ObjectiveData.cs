@@ -19,7 +19,7 @@ namespace Do_An
         public override void Insert(object values)
         {
             Objective input = (Objective)values;
-            cmd.CommandText = "insert into ThingToDo (ID,Name,Status,lastupdate,IntRow1,IntRow2,Type) values ($ID,$Name,$Status,$lastupdate,$IntRow1,$IntRow2,$Type)";
+            cmd.CommandText = "insert into ThingToDo (Name,Status,lastupdate,IntRow1,IntRow2,Type) values ($Name,$Status,$lastupdate,$IntRow1,$IntRow2,$Type)";
             cmd.Parameters.AddWithValue("$IntRow1", input.current);
             cmd.Parameters.AddWithValue("$IntRow2", input.goal);
             cmd.Parameters.AddWithValue("$Type", ThingsToDo.types.Objective);

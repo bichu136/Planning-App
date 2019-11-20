@@ -34,6 +34,18 @@ namespace Do_An
             cnn.Close();
             return res;
         }
+
+        public DataTable Read_OnGoingDataTable()
+        {
+            cnn.Open();
+            cmd.CommandText = "Select Name,Status,datetime(TxtRow1) Deadline from ThingToDo Where Type = '4'";
+            DB.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            DB.Fill(dt);
+            cnn.Close();
+            return dt;
+        }
+
         public override void Insert(string TableName, List<string> columns, List<string> values)
         {
             base.Insert(TableName, columns, values);
@@ -42,9 +54,7 @@ namespace Do_An
         public override void Insert(object values)
         {
             Project input = (Project)values;
-            //    List<string> columns = new List<string>() { "ID", "Name", "Status", "lastupdate", "TxtRow1", "Type" };
-            //    List<string> values = new List<string>() { ID, Name, Status.ToString(), lastupdate.ToString("yyyy'-'MM'-'dd HH:mm:ss"), , type.ToString() };
-            cmd.CommandText = "insert into ThingToDo (ID,Name,Status,lastupdate,TxtRow1,Type) values ($ID,$Name,$Status,$lastupdate,$TxtRow1,$Type)";
+            cmd.CommandText = "insert into ThingToDo (Name,Status,lastupdate,TxtRow1,Type) values ($Name,$Status,$lastupdate,$TxtRow1,$Type)";
             cmd.Parameters.AddWithValue("$Type", ThingsToDo.types.Project);
             cmd.Parameters.AddWithValue("$TxtRow1", input.deadline.ToString("yyyy'-'MM'-'dd HH:mm:ss"));
             base.Insert(values);
@@ -52,7 +62,14 @@ namespace Do_An
 
         public override DataTable ReadDataTable()
         {
-            return base.ReadDataTable();
+            cnn.Open();
+            cmd.CommandText = "Select Name,Status,datetime(TxtRow1) Deadline from ThingToDo Where Type = '4'";
+            DB.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            DB.Fill(dt);
+            cnn.Close();
+            return dt;
+
         }
 
         public override object[] ReadObject()

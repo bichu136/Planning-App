@@ -12,6 +12,7 @@ namespace Do_An
 
         public override void Insert(string TableName, List<string> columns, List<string> values)
         {
+            //TODO: làm cho EventData;
             base.Insert(TableName, columns, values);
         }
         public string getNextEvent()
@@ -36,7 +37,7 @@ namespace Do_An
         public override void Insert(object values)
         {
             Event input = (Event)values;
-            cmd.CommandText = "insert into ThingToDo (ID,Name,Status,lastupdate,TxtRow1,Type) values ($ID,$Name,$Status,$lastupdate,$TxtRow1,$Type)";
+            cmd.CommandText = "insert into ThingToDo (Name,Status,lastupdate,TxtRow1,Type) values ($Name,$Status,$lastupdate,$TxtRow1,$Type)";
             cmd.Parameters.AddWithValue("$TxTRow1", input.beginTime.ToString("yyyy'-'MM'-'dd HH:mm:ss"));
             cmd.Parameters.AddWithValue("$Type", ThingsToDo.types.Event);
             base.Insert(values);
@@ -44,7 +45,13 @@ namespace Do_An
 
         public override DataTable ReadDataTable()
         {
-            return base.ReadDataTable();
+            cnn.Open();
+            cmd.CommandText = "select Name,Status,date(TxtRow1) ShowTime from ThingToDo where Type = '3'";
+            DB.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            DB.Fill(dt);
+            cnn.Close();
+            return dt;
         }
 
         public override object[] ReadObject()

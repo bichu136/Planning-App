@@ -30,10 +30,10 @@ namespace Do_An
             base.Insert(TableName, columns, values);
         }
 
-        public override DataTable ReadDataTable()
+        public DataTable ReadDataTable()
         {
             cnn.Open();
-            cmd.CommandText = "select * from Stats";
+            cmd.CommandText = "select ID,Name from Stats";
             DataTable dt = new DataTable();
             DB.SelectCommand = cmd;
             DB.Fill(dt);

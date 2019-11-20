@@ -10,11 +10,12 @@ namespace Do_An
 	{
 		private int factor;
         public int Factor { get => factor; }
-        public Daily(string id, string name, Dictionary<string,int> score, DateTime lastup,int factor): base(id, name,score, lastup)
+        public enum statuses  { Ongoing = 1, Done = 0, }
+        public Daily(string name, Dictionary<long,int> score, DateTime lastup,int factor): base( name,score, lastup)
         {
             this.factor = factor;
         }
-        public override Dictionary<string,int> getTotalScore(int Minute)
+        public override Dictionary<long,int> getTotalScore(int Minute)
 		{
 			return base.getTotalScore(Minute);
 		}

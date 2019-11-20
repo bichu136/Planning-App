@@ -12,12 +12,12 @@ namespace Do_An
         public int current { get => Current; }
 		int Goal;
         public int goal { get =>Goal; }
-		public Objective(string id,string name, Dictionary<string,int> score,DateTime lastup, int g,int c = 0):base(id,name,score, lastup)
+		public Objective(string name, Dictionary<long,int> score,DateTime lastup, int g,int c = 0):base(name,score, lastup)
 		{
 			Current = c;
 			Goal = g;
 		}
-		public override Dictionary<string,int> getTotalScore(int Minute)
+		public override Dictionary<long,int> getTotalScore(int Minute)
 		{
 
 			return base.getTotalScore(Minute);

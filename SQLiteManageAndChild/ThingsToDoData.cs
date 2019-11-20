@@ -18,7 +18,6 @@ namespace Do_An
         {
             cnn.Open();
             ThingsToDo Input = (ThingsToDo)values;
-            cmd.Parameters.AddWithValue("$ID", Input.id);
             cmd.Parameters.AddWithValue("$Name", Input.name);
             cmd.Parameters.AddWithValue("$Status", Input.status);
             cmd.Parameters.AddWithValue("$lastupdate", Input.lastUpDate.ToString("yyyy'-'MM'-'dd HH:mm:ss"));
@@ -26,11 +25,11 @@ namespace Do_An
             cnn.Close();
             //Program.manager.InsertTo();
         }
-        public virtual void UpdateStatusByID(string ID, ThingsToDo.statuses statuses)
+        public virtual void UpdateStatusByID(string ID, long statuses)
         {
             cnn.Open();
             cmd.CommandText = "update ThingToDo set Status = $status where ID = $ID;";
-            cmd.Parameters.AddWithValue("$status", (int)statuses);
+            cmd.Parameters.AddWithValue("$status",statuses);
             cmd.Parameters.AddWithValue("$ID", ID);
             cmd.ExecuteNonQuery();
             cnn.Close();

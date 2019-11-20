@@ -10,11 +10,11 @@ namespace Do_An
 	{
 		DateTime Deadline;
         public DateTime deadline { get => Deadline; }
-        public Project(string id,string name, Dictionary<string,int> score, DateTime lastup, DateTime Deadline) : base(id, name, score, lastup)
+        public Project(string name, Dictionary<long,int> score, DateTime lastup, DateTime Deadline) : base( name, score, lastup)
         {
             this.Deadline = Deadline;
         }
-		public override Dictionary<string,int> getTotalScore(int Minute)
+		public override Dictionary<long,int> getTotalScore(int Minute)
 		{
             return base.getTotalScore(Minute);
 		}

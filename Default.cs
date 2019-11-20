@@ -14,5 +14,7 @@ namespace Do_An
         public static int Height = 48;
         public static int Margin = 6;
         public static int IndexTab = 10;
+        public static int UCWidth = 986;
+        public static int UCHeight = 565;
     }
 }

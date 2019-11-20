@@ -74,7 +74,7 @@ namespace Do_An
         }
         public virtual DataTable ReadDataTable()
         {
-            return null;
+            throw new NotImplementedException();
         }
         public void CreateDatabase()
         {
@@ -86,17 +86,18 @@ namespace Do_An
             {
                 reader.Close();
                 //tao cac bang nếu không có.
-                cmd.CommandText = "CREATE TABLE if not exists Stats         (Name        TEXT PRIMARY key," +
+                cmd.CommandText = "CREATE TABLE if not exists Stats         (Name        TEXT," +
+                                                                            "ID          integer PRIMARY key autoincrement," +
                                                                             "Description TEXT );";
                 cmd.ExecuteNonQuery();
                 cmd.CommandText = "CREATE TABLE if not exists TTD_Stats     (TTDID       TEXT ," +
-                                                                            "StatsName   TEXT ," +
+                                                                            "StatsID   integer ," +
                                                                             "Score       INTEGER," +
-                                                                            "primary key (TTDID,StatsName)" +
-                                                                            "FOREIGN KEY (StatsName) references  Stats(Name), " +
+                                                                            "primary key (TTDID,StatsID)" +
+                                                                            "FOREIGN KEY (StatsID) references  Stats(ID), " +
                                                                             "Foreign key (TTDID)   references  ThingToDo(ID));";
                 cmd.ExecuteNonQuery();
-                cmd.CommandText = "CREATE TABLE if not exists ThingToDo     (ID          TEXT PRIMARY KEY," +
+                cmd.CommandText = "CREATE TABLE if not exists ThingToDo     (ID          integer PRIMARY KEY autoincrement," +
                                                                             "Name        TEXT," +
                                                                             "Status      INTERGER," +
                                                                             "LastUpDate  TEXT," +

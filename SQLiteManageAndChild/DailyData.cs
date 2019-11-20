@@ -21,7 +21,7 @@ namespace Do_An
         {
 
             Daily Input = (Daily)values;
-            cmd.CommandText = "insert into ThingToDo ( ID,Name,Status,lastupdate,IntRow1,Type) values( $ID,$Name,$Status,$lastupdate,$IntRow1,$Type)";
+            cmd.CommandText = "insert into ThingToDo (Name,Status,lastupdate,IntRow1,Type) values($Name,$Status,$lastupdate,$IntRow1,$Type)";
             cmd.Parameters.AddWithValue("$IntRow1", Input.Factor);
             cmd.Parameters.AddWithValue("$Type", ThingsToDo.types.Daily);
             base.Insert(values);
@@ -36,7 +36,7 @@ namespace Do_An
         {
             cnn.Open();
             DataTable res= new DataTable();
-            SQLiteCommand cmd= new SQLiteCommand("select ID,Name,Status from ThingToDo where Type = 1",cnn);
+            SQLiteCommand cmd= new SQLiteCommand("select ThingToDo.ID,ThingToDo.Name,Status.Name,ThingToDo.Status from ThingToDo inner join Status On(ThingToDo.Status=Status.ID) where Type = 2",cnn);
             this.DB.SelectCommand = cmd;
             DB.Fill(res);
             cnn.Close();
@@ -46,9 +46,14 @@ namespace Do_An
         {
             base.StartReadFrom(TableName, columns);
         }
-        public override void UpdateStatusByID(string ID, ThingsToDo.statuses statuses)
+        public override void UpdateStatusByID(string ID,long statuses)
         {
-            
+            cmd.CommandText = "update ThingToDo set Status = $Status where ID = $ID";
+            cmd.Parameters.AddWithValue("$ID", ID);
+            cmd.Parameters.AddWithValue("$Status", statuses);
+            cnn.Open();
+            cmd.ExecuteNonQuery();
+            cnn.Close();
         }
     }
 }

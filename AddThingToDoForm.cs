@@ -14,16 +14,19 @@ namespace Do_An
     public partial class AddThingToDoForm : Form
     {
         bool flag;
-        private Dictionary<string,int> Scores;
+        private Dictionary<long,int> Scores;
         StatData statData = new StatData();
         TypeData typeData = new TypeData();
         StatData data = new StatData();
+        public AddThingToDoForm(long x)
+        {
+            
+        }
         public AddThingToDoForm()
         {
             InitializeComponent();
             HideExComponent();
-
-            Scores = new Dictionary<string, int>();
+            Scores = new Dictionary<long, int>();
             //----------Add Events----------//
             NewStatBtn.Click += AddNewStat;
 
@@ -34,18 +37,19 @@ namespace Do_An
 
             TypeCbBox.DataSource = typeData.ReadDataTable();
             TypeCbBox.DisplayMember = "Name";
-            TypeCbBox.TextChanged += TypeChange;
+            TypeCbBox.ValueMember = "ID";
+            TypeCbBox.SelectedValueChanged += TypeChange;
 
             TypeCbBox.SelectedIndex = 1;
             AddBtn.Click += AddThingsToDo;
             //in load event
-            StatsCbBox.DataSource = statData.ReadDataTable();
-            StatsCbBox.DisplayMember = "Name";
-            StatsCbBox.TextChanged += StatsChange;
-            
-            foreach(var item in StatsCbBox.Items)
+
+            StatsCbBox.SelectedValueChanged += StatsChange;
+
+            foreach (var item in StatsCbBox.Items)
             {
-                Scores.Add(item.ToString(), 0);
+
+                Scores.Add((int)item, 0);
             }
         }
         private void SkipKeyPress(object sender, KeyPressEventArgs e)
@@ -61,6 +65,16 @@ namespace Do_An
            }
         }
 
+        private void RemoveKeyPressEvent(TextBox b)
+        {
+            FieldInfo f1 = typeof(Control).GetField("KeyPress",
+                BindingFlags.Static | BindingFlags.NonPublic);
+            object obj = f1.GetValue(b);
+            PropertyInfo pi = b.GetType().GetProperty("Events",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            EventHandlerList list = (EventHandlerList)pi.GetValue(b, null);
+            list.RemoveHandler(obj, list[obj]);
+        }
         private void AddNewStat(object sender, EventArgs e)
         {
             Form addStat= new Form();
@@ -70,13 +84,13 @@ namespace Do_An
             Button addBtn = new Button() { Text = "Add", Location = new Point(NameTxtBox.Location.X,NameTxtBox.Location.Y+NameTxtBox.Size.Height+2),AutoSize=true };
             RichTextBox DesTxtBox = new RichTextBox() {Location= new Point(NameLbl.Location.X,Namelbl.Location.Y+Namelbl.Size.Height+50),Size = new Size(addStat.Size.Width-Location.X-10,addStat.Size.Height-Location.Y-50) };
             Label Deslbl = new Label() { Location = new Point(DesTxtBox.Location.X, DesTxtBox.Location.Y - 50), Text = "Description",AutoSize=true };
+            addStat.FormClosed += (object Sender1, FormClosedEventArgs E1) => { AddThingToDoForm_Load(Sender1, E1); };
             addBtn.Click += (object Sender, EventArgs E) =>{                
                 List<string> buffer = new List<string>() { NameTxtBox.Text, DesTxtBox.Text };
                
                 data.Insert(buffer);
                 //Program.manager.Insert("Stats", new List<string> { "Name", "Description" }, new List<string> { Buffer1, Buffer2 });
                 this.StatsCbBox.DataSource = data.ReadDataTable();
-                Scores.Add(NameTxtBox.Text, 0);
                 addStat.Close();
             };
             addStat.Controls.Add(Namelbl);
@@ -85,6 +99,7 @@ namespace Do_An
             addStat.Controls.Add(DesTxtBox);
             addStat.Controls.Add(Deslbl);
             addStat.ShowDialog();
+            this.AddThingToDoForm_Load(sender,e);
         }
 
         private void TypeChange(object sender, EventArgs e)
@@ -99,23 +114,24 @@ namespace Do_An
             {
 
             }
-            switch (TypeCbBox.SelectedIndex)
+            switch ((long)TypeCbBox.SelectedValue)
             {
-                case 0:
+                case (long)ThingsToDo.types.Objective:
                     ObjectiveShow();
                     break;
-                case 1:
+                case (long)ThingsToDo.types.Daily:
                     DailyShow();
                     break;
-                case 2:
+                case (long)ThingsToDo.types.Event:
                     EventShow();
                     break;
-                case 3:
+                case (long)ThingsToDo.types.Project:
                     ProjectShow();
                     break;
             }
         }
 
+        #region Show
         private void ProjectShow()
         {
             Ex1Lbl.Text = "Dealine";
@@ -140,6 +156,14 @@ namespace Do_An
             Ex1TxtBox.KeyPress += OnlyNumberPress;
             Ex1TxtBox.Show();
         }
+        private void ObjectiveShow()
+        {
+            Ex1Lbl.Text = "Goal";
+            Ex1Lbl.Show();
+            Ex1TxtBox.KeyPress += OnlyNumberPress;
+            Ex1TxtBox.Show();
+        }
+        #endregion 
 
         private void AddThingsToDo(object sender, EventArgs e)
         {
@@ -149,19 +173,19 @@ namespace Do_An
             switch (TypeCbBox.SelectedIndex)
             {
                 case 0:
-                    input = new Objective(IDTxtBox.Text,NameTxtBox.Text,Scores,DateTime.Now,Convert.ToInt32(Ex1TxtBox.Text)) ;
+                    input = new Objective(NameTxtBox.Text,Scores,DateTime.Now,Convert.ToInt32(Ex1TxtBox.Text)) ;
                     data = new ObjectiveData();
                     break;
                 case 1:
-                    input = new Daily(IDTxtBox.Text, NameTxtBox.Text, Scores, DateTime.Now, Convert.ToInt32(Ex1TxtBox.Text));
+                    input = new Daily(NameTxtBox.Text, Scores, DateTime.Now, Convert.ToInt32(Ex1TxtBox.Text));
                     data = new DailyData();
                     break;
                 case 2:
-                    input = new Event(IDTxtBox.Text, NameTxtBox.Text, Scores, DateTime.Now, Ex1DateTime.Value);
+                    input = new Event( NameTxtBox.Text, Scores, DateTime.Now, Ex1DateTime.Value);
                     data = new EventData();
                     break;
                 case 3:
-                    input = new Project(IDTxtBox.Text, NameTxtBox.Text, Scores, DateTime.Now, Ex1DateTime.Value);
+                    input = new Project( NameTxtBox.Text, Scores, DateTime.Now, Ex1DateTime.Value);
                     data = new ProjectData();
                     break;
                 default:
@@ -175,16 +199,14 @@ namespace Do_An
             this.Close();
         }
 
-        private void ObjectiveShow()
-        {
-            Ex1Lbl.Text = "Goal";
-            Ex1Lbl.Show();
-            Ex1TxtBox.KeyPress += OnlyNumberPress;
-            Ex1TxtBox.Show();
-        }
+        
         private void StatsChange(object sender, EventArgs e)
         {
-            ScoreTxtBox.Text = Scores[StatsCbBox.Text].ToString();
+            try
+            {
+                ScoreTxtBox.Text = Scores[(long)StatsCbBox.SelectedValue].ToString();
+            }
+            catch(Exception ex) { }
         }
         
         private void ScoreChange(object sender,EventArgs e)
@@ -192,23 +214,14 @@ namespace Do_An
             if(ScoreTxtBox.Text!="")
             try
             {
-                Scores[StatsCbBox.Text] = Convert.ToInt32(ScoreTxtBox.Text);
+                Scores[(long)StatsCbBox.SelectedValue] = Convert.ToInt32(ScoreTxtBox.Text);
             }
             catch (Exception exp)
             {
                 
             }
         }
-        private void RemoveKeyPressEvent(TextBox b)
-        {
-            FieldInfo f1 = typeof(Control).GetField("KeyPress",
-                BindingFlags.Static | BindingFlags.NonPublic);
-            object obj = f1.GetValue(b);
-            PropertyInfo pi = b.GetType().GetProperty("Events",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            EventHandlerList list = (EventHandlerList)pi.GetValue(b, null);
-            list.RemoveHandler(obj, list[obj]);
-        }
+        
         private void HideExComponent()
         {
             Ex1Lbl.Hide();
@@ -221,7 +234,18 @@ namespace Do_An
 
         private void AddThingToDoForm_Load(object sender, EventArgs e)
         {
+            Dictionary<long,int> Old_Scores = this.Scores;
+            DataTable dt = statData.ReadDataTable();
+            StatsCbBox.DataSource = dt;
+            StatsCbBox.DisplayMember = "Name";
+            StatsCbBox.ValueMember = "ID";
+            foreach(DataRowView value in StatsCbBox.Items)
+            {
 
+                if(Old_Scores.ContainsKey((long)value["ID"])==false){
+                    this.Scores.Add((long)value["ID"], 0);
+                }
+            }
         }
     }
 }
