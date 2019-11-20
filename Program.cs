@@ -22,7 +22,6 @@ namespace Do_An
             
             FileStream ThoiTietFile = new FileStream("ThoiTiet.txt",FileMode.OpenOrCreate,FileAccess.Write);
             ThoiTietFile.Close();
-
             string t = File.ReadAllText("ThoiTiet.txt");
             ThoiTiet = t;    
 
@@ -30,7 +29,9 @@ namespace Do_An
             manager.CreateDatabase();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            MainForm mainForm = new MainForm();
+            mainForm.StartPosition = FormStartPosition.CenterScreen;
+            Application.Run(mainForm);
             
         }
 

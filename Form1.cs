@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 
 namespace Do_An
@@ -21,7 +22,7 @@ namespace Do_An
         EventData Edata = new EventData();
 
 
-        Weather weather;
+        
         private List<List<Button>> buttonManeger;
 
         public List<List<Button>> ButtonManeger
@@ -209,7 +210,7 @@ namespace Do_An
 
             InitializeComponent();
             LoadCanlenderMatrix();
-            weather = new Weather();
+            
             //manager.InsertToTTD("DO_AN", "Thuc hien do an mon hoc lap trinh truc quan",2,3,4,5,"DO_AN","1","1");
             //manager.InsertToRecord("DO_AN", DateTime.Today.ToString(), DateTime.Today.ToString(), DateTime.Today.ToString(), "note here");
             //MessageBox.Show(Program.manager.LoadFromTable());
@@ -234,25 +235,8 @@ namespace Do_An
             DailyDataGrid.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             DailyDataGrid.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
-            //Weather Update.
-            if (Program.ThoiTiet != "")
-            {
-                try 
-                {
-                    weather.getData(Program.ThoiTiet);
-                    WTimeLabel.Text = weather.Days[0].ToString();
-                    WTenpfLbl.Text = weather.TempF[0];
-                    WsymbLbl.Text = weather.Weathers[0];
-                }
-                
-                catch (Exception ex)
-                {
-
-                }
-                
-            }
-                
-
+            //Weahter Update
+            WeatherForecast.weatherForecast.WeatherForecast_Load();
         }
 
         private void DailyDataGrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)

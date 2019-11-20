@@ -55,23 +55,16 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.DeadlineLabel = new System.Windows.Forms.Label();
-            this.WeatherPanel = new System.Windows.Forms.Panel();
             this.ShowDailyPanel = new System.Windows.Forms.Panel();
             this.DailyDataGrid = new System.Windows.Forms.DataGridView();
             this.button4 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.WTimeLabel = new System.Windows.Forms.Label();
-            this.WTenpfLbl = new System.Windows.Forms.Label();
-            this.WsymbLbl = new System.Windows.Forms.Label();
+            this.WeatherPanel = new System.Windows.Forms.Panel();
             this.btnPanel.SuspendLayout();
             this.calendarPanel.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.WeatherPanel.SuspendLayout();
             this.ShowDailyPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DailyDataGrid)).BeginInit();
             this.SuspendLayout();
@@ -336,19 +329,6 @@
             this.DeadlineLabel.TabIndex = 0;
             this.DeadlineLabel.Text = "Nearest Deadline";
             // 
-            // WeatherPanel
-            // 
-            this.WeatherPanel.Controls.Add(this.WsymbLbl);
-            this.WeatherPanel.Controls.Add(this.WTenpfLbl);
-            this.WeatherPanel.Controls.Add(this.WTimeLabel);
-            this.WeatherPanel.Controls.Add(this.label4);
-            this.WeatherPanel.Controls.Add(this.label3);
-            this.WeatherPanel.Controls.Add(this.label1);
-            this.WeatherPanel.Location = new System.Drawing.Point(931, 15);
-            this.WeatherPanel.Name = "WeatherPanel";
-            this.WeatherPanel.Size = new System.Drawing.Size(426, 233);
-            this.WeatherPanel.TabIndex = 3;
-            // 
             // ShowDailyPanel
             // 
             this.ShowDailyPanel.Controls.Add(this.DailyDataGrid);
@@ -380,69 +360,24 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // label1
+            // WeatherPanel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Ngày";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 75);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 17);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Nhiệt độ";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(25, 142);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 17);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Thời Tiết:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // WTimeLabel
-            // 
-            this.WTimeLabel.AutoSize = true;
-            this.WTimeLabel.Location = new System.Drawing.Point(134, 15);
-            this.WTimeLabel.Name = "WTimeLabel";
-            this.WTimeLabel.Size = new System.Drawing.Size(46, 17);
-            this.WTimeLabel.TabIndex = 3;
-            this.WTimeLabel.Text = "label5";
-            // 
-            // WTenpfLbl
-            // 
-            this.WTenpfLbl.AutoSize = true;
-            this.WTenpfLbl.Location = new System.Drawing.Point(134, 75);
-            this.WTenpfLbl.Name = "WTenpfLbl";
-            this.WTenpfLbl.Size = new System.Drawing.Size(46, 17);
-            this.WTenpfLbl.TabIndex = 4;
-            this.WTenpfLbl.Text = "label6";
-            // 
-            // WsymbLbl
-            // 
-            this.WsymbLbl.AutoSize = true;
-            this.WsymbLbl.Location = new System.Drawing.Point(134, 142);
-            this.WsymbLbl.Name = "WsymbLbl";
-            this.WsymbLbl.Size = new System.Drawing.Size(46, 17);
-            this.WsymbLbl.TabIndex = 5;
-            this.WsymbLbl.Text = "label7";
+            this.WeatherPanel.Location = new System.Drawing.Point(931, 12);
+            this.WeatherPanel.Name = "WeatherPanel";
+            this.WeatherPanel.Size = new System.Drawing.Size(426, 233);
+            this.WeatherPanel.TabIndex = 6;
+            this.WeatherPanel.Controls.Add(WeatherForecast.weatherForecast);
+            WeatherForecast.weatherForecast.Dock = System.Windows.Forms.DockStyle.Fill;
+            WeatherForecast.weatherForecast.BringToFront();
             // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1369, 727);
+            this.Controls.Add(this.WeatherPanel);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.ShowDailyPanel);
             this.Controls.Add(this.makePlanBtn);
-            this.Controls.Add(this.WeatherPanel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnPanel);
             this.Controls.Add(this.recordBtn);
@@ -457,8 +392,6 @@
             this.panel4.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.WeatherPanel.ResumeLayout(false);
-            this.WeatherPanel.PerformLayout();
             this.ShowDailyPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DailyDataGrid)).EndInit();
             this.ResumeLayout(false);
@@ -477,7 +410,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label DeadlineLabel;
-        private System.Windows.Forms.Panel WeatherPanel;
         private System.Windows.Forms.Panel ShowDailyPanel;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button SettingBtn;
@@ -497,12 +429,7 @@
         private System.Windows.Forms.Button buttonToday;
         private System.Windows.Forms.DateTimePicker dateTimePickerMainForm;
         private System.Windows.Forms.Panel panelMatrix;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label WsymbLbl;
-        private System.Windows.Forms.Label WTenpfLbl;
-        private System.Windows.Forms.Label WTimeLabel;
+        private System.Windows.Forms.Panel WeatherPanel;
     }
 }
 

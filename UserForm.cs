@@ -13,6 +13,10 @@ namespace Do_An
 {
     public partial class UserForm : Form
     {
+        private string temp;
+
+        public string Temp { get => temp; set => temp = value; }
+
         public UserForm()
         {
             InitializeComponent();
@@ -66,12 +70,31 @@ namespace Do_An
             comboBox1.Items.Add("thanh pho Ho Chi Minh");
             comboBox1.SelectedIndex = 0;
             comboBox1.TextChanged += ComboBox1_TextChanged;
+            this.FormClosing += UserForm_FormClosing;
+        }
+
+        private void UserForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            File.WriteAllText("ThoiTiet.txt", Temp);
+            Program.ThoiTiet = Temp;
         }
 
         private void ComboBox1_TextChanged(object sender, EventArgs e)
         {
+            Temp = File.ReadAllText("ThoiTiet.txt");
             File.WriteAllText("ThoiTiet.txt", comboBox1.Text);
             Program.ThoiTiet = comboBox1.Text;
+        }
+
+        private void buttonConfirm_Click(object sender, EventArgs e)
+        {
+            Temp = comboBox1.Text;
+            this.Close();
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
