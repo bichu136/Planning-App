@@ -9,28 +9,51 @@ namespace Do_An
 	class Daily : ThingsToDo
 	{
 		private int factor;
+        public int WeekDayToDo { get => _WeekDayToDo; set => _WeekDayToDo = value; }
         public int Factor { get => factor; }
         public enum statuses  { Ongoing = 1, Done = 0, }
-        public Daily(string name, Dictionary<long,int> score, DateTime lastup,int factor): base( name,score, lastup)
+        private int _WeekDayToDo;
+        public Daily(string name, Dictionary<long,int> score, DateTime lastup,int factor,int weekDayToDo): base( name,score, lastup)
         {
             this.factor = factor;
         }
+        
         public override Dictionary<long,int> getTotalScore(int Minute)
 		{
-			return base.getTotalScore(Minute);
+            //TODO: số lần làm * factor cho mỗi giá trị điểm.
+            return null;
 		}
 		public override void updateStatus()
 		{
             base.updateStatus();
 			if (lastupdate.AddMonths(1)< DateTime.Now)
 			{
-				Status = -1;
+				Status = (int)ThingsToDo.statuses.Dropped;
 				return;
 			}
+            if(WeekDayToDo <7)
+            {
+                if (WeekDayToDo == (int)DateTime.Now.DayOfWeek)
+                {
+                    if(lastupdate.Date == DateTime.Now)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        Status = (int)ThingsToDo.statuses.Ongoing;
+                    }
+                }
+            }
 		}
         public bool IsDone()
         {
+            
             return true;
+        }
+        public override void UpdateAfterDoingSomethings()
+        {
+            //Status = 
         }
     }
 }

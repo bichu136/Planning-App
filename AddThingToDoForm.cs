@@ -30,10 +30,10 @@ namespace Do_An
             //----------Add Events----------//
             NewStatBtn.Click += AddNewStat;
 
-            ScoreTxtBox.KeyPress += OnlyNumberPress;
+            ScoreTxtBox.KeyPress += Default.OnlyNumberPress;
             ScoreTxtBox.TextChanged += ScoreChange;
-            TypeCbBox.KeyPress += SkipKeyPress;
-            StatsCbBox.KeyPress += SkipKeyPress;
+            TypeCbBox.KeyPress += Default.SkipKeyPress;
+            StatsCbBox.KeyPress += Default.SkipKeyPress;
 
             TypeCbBox.DataSource = typeData.ReadDataTable();
             TypeCbBox.DisplayMember = "Name";
@@ -51,29 +51,9 @@ namespace Do_An
 
                 Scores.Add((int)item, 0);
             }
-        }
-        private void SkipKeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = true;
-        }
+            Ex1CbBox.Items.AddRange(Enum.GetNames(typeof(DayOfWeek)));
+            Ex1CbBox.Items.Add("Alldays");
 
-        private void OnlyNumberPress(object sender, KeyPressEventArgs e)
-        {
-           if ((e.KeyChar<'0' || e.KeyChar > '9')&& e.KeyChar!= 8)
-           {
-                e.Handled = true;
-           }
-        }
-
-        private void RemoveKeyPressEvent(TextBox b)
-        {
-            FieldInfo f1 = typeof(Control).GetField("KeyPress",
-                BindingFlags.Static | BindingFlags.NonPublic);
-            object obj = f1.GetValue(b);
-            PropertyInfo pi = b.GetType().GetProperty("Events",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            EventHandlerList list = (EventHandlerList)pi.GetValue(b, null);
-            list.RemoveHandler(obj, list[obj]);
         }
         private void AddNewStat(object sender, EventArgs e)
         {
@@ -107,8 +87,8 @@ namespace Do_An
             HideExComponent();
             try
             {
-                RemoveKeyPressEvent(Ex1TxtBox);
-                RemoveKeyPressEvent(Ex2TxtBox);
+                Default.RemoveKeyPressEvent(Ex1TxtBox);
+                Default.RemoveKeyPressEvent(Ex2TxtBox);
             }
             catch(Exception exp)
             {
@@ -153,14 +133,17 @@ namespace Do_An
         {
             Ex1Lbl.Text = "factor";
             Ex1Lbl.Show();
-            Ex1TxtBox.KeyPress += OnlyNumberPress;
+            Ex1TxtBox.KeyPress += Default.OnlyNumberPress;
             Ex1TxtBox.Show();
+            Ex2Lbl.Text = "Day to do";
+            Ex2Lbl.Show();
+            Ex1CbBox.Show();
         }
         private void ObjectiveShow()
         {
             Ex1Lbl.Text = "Goal";
             Ex1Lbl.Show();
-            Ex1TxtBox.KeyPress += OnlyNumberPress;
+            Ex1TxtBox.KeyPress += Default.OnlyNumberPress;
             Ex1TxtBox.Show();
         }
         #endregion 
@@ -177,7 +160,7 @@ namespace Do_An
                     data = new ObjectiveData();
                     break;
                 case 1:
-                    input = new Daily(NameTxtBox.Text, Scores, DateTime.Now, Convert.ToInt32(Ex1TxtBox.Text));
+                    input = new Daily(NameTxtBox.Text, Scores, DateTime.Now, Convert.ToInt32(Ex1TxtBox.Text),Ex1CbBox.SelectedIndex);
                     data = new DailyData();
                     break;
                 case 2:
@@ -230,6 +213,7 @@ namespace Do_An
             Ex2TxtBox.Hide();
             Ex1DateTime.Hide();
             Ex2DateTime.Hide();
+            Ex1CbBox.Hide();
         }
 
         private void AddThingToDoForm_Load(object sender, EventArgs e)
@@ -246,6 +230,29 @@ namespace Do_An
                     this.Scores.Add((long)value["ID"], 0);
                 }
             }
+        }
+        private bool checkReqirement()
+        {
+            if (NameTxtBox.TextLength == 0)
+            {
+                return false;
+            }
+            if (ScoreTxtBox.TextLength == 0)
+            {
+                return false;
+            }
+            if (Ex1TxtBox.Visible == true)
+                if (Ex1TxtBox.TextLength == 0)
+                    return false;
+            if (Ex2TxtBox.Visible == true)
+                if (Ex2TxtBox.TextLength == 0)
+                    return false;
+            if (Ex1CbBox.Visible == true)
+                if (Ex1CbBox.Text.Length == 0)
+                    return false;
+            if(StatsCbBox.Text.Length == 0)
+                return false;
+            return true;
         }
     }
 }

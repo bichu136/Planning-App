@@ -97,6 +97,9 @@ namespace Do_An
                                                                             "FOREIGN KEY (StatsID) references  Stats(ID), " +
                                                                             "Foreign key (TTDID)   references  ThingToDo(ID));";
                 cmd.ExecuteNonQuery();
+                cmd.CommandText = "CREATE TABLE if not exists Status       (ID          INTEGER PRIMARY KEY AUTOINCREMENT," +
+                                                                           "Name        Text);";
+                cmd.ExecuteNonQuery();
                 cmd.CommandText = "CREATE TABLE if not exists ThingToDo     (ID          integer PRIMARY KEY autoincrement," +
                                                                             "Name        TEXT," +
                                                                             "Status      INTERGER," +
@@ -110,8 +113,8 @@ namespace Do_An
                                                                             "IntRow1     INTEGER," +
                                                                             "IntRow2     INTEGER," +
                                                                             "IntRow3     INTEGER," +
-                                                                            "IntRow4     INTEGER," +
-                                                                            "IntRow5     INTEGER," +
+                                                                            "FloatRow1   REAL," +
+                                                                            "FloatRow2   REAL," +
                                                                             "FOREIGN KEY(Type) " +
                                                                             "REFERENCES Type(ID) );";
                 cmd.ExecuteNonQuery();
@@ -121,10 +124,9 @@ namespace Do_An
                                                                             "IntRows     Integer);";
                 cmd.ExecuteNonQuery();
                 cmd.CommandText = "CREATE TABLE if not exists Record       (ID          INTEGER PRIMARY KEY AUTOINCREMENT," +
-                                                                           "TTDID       TEXT," +
-                                                                           "TimeBegin   TEXT," +
+                                                                           "TTDID       integer," +
                                                                            "Date        TEXT," +
-                                                                           "Durations   TEXT," +
+                                                                           "Current     Integer," +
                                                                            "Note        TEXT," +
                                                                            "FOREIGN KEY(TTDID) " +
                                                                            "REFERENCES ThingToDo(ID) );";
@@ -136,6 +138,24 @@ namespace Do_An
                 cmd.CommandText = "insert into Type (Name,TxtRows,IntRows) values (\"Event\",2,0);";
                 cmd.ExecuteNonQuery();
                 cmd.CommandText = "insert into Type (Name,TxtRows,IntRows) values (\"Project\",1,0);";
+                cmd.ExecuteNonQuery();
+                cmd.CommandText = "insert into Status (ID,Name) values ($ID,$Name)";
+                cmd.Parameters.Add("$ID", DbType.Int32);
+                cmd.Parameters.Add("$Name", DbType.String);
+                cmd.Parameters["$ID"].Value = (Int32)ThingsToDo.statuses.Done;
+                cmd.Parameters["$Name"].Value = ThingsToDo.statuses.Done.ToString();
+                cmd.ExecuteNonQuery();
+                cmd.Parameters["$ID"].Value = (Int32)ThingsToDo.statuses.Dropped;
+                cmd.Parameters["$Name"].Value = ThingsToDo.statuses.Dropped.ToString();
+                cmd.ExecuteNonQuery();
+                cmd.Parameters["$ID"].Value = (Int32)ThingsToDo.statuses.Missed;
+                cmd.Parameters["$Name"].Value = ThingsToDo.statuses.Missed.ToString();
+                cmd.ExecuteNonQuery();
+                cmd.Parameters["$ID"].Value = (Int32)ThingsToDo.statuses.Ongoing;
+                cmd.Parameters["$Name"].Value = ThingsToDo.statuses.Ongoing.ToString();
+                cmd.ExecuteNonQuery();
+                cmd.Parameters["$ID"].Value = (Int32)ThingsToDo.statuses.Waiting;
+                cmd.Parameters["$Name"].Value = ThingsToDo.statuses.Waiting.ToString();
                 cmd.ExecuteNonQuery();
             }
             else

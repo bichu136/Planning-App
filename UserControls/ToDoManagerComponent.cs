@@ -66,5 +66,11 @@ namespace Do_An
                 Row.Cells["DONE"].Value = (long)Row.Cells["Status"].Value;
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            DoingThings doingThings = new DoingThings();
+            doingThings.ShowDialog();
+        }
     }
 }

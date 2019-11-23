@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Do_An
 {
-    class ThingsToDo
+    public class ThingsToDo
     {
         protected string ID;
         protected string Name;
@@ -51,6 +51,10 @@ namespace Do_An
         virtual public int getTTDType()
         {
             throw new InvalidOperationException();
+        }
+        virtual public void UpdateAfterDoingSomethings()
+        {
+
         }
     }
 }

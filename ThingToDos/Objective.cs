@@ -12,6 +12,8 @@ namespace Do_An
         public int current { get => Current; }
 		int Goal;
         public int goal { get =>Goal; }
+        public enum Unit {Minutes = 1,Times = -1 }
+        Unit unit;
 		public Objective(string name, Dictionary<long,int> score,DateTime lastup, int g,int c = 0):base(name,score, lastup)
 		{
 			Current = c;

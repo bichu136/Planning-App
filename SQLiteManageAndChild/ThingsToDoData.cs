@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
 
@@ -34,8 +35,14 @@ namespace Do_An
             cmd.ExecuteNonQuery();
             cnn.Close();
         }
-
+        public void UpdateWhenDoingSomethingByID(int ID)
+        {
+            cnn.Open();
+            cmd.CommandText = "Update ThingsToDo set lastupdate= $lastupdate where ID=$ID";
+            cmd.Parameters.AddWithValue("$ID", ID);
+            cmd.Parameters.AddWithValue("$ID", DateTime.Now.ToString("yyyy'-'MM'-'dd HH:mm:ss"));
+            cmd.ExecuteNonQuery();
+            cnn.Close();
+        }
     }
-
-
 }

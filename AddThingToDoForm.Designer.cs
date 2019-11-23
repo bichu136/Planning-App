@@ -46,6 +46,7 @@ namespace Do_An
             this.Ex2TxtBox = new System.Windows.Forms.TextBox();
             this.Ex1DateTime = new System.Windows.Forms.DateTimePicker();
             this.Ex2DateTime = new System.Windows.Forms.DateTimePicker();
+            this.Ex1CbBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // TypeCbBox
@@ -135,12 +136,12 @@ namespace Do_An
             // 
             // Ex1Lbl
             // 
-            this.Ex1Lbl.AutoSize = true;
-            this.Ex1Lbl.Location = new System.Drawing.Point(98, 58);
+            this.Ex1Lbl.Location = new System.Drawing.Point(21, 56);
             this.Ex1Lbl.Name = "Ex1Lbl";
-            this.Ex1Lbl.Size = new System.Drawing.Size(46, 17);
+            this.Ex1Lbl.Size = new System.Drawing.Size(120, 19);
             this.Ex1Lbl.TabIndex = 10;
             this.Ex1Lbl.Text = "label2";
+            this.Ex1Lbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Ex1TxtBox
             // 
@@ -151,16 +152,17 @@ namespace Do_An
             // 
             // Ex2Lbl
             // 
-            this.Ex2Lbl.AutoSize = true;
-            this.Ex2Lbl.Location = new System.Drawing.Point(98, 115);
+            this.Ex2Lbl.Location = new System.Drawing.Point(43, 89);
             this.Ex2Lbl.Name = "Ex2Lbl";
-            this.Ex2Lbl.Size = new System.Drawing.Size(46, 17);
+            this.Ex2Lbl.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Ex2Lbl.Size = new System.Drawing.Size(98, 19);
             this.Ex2Lbl.TabIndex = 10;
             this.Ex2Lbl.Text = "label2";
+            this.Ex2Lbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Ex2TxtBox
             // 
-            this.Ex2TxtBox.Location = new System.Drawing.Point(159, 110);
+            this.Ex2TxtBox.Location = new System.Drawing.Point(159, 88);
             this.Ex2TxtBox.Name = "Ex2TxtBox";
             this.Ex2TxtBox.Size = new System.Drawing.Size(114, 22);
             this.Ex2TxtBox.TabIndex = 11;
@@ -174,16 +176,25 @@ namespace Do_An
             // 
             // Ex2DateTime
             // 
-            this.Ex2DateTime.Location = new System.Drawing.Point(159, 110);
+            this.Ex2DateTime.Location = new System.Drawing.Point(159, 86);
             this.Ex2DateTime.Name = "Ex2DateTime";
             this.Ex2DateTime.Size = new System.Drawing.Size(293, 22);
             this.Ex2DateTime.TabIndex = 12;
+            // 
+            // Ex1CbBox
+            // 
+            this.Ex1CbBox.FormattingEnabled = true;
+            this.Ex1CbBox.Location = new System.Drawing.Point(159, 86);
+            this.Ex1CbBox.Name = "Ex1CbBox";
+            this.Ex1CbBox.Size = new System.Drawing.Size(121, 24);
+            this.Ex1CbBox.TabIndex = 13;
             // 
             // AddThingToDoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(847, 237);
+            this.Controls.Add(this.Ex1CbBox);
             this.Controls.Add(this.Ex2DateTime);
             this.Controls.Add(this.Ex1DateTime);
             this.Controls.Add(this.Ex2TxtBox);
@@ -234,6 +245,7 @@ namespace Do_An
         private System.Windows.Forms.TextBox Ex2TxtBox;
         private System.Windows.Forms.DateTimePicker Ex1DateTime;
         private System.Windows.Forms.DateTimePicker Ex2DateTime;
+        private ComboBox Ex1CbBox;
 
         public ComboBox TypeCbBox1 { get => TypeCbBox; set => TypeCbBox = value; }
         public Label TypeLbl1 { get => TypeLbl; set => TypeLbl = value; }

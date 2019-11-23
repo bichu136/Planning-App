@@ -76,11 +76,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddEventForm.cs">
+    <Compile Include="DoingThings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddEventForm.Designer.cs">
-      <DependentUpon>AddEventForm.cs</DependentUpon>
+    <Compile Include="DoingThings.Designer.cs">
+      <DependentUpon>DoingThings.cs</DependentUpon>
     </Compile>
     <Compile Include="AddThingToDoForm.cs">
       <SubType>Form</SubType>
@@ -112,6 +112,7 @@
       <DependentUpon>EventForm.cs</DependentUpon>
     </Compile>
     <Compile Include="I_InsertToDatabase.cs" />
+    <Compile Include="SQLiteManageAndChild\RecordData.cs" />
     <Compile Include="SQLiteManageAndChild\StatusData.cs" />
     <Compile Include="SQLiteManageAndChild\ThingsToDoData.cs" />
     <Compile Include="SQLiteManageAndChild\TTDStatsData.cs" />
@@ -130,6 +131,7 @@
     <Compile Include="ThingToDos\Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLiteManageAndChild\SQLiteManage.cs" />
+    <Compile Include="ThingToDos\Record.cs" />
     <Compile Include="ThingToDos\ThingToDo.cs" />
     <Compile Include="UserControls\CalendarComponent.cs">
       <SubType>UserControl</SubType>
@@ -142,6 +144,12 @@
     </Compile>
     <Compile Include="UserControls\ThingsToDoComponent.Designer.cs">
       <DependentUpon>ThingsToDoComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TimeComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TimeComponent.Designer.cs">
+      <DependentUpon>TimeComponent.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ToDoManagerComponent.cs">
       <SubType>UserControl</SubType>
@@ -156,14 +164,14 @@
       <DependentUpon>UserForm.cs</DependentUpon>
     </Compile>
     <Compile Include="weather.cs" />
-    <Compile Include="WeatherForecast.cs">
+    <Compile Include="UserControls\WeatherForecast.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="WeatherForecast.Designer.cs">
+    <Compile Include="UserControls\WeatherForecast.Designer.cs">
       <DependentUpon>WeatherForecast.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddEventForm.resx">
-      <DependentUpon>AddEventForm.cs</DependentUpon>
+    <EmbeddedResource Include="DoingThings.resx">
+      <DependentUpon>DoingThings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddThingToDoForm.resx">
       <DependentUpon>AddThingToDoForm.cs</DependentUpon>
@@ -197,13 +205,16 @@
       <DependentUpon>ThingsToDoComponent.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TimeComponent.resx">
+      <DependentUpon>TimeComponent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ToDoManagerComponent.resx">
       <DependentUpon>ToDoManagerComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WeatherForecast.resx">
+    <EmbeddedResource Include="UserControls\WeatherForecast.resx">
       <DependentUpon>WeatherForecast.cs</DependentUpon>
     </EmbeddedResource>
     <Resource Include="database.db">
