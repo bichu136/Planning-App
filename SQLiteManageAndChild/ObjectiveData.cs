@@ -53,10 +53,10 @@ namespace Do_An
             int x = cmd.ExecuteNonQuery();
             cnn.Close();
         }
-        public void UpdateDone()
+        public void UpdateDone(string ID)
         {
             cnn.Open();
-            
+            cmd.CommandText = "update ThingToDo";
         }
     }
 }
