@@ -28,7 +28,7 @@ namespace Do_An
             InitializeComponent();
             LoadCanlenderMatrix();
         }
-        #region Celendar
+        #region Calendar
         private void LoadCanlenderMatrix()
         {
             ButtonManeger = new List<List<Button>>();
