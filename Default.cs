@@ -19,6 +19,9 @@ namespace Do_An
         public static int IndexTab = 10;
         public static int UCWidth = 986;
         public static int UCHeight = 565;
+        static public double Distance = 100;
+        static public double Number = 10;
+        static public string[] TextList = { "Cooking", "Study", "Sport", "Game", "Travel", "Movie", "HouseHold", "Diplomacy", "Goal", "SelfImprove" };
         public static void SkipKeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;

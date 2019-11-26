@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-
+using Do_An.UserControls;
 
 namespace Do_An
 {
@@ -26,6 +26,7 @@ namespace Do_An
         ProjectData Pdata = new ProjectData();
         EventData Edata = new EventData();        
         private List<List<Button>> buttonManeger;
+        private ChartComponent chartComponent = new ChartComponent();
         public List<List<Button>> ButtonManeger
         {
             //get => buttonManeger; 
@@ -143,6 +144,12 @@ namespace Do_An
         {
             AddThingToDoForm addThingToDo = new AddThingToDoForm();
             addThingToDo.ShowDialog();
+        }
+
+        private void chartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UserControlsPanel.Controls.Clear();
+            UserControlsPanel.Controls.Add(chartComponent);
         }
     }
 }
