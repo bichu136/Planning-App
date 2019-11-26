@@ -13,52 +13,51 @@ namespace Do_An
     public partial class TimeComponent : UserControl
     {
         Timer timer;
-        private ThingsToDo args;
         public int result;
+        TimeSpan Clock;
         public TimeComponent()
         {
-            this.args = args;
-            timer = new Timer();
-            timer.Interval = 1000;
-            timer.Tick += Timer_Tick;
-
-            InitializeComponent();
-            DoingTxtBox.KeyPress += Default.OnlyNumberPress;
-
-        }
-        public TimeComponent(ThingsToDo args)
-        {
-            this.args = args;
             timer = new Timer();
             timer.Interval = 1000;
             timer.Tick += Timer_Tick;
             
             InitializeComponent();
-            DoingTxtBox.KeyPress += Default.OnlyNumberPress;
+            SecLbl.Text = "00";
+            MinLbl.Text = "00";
+            HourLbl.Text = "00";
+            Clock = TimeSpan.Zero;
+            ToggleBtn.Text = "Start";
 
         }
-
         private void Timer_Tick(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Clock.Add(TimeSpan.FromTicks(TimeSpan.TicksPerSecond));
+            UpdateLabels(Clock);
         }
 
         private void BeginTimer_Click(object sender, EventArgs e)
         {
                 timer.Start();
                 Button x = (Button)sender;
+                x.Click -= BeginTimer_Click;
                 x.Click += EndTimer_Click;
-                x.Text = "Done";            
+                x.Text = "Pause";
+        }
+
+        private void UpdateLabels(TimeSpan clock)
+        {
+            SecLbl.Text = (clock.TotalSeconds - clock.TotalMinutes * 60).ToString().PadRight(2,'0');
+            MinLbl.Text = (clock.TotalMinutes - clock.TotalHours * 60).ToString().PadRight(2, '0');
+            HourLbl.Text = (clock.TotalHours).ToString().PadRight(2, '0');
         }
 
         private void EndTimer_Click(object sender, EventArgs e)
         {
             timer.Stop();
-        }
-
-        private void DoingTxtBox_TextChanged(object sender, EventArgs e)
-        {
-
+            Button x = (Button)sender;
+            x.Click += BeginTimer_Click;
+            x.Click -= EndTimer_Click;
+            x.Text = "Resume";
         }
     }
 }

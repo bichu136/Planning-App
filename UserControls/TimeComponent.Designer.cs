@@ -29,58 +29,86 @@
         private void InitializeComponent()
         {
             this.UnitPanel = new System.Windows.Forms.Panel();
-            this.CounterLbl = new System.Windows.Forms.Label();
-            this.UnitLbl = new System.Windows.Forms.Label();
-            this.DoingTxtBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SecLbl = new System.Windows.Forms.Label();
+            this.MinLbl = new System.Windows.Forms.Label();
+            this.HourLbl = new System.Windows.Forms.Label();
+            this.ToggleBtn = new System.Windows.Forms.Button();
             this.UnitPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // UnitPanel
             // 
-            this.UnitPanel.Controls.Add(this.CounterLbl);
-            this.UnitPanel.Controls.Add(this.UnitLbl);
-            this.UnitPanel.Controls.Add(this.DoingTxtBox);
-            this.UnitPanel.Controls.Add(this.button1);
+            this.UnitPanel.Controls.Add(this.label2);
+            this.UnitPanel.Controls.Add(this.label1);
+            this.UnitPanel.Controls.Add(this.SecLbl);
+            this.UnitPanel.Controls.Add(this.MinLbl);
+            this.UnitPanel.Controls.Add(this.HourLbl);
+            this.UnitPanel.Controls.Add(this.ToggleBtn);
             this.UnitPanel.Location = new System.Drawing.Point(26, 23);
             this.UnitPanel.Name = "UnitPanel";
             this.UnitPanel.Size = new System.Drawing.Size(441, 108);
             this.UnitPanel.TabIndex = 1;
             // 
-            // CounterLbl
+            // label2
             // 
-            this.CounterLbl.AutoSize = true;
-            this.CounterLbl.Location = new System.Drawing.Point(128, 66);
-            this.CounterLbl.Name = "CounterLbl";
-            this.CounterLbl.Size = new System.Drawing.Size(26, 17);
-            this.CounterLbl.TabIndex = 3;
-            this.CounterLbl.Text = "XX";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(240, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(26, 38);
+            this.label2.TabIndex = 5;
+            this.label2.Text = ":";
             // 
-            // UnitLbl
+            // label1
             // 
-            this.UnitLbl.AutoSize = true;
-            this.UnitLbl.Location = new System.Drawing.Point(316, 19);
-            this.UnitLbl.Name = "UnitLbl";
-            this.UnitLbl.Size = new System.Drawing.Size(46, 17);
-            this.UnitLbl.TabIndex = 2;
-            this.UnitLbl.Text = "label2";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(170, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(26, 38);
+            this.label1.TabIndex = 4;
+            this.label1.Text = ":";
             // 
-            // DoingTxtBox
+            // SecLbl
             // 
-            this.DoingTxtBox.Location = new System.Drawing.Point(210, 16);
-            this.DoingTxtBox.Name = "DoingTxtBox";
-            this.DoingTxtBox.Size = new System.Drawing.Size(100, 22);
-            this.DoingTxtBox.TabIndex = 1;
-            this.DoingTxtBox.TextChanged += new System.EventHandler(this.DoingTxtBox_TextChanged);
+            this.SecLbl.AutoSize = true;
+            this.SecLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SecLbl.Location = new System.Drawing.Point(258, 10);
+            this.SecLbl.Name = "SecLbl";
+            this.SecLbl.Size = new System.Drawing.Size(61, 38);
+            this.SecLbl.TabIndex = 3;
+            this.SecLbl.Text = "XX";
             // 
-            // button1
+            // MinLbl
             // 
-            this.button1.Location = new System.Drawing.Point(319, 49);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(119, 51);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "LockBtn";
-            this.button1.UseVisualStyleBackColor = true;
+            this.MinLbl.AutoSize = true;
+            this.MinLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MinLbl.Location = new System.Drawing.Point(189, 10);
+            this.MinLbl.Name = "MinLbl";
+            this.MinLbl.Size = new System.Drawing.Size(61, 38);
+            this.MinLbl.TabIndex = 3;
+            this.MinLbl.Text = "XX";
+            // 
+            // HourLbl
+            // 
+            this.HourLbl.AutoSize = true;
+            this.HourLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HourLbl.Location = new System.Drawing.Point(120, 10);
+            this.HourLbl.Name = "HourLbl";
+            this.HourLbl.Size = new System.Drawing.Size(61, 38);
+            this.HourLbl.TabIndex = 3;
+            this.HourLbl.Text = "XX";
+            // 
+            // ToggleBtn
+            // 
+            this.ToggleBtn.Location = new System.Drawing.Point(160, 49);
+            this.ToggleBtn.Name = "ToggleBtn";
+            this.ToggleBtn.Size = new System.Drawing.Size(119, 51);
+            this.ToggleBtn.TabIndex = 0;
+            this.ToggleBtn.Text = "LockBtn";
+            this.ToggleBtn.UseVisualStyleBackColor = true;
             // 
             // TimeComponent
             // 
@@ -98,9 +126,11 @@
         #endregion
 
         private System.Windows.Forms.Panel UnitPanel;
-        private System.Windows.Forms.Label CounterLbl;
-        private System.Windows.Forms.Label UnitLbl;
-        private System.Windows.Forms.TextBox DoingTxtBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label HourLbl;
+        private System.Windows.Forms.Label SecLbl;
+        private System.Windows.Forms.Label MinLbl;
+        private System.Windows.Forms.Button ToggleBtn;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -15,17 +15,15 @@ namespace Do_An
         DailyData Ddata = new DailyData();
         ProjectData Pdata = new ProjectData();
         EventData Edata = new EventData();
+        RecordData RData = new RecordData();
         public ToDoManagerComponent()
         {
             InitializeComponent();
 
             //AddJobsBtn.Click += AddJobs_Click;
-            DataGridViewComboBoxColumn checkboxes = new DataGridViewComboBoxColumn() { Name = "DONE", HeaderText = "Check", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells };
-            StatusData Status = new StatusData();
-            checkboxes.DataSource = Status.ReadDataTableForDaily();
-            checkboxes.DisplayMember = "Name";
-            checkboxes.ValueMember = "ID";
-            DailyDataGrid.Columns.Add(checkboxes);
+            
+            
+            
 
         }
 
@@ -35,6 +33,7 @@ namespace Do_An
             foreach (DataGridViewRow row in DailyDataGrid.Rows)
             {
                 Ddata.UpdateStatusByID(row.Cells["ID"].Value.ToString(), (long)row.Cells["DONE"].Value);
+                RData.Insert(new Record(Convert.ToInt32(row.Cells["ID"].Value.ToString()),DateTime.Now,0));
             }
         }
 
@@ -61,10 +60,14 @@ namespace Do_An
             DailyDataGrid.Columns["ID"].Visible = false;
             DailyDataGrid.Columns["Name1"].Visible = false;
             DailyDataGrid.Columns["Status"].Visible = false;
-            foreach (DataGridViewRow Row in DailyDataGrid.Rows)
-            {
-                Row.Cells["DONE"].Value = (long)Row.Cells["Status"].Value;
-            }
+            DataGridViewComboBoxColumn checkboxes = new DataGridViewComboBoxColumn() { Name = "DONE", HeaderText = "Check", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells };
+            StatusData Status = new StatusData();
+            checkboxes.DataSource = Status.ReadDataTableForDaily();
+            checkboxes.DisplayMember = "Name";
+            checkboxes.ValueMember = "ID";
+            // bind với cột status.
+            checkboxes.DataPropertyName = "Status";
+            DailyDataGrid.Columns.Add(checkboxes);
         }
 
         private void button4_Click(object sender, EventArgs e)

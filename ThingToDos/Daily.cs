@@ -16,6 +16,7 @@ namespace Do_An
         public Daily(string name, Dictionary<long,int> score, DateTime lastup,int factor,int weekDayToDo): base( name,score, lastup)
         {
             this.factor = factor;
+            this.WeekDayToDo = weekDayToDo;
         }
         
         public override Dictionary<long,int> getTotalScore(int Minute)

@@ -6,9 +6,8 @@ namespace Do_An
 {
     class ProjectData : ThingsToDoData
     {
-        public ProjectData()
+        public ProjectData():base()
         {
-            
         }
 
         public override void Close()
@@ -54,9 +53,10 @@ namespace Do_An
         public override void Insert(object values)
         {
             Project input = (Project)values;
-            cmd.CommandText = "insert into ThingToDo (Name,Status,lastupdate,TxtRow1,Type) values ($Name,$Status,$lastupdate,$TxtRow1,$Type)";
+            cmd.CommandText = "insert into ThingToDo (Name,Status,lastupdate,TxtRow1,Type,$IntRow1) values ($Name,$Status,$lastupdate,$TxtRow1,$Type,$IntRow1)";
             cmd.Parameters.AddWithValue("$Type", ThingsToDo.types.Project);
             cmd.Parameters.AddWithValue("$TxtRow1", input.deadline.ToString("yyyy'-'MM'-'dd HH:mm:ss"));
+            cmd.Parameters.AddWithValue("$IntRow1", input.HasPlan);
             base.Insert(values);
         }
 
@@ -72,6 +72,16 @@ namespace Do_An
 
         }
 
+        public bool isCheck(string ID)
+        {
+            Open();
+            cmd.CommandText = "select IntRow1 from ThingToDo where ID= $ID";
+            cmd.Parameters.AddWithValue("$ID",ID);
+            int res = (int)cmd.ExecuteScalar();
+            cnn.Close();
+            return res!=0;
+        }
+
         public override object[] ReadObject()
         {
             return base.ReadObject();
@@ -80,6 +90,35 @@ namespace Do_An
         public override void StartReadFrom(string TableName, string[] columns)
         {
             base.StartReadFrom(TableName, columns);
+        }
+        public override DataTable ReadDataTableForDoing()
+        {
+            Open();
+            cmd.CommandText = "select ID,Name from ThingToDo where Type = $Type and (status != $Status1)";
+            cmd.Parameters.AddWithValue("$Type", (long)ThingsToDo.types.Project);
+            cmd.Parameters.AddWithValue("$Status1", (long)ThingsToDo.statuses.Done);
+            DataTable res = new DataTable();
+            DB.SelectCommand = cmd;
+            DB.Fill(res);
+            cnn.Close();
+            return res;
+        }
+        public override void UpdateByDoing(string ID)
+        {
+            cnn.Open();
+            cmd.CommandText = "update ThingToDo set lastupdate = datetime('now') where ID = $ID and IntRow1 = 1";
+            cmd.Parameters.AddWithValue("$ID", ID);
+            int x = cmd.ExecuteNonQuery();
+            cnn.Close();
+        }
+        public void UpdateForDropped()
+        {
+            cnn.Open();
+            DataTable res = new DataTable();
+            cmd.CommandText = "update ThingToDo set Status = -1 where Type = $Type and date(TxtRow1) = date('now')";
+            cmd.Parameters.AddWithValue("$Type", (int)ThingsToDo.types.Event);
+            cmd.ExecuteNonQuery();
+            cnn.Close();
         }
     }
 }

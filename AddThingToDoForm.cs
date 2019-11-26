@@ -14,7 +14,7 @@ namespace Do_An
     public partial class AddThingToDoForm : Form
     {
         bool flag;
-        private Dictionary<long,int> Scores;
+        private Dictionary<long, int> Scores;
         StatData statData = new StatData();
         TypeData typeData = new TypeData();
         StatData data = new StatData();
@@ -117,6 +117,7 @@ namespace Do_An
             Ex1Lbl.Text = "Dealine";
             Ex1Lbl.Show(); 
             Ex1DateTime.Show();
+            Ex1ChkBox.Show();
         }
 
         private void EventShow()
@@ -145,6 +146,9 @@ namespace Do_An
             Ex1Lbl.Show();
             Ex1TxtBox.KeyPress += Default.OnlyNumberPress;
             Ex1TxtBox.Show();
+            Ex2Lbl.Text = "đơn vị:";
+            Ex2Lbl.Show();
+            Ex2TxtBox.Show();
         }
         #endregion 
 
@@ -156,7 +160,7 @@ namespace Do_An
             switch (TypeCbBox.SelectedIndex)
             {
                 case 0:
-                    input = new Objective(NameTxtBox.Text,Scores,DateTime.Now,Convert.ToInt32(Ex1TxtBox.Text)) ;
+                    input = new Objective(NameTxtBox.Text,Scores,DateTime.Now,Convert.ToInt32(Ex1TxtBox.Text),Ex2TxtBox1.Text) ;
                     data = new ObjectiveData();
                     break;
                 case 1:
@@ -168,7 +172,7 @@ namespace Do_An
                     data = new EventData();
                     break;
                 case 3:
-                    input = new Project( NameTxtBox.Text, Scores, DateTime.Now, Ex1DateTime.Value);
+                    input = new Project( NameTxtBox.Text, Scores, DateTime.Now, Ex1DateTime.Value,Ex1ChkBox.Checked);
                     data = new ProjectData();
                     break;
                 default:
@@ -214,6 +218,7 @@ namespace Do_An
             Ex1DateTime.Hide();
             Ex2DateTime.Hide();
             Ex1CbBox.Hide();
+            Ex1ChkBox.Hide();
         }
 
         private void AddThingToDoForm_Load(object sender, EventArgs e)

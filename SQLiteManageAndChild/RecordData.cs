@@ -9,7 +9,7 @@ namespace Do_An
 {
     class RecordData : SQLiteManage
     {
-        RecordData()
+        public RecordData()
         {
             
         }
@@ -48,6 +48,16 @@ namespace Do_An
         public override object[] ReadObject()
         {
             return base.ReadObject();
+        }
+        public long SumOfCurrent(string ID)
+        {
+            cmd.CommandText = "select sum(Record.Current) from record where ID = $ID group by ID";
+            return (int)cmd.ExecuteScalar();
+        }
+        public long CountOfCurrent(string ID)
+        {
+            cmd.CommandText = "select count(Record.Current) from record where ID = $ID group by ID";
+            return (int)cmd.ExecuteScalar();
         }
     }
 }

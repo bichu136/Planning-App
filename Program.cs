@@ -27,6 +27,10 @@ namespace Do_An
 
             SQLiteManage manager = new SQLiteManage();
             manager.CreateDatabase();
+            ThingsToDoData ttdData = new ThingsToDoData();
+            ttdData.UpdateDropStatus();
+            DailyData dData = new DailyData();
+            dData.UpdateNewDay();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             MainForm mainForm = new MainForm();

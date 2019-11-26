@@ -24,11 +24,12 @@ namespace Do_An
             cmd = new SQLiteCommand(cnn);
             DB = new SQLiteDataAdapter();
         }
+        
         public void Open()
         {
             if(cnn.State != ConnectionState.Open)
             {
-
+                cnn.Open();
             }
         }
         #region Override method

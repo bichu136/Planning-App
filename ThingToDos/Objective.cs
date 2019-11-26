@@ -13,11 +13,11 @@ namespace Do_An
 		int Goal;
         public int goal { get =>Goal; }
         public enum Unit {Minutes = 1,Times = -1 }
-        Unit unit;
-		public Objective(string name, Dictionary<long,int> score,DateTime lastup, int g,int c = 0):base(name,score, lastup)
-		{
-			Current = c;
+        public String unit;
+		public Objective(string name, Dictionary<long,int> score,DateTime lastup, int g,String unit):base(name,score, lastup)
+        {
 			Goal = g;
+            this.unit = unit;
 		}
 		public override Dictionary<long,int> getTotalScore(int Minute)
 		{

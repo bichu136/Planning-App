@@ -135,12 +135,14 @@
             this.addJobsToolStripMenuItem.Name = "addJobsToolStripMenuItem";
             this.addJobsToolStripMenuItem.Size = new System.Drawing.Size(146, 24);
             this.addJobsToolStripMenuItem.Text = "AddJobs";
+            this.addJobsToolStripMenuItem.Click += new System.EventHandler(this.addJobsToolStripMenuItem_Click);
             // 
             // settingToolStripMenuItem
             // 
             this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
             this.settingToolStripMenuItem.Size = new System.Drawing.Size(146, 24);
             this.settingToolStripMenuItem.Text = "Setting";
+            this.settingToolStripMenuItem.Click += new System.EventHandler(this.settingToolStripMenuItem_Click);
             // 
             // UserControlsPanel
             // 

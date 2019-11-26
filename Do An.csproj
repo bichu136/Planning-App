@@ -139,11 +139,19 @@
     <Compile Include="UserControls\CalendarComponent.Designer.cs">
       <DependentUpon>CalendarComponent.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="UserControls\ChartComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\ChartComponent.Designer.cs">
       <DependentUpon>ChartComponent.cs</DependentUpon>
+=======
+    <Compile Include="UserControls\SettingsComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SettingsComponent.Designer.cs">
+      <DependentUpon>SettingsComponent.cs</DependentUpon>
+>>>>>>> masterA
     </Compile>
     <Compile Include="UserControls\ThingsToDoComponent.cs">
       <SubType>UserControl</SubType>
@@ -162,6 +170,12 @@
     </Compile>
     <Compile Include="UserControls\ToDoManagerComponent.Designer.cs">
       <DependentUpon>ToDoManagerComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AddThingsToDoComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AddThingsToDoComponent.Designer.cs">
+      <DependentUpon>AddThingsToDoComponent.cs</DependentUpon>
     </Compile>
     <Compile Include="UserForm.cs">
       <SubType>Form</SubType>
