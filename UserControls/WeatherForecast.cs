@@ -27,11 +27,12 @@ namespace Do_An
         {
             InitializeComponent();
             weather = new Weather();
-            //Weather Update.
-            
+            this.Load += WeatherForecast_Load;
+
+
         }
 
-        public void WeatherForecast_Load()
+        public void WeatherForecast_Load(object sender,EventArgs e)
         {
             if (Program.ThoiTiet != "")
             {

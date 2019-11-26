@@ -9,7 +9,7 @@ namespace Do_An
 {
     class RecordData : SQLiteManage
     {
-        RecordData()
+        public RecordData()
         {
             
         }

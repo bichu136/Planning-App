@@ -44,5 +44,36 @@ namespace Do_An
             cmd.ExecuteNonQuery();
             cnn.Close();
         }
+
+        public DataTable ReadDataTableWithType(long Type)
+        {
+            cnn.Open();
+            DataTable dt= new DataTable();
+            cmd.CommandText = "select ID,Name from ThingToDo where Type = $Type and (status = $status1 or status = $status2)";
+            cmd.Parameters.AddWithValue("$Type", Type);
+            cmd.Parameters.AddWithValue("$status1", (int)ThingsToDo.statuses.Ongoing);
+            cmd.Parameters.AddWithValue("$status2", (int)ThingsToDo.statuses.Dropped);
+            DB.SelectCommand = cmd;
+            DB.Fill(dt);
+            cnn.Close();
+            return dt;
+        }
+        public void UpdateDropStatus()
+        {
+            cnn.Open();
+            cmd.CommandText = "Update ThingsToDo set status = $status where date(lastupdate,'+1 month') < date('now')";
+            cmd.Parameters.AddWithValue("$Status", ThingsToDo.statuses.Dropped);
+            cnn.Close();
+        }
+        public virtual void UpdateByDoing(string ID)
+        {
+
+        }
+
+        public virtual DataTable ReadDataTableForDoing()
+        {
+            return null;
+        }
     }
+
 }

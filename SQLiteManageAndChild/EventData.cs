@@ -63,5 +63,22 @@ namespace Do_An
         {
             base.StartReadFrom(TableName, columns);
         }
+        public override void UpdateByDoing(string ID)
+        {
+            cnn.Open();
+            cmd.CommandText = "update ThingToDo set Status = 0, lastupdate = datetime('now') where ID = $ID";
+            cmd.Parameters.AddWithValue("$ID", ID);
+            int x = cmd.ExecuteNonQuery();
+            cnn.Close();
+        }
+        public void UpdateForOngoing()
+        {
+            cnn.Open();
+            DataTable res = new DataTable();
+            cmd.CommandText = "update ThingToDo set Status = 1 where Type = $Type and date(TxtRow1) = date('now')";
+            cmd.Parameters.AddWithValue("$Type", (int)ThingsToDo.types.Event);
+            cmd.ExecuteNonQuery();
+            cnn.Close();
+        }
     }
 }

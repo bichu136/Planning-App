@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.UnitPanel = new System.Windows.Forms.Panel();
+            this.HasPlanChkBox = new System.Windows.Forms.CheckBox();
+            this.UnitLbl = new System.Windows.Forms.Label();
+            this.CurrentTxtBox = new System.Windows.Forms.TextBox();
             this.DoneBtn = new System.Windows.Forms.Button();
             this.InformPanel = new System.Windows.Forms.Panel();
             this.Goal_DeadlineLbl = new System.Windows.Forms.Label();
@@ -40,33 +43,55 @@
             this.label1 = new System.Windows.Forms.Label();
             this.NameCbBox = new System.Windows.Forms.ComboBox();
             this.TypeCbBox = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.DoingTxtBox = new System.Windows.Forms.TextBox();
-            this.UnitLbl = new System.Windows.Forms.Label();
-            this.CounterLbl = new System.Windows.Forms.Label();
             this.UnitPanel.SuspendLayout();
             this.InformPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // UnitPanel
             // 
-            this.UnitPanel.Controls.Add(this.CounterLbl);
+            this.UnitPanel.Controls.Add(this.HasPlanChkBox);
             this.UnitPanel.Controls.Add(this.UnitLbl);
-            this.UnitPanel.Controls.Add(this.DoingTxtBox);
-            this.UnitPanel.Controls.Add(this.button1);
+            this.UnitPanel.Controls.Add(this.CurrentTxtBox);
             this.UnitPanel.Location = new System.Drawing.Point(12, 12);
             this.UnitPanel.Name = "UnitPanel";
-            this.UnitPanel.Size = new System.Drawing.Size(441, 108);
+            this.UnitPanel.Size = new System.Drawing.Size(441, 57);
             this.UnitPanel.TabIndex = 0;
+            // 
+            // HasPlanChkBox
+            // 
+            this.HasPlanChkBox.AutoSize = true;
+            this.HasPlanChkBox.Location = new System.Drawing.Point(29, 17);
+            this.HasPlanChkBox.Name = "HasPlanChkBox";
+            this.HasPlanChkBox.Size = new System.Drawing.Size(114, 21);
+            this.HasPlanChkBox.TabIndex = 4;
+            this.HasPlanChkBox.Text = "Has a plan??";
+            this.HasPlanChkBox.UseVisualStyleBackColor = true;
+            // 
+            // UnitLbl
+            // 
+            this.UnitLbl.AutoSize = true;
+            this.UnitLbl.Location = new System.Drawing.Point(365, 19);
+            this.UnitLbl.Name = "UnitLbl";
+            this.UnitLbl.Size = new System.Drawing.Size(52, 17);
+            this.UnitLbl.TabIndex = 2;
+            this.UnitLbl.Text = "UnitLbl";
+            // 
+            // CurrentTxtBox
+            // 
+            this.CurrentTxtBox.Location = new System.Drawing.Point(259, 16);
+            this.CurrentTxtBox.Name = "CurrentTxtBox";
+            this.CurrentTxtBox.Size = new System.Drawing.Size(100, 22);
+            this.CurrentTxtBox.TabIndex = 1;
             // 
             // DoneBtn
             // 
-            this.DoneBtn.Location = new System.Drawing.Point(12, 298);
+            this.DoneBtn.Location = new System.Drawing.Point(12, 297);
             this.DoneBtn.Name = "DoneBtn";
             this.DoneBtn.Size = new System.Drawing.Size(168, 68);
             this.DoneBtn.TabIndex = 1;
             this.DoneBtn.Text = "Done";
             this.DoneBtn.UseVisualStyleBackColor = true;
+            this.DoneBtn.Click += new System.EventHandler(this.DoneBtn_Click);
             // 
             // InformPanel
             // 
@@ -132,7 +157,7 @@
             // 
             this.NameLbl.AutoSize = true;
             this.NameLbl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.NameLbl.Location = new System.Drawing.Point(74, 48);
+            this.NameLbl.Location = new System.Drawing.Point(74, 68);
             this.NameLbl.Name = "NameLbl";
             this.NameLbl.Size = new System.Drawing.Size(45, 17);
             this.NameLbl.TabIndex = 2;
@@ -142,7 +167,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(74, 18);
+            this.label1.Location = new System.Drawing.Point(74, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 17);
             this.label1.TabIndex = 1;
@@ -151,53 +176,20 @@
             // NameCbBox
             // 
             this.NameCbBox.FormattingEnabled = true;
-            this.NameCbBox.Location = new System.Drawing.Point(197, 45);
+            this.NameCbBox.Location = new System.Drawing.Point(197, 65);
             this.NameCbBox.Name = "NameCbBox";
             this.NameCbBox.Size = new System.Drawing.Size(366, 24);
             this.NameCbBox.TabIndex = 0;
+            this.NameCbBox.SelectedIndexChanged += new System.EventHandler(this.NameCbBox_SelectedIndexChanged);
             // 
             // TypeCbBox
             // 
             this.TypeCbBox.FormattingEnabled = true;
-            this.TypeCbBox.Location = new System.Drawing.Point(197, 15);
+            this.TypeCbBox.Location = new System.Drawing.Point(200, 32);
             this.TypeCbBox.Name = "TypeCbBox";
             this.TypeCbBox.Size = new System.Drawing.Size(366, 24);
             this.TypeCbBox.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(319, 49);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(119, 51);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "LockBtn";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // DoingTxtBox
-            // 
-            this.DoingTxtBox.Location = new System.Drawing.Point(210, 16);
-            this.DoingTxtBox.Name = "DoingTxtBox";
-            this.DoingTxtBox.Size = new System.Drawing.Size(100, 22);
-            this.DoingTxtBox.TabIndex = 1;
-            // 
-            // UnitLbl
-            // 
-            this.UnitLbl.AutoSize = true;
-            this.UnitLbl.Location = new System.Drawing.Point(316, 19);
-            this.UnitLbl.Name = "UnitLbl";
-            this.UnitLbl.Size = new System.Drawing.Size(46, 17);
-            this.UnitLbl.TabIndex = 2;
-            this.UnitLbl.Text = "label2";
-            // 
-            // CounterLbl
-            // 
-            this.CounterLbl.AutoSize = true;
-            this.CounterLbl.Location = new System.Drawing.Point(142, 66);
-            this.CounterLbl.Name = "CounterLbl";
-            this.CounterLbl.Size = new System.Drawing.Size(26, 17);
-            this.CounterLbl.TabIndex = 3;
-            this.CounterLbl.Text = "XX";
+            this.TypeCbBox.SelectedIndexChanged += new System.EventHandler(this.TypeCbBox_SelectedIndexChanged);
             // 
             // DoingThings
             // 
@@ -208,7 +200,7 @@
             this.Controls.Add(this.DoneBtn);
             this.Controls.Add(this.UnitPanel);
             this.Name = "DoingThings";
-            this.Text = "AddEventForm";
+            this.Text = "Add new Record";
             this.UnitPanel.ResumeLayout(false);
             this.UnitPanel.PerformLayout();
             this.InformPanel.ResumeLayout(false);
@@ -232,8 +224,7 @@
         private System.Windows.Forms.Label ValueGoal_DeadlineLbl;
         private System.Windows.Forms.Label ValueCurrentBtn;
         private System.Windows.Forms.Label UnitLbl;
-        private System.Windows.Forms.TextBox DoingTxtBox;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label CounterLbl;
+        private System.Windows.Forms.TextBox CurrentTxtBox;
+        private System.Windows.Forms.CheckBox HasPlanChkBox;
     }
 }

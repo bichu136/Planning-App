@@ -10,9 +10,11 @@ namespace Do_An
 	{
 		DateTime Deadline;
         public DateTime deadline { get => Deadline; }
-        public Project(string name, Dictionary<long,int> score, DateTime lastup, DateTime Deadline) : base( name, score, lastup)
+        public int HasPlan;
+        public Project(string name, Dictionary<long,int> score, DateTime lastup, DateTime Deadline,bool Checked) : base( name, score, lastup)
         {
             this.Deadline = Deadline;
+            this.HasPlan = (Checked) ? 1 : 0;
         }
 		public override Dictionary<long,int> getTotalScore(int Minute)
 		{

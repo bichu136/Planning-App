@@ -20,7 +20,6 @@ namespace Do_An
         private AddThingToDoForm addThingToDoForm;
         ToDoManagerComponent toDoManager = new ToDoManagerComponent();
         Weather weather;
-        private CalendarComponent Calendar = new CalendarComponent();
         WeatherForecast forecast = new WeatherForecast();
         DailyData Ddata = new DailyData();
         ProjectData Pdata = new ProjectData();
@@ -130,7 +129,7 @@ namespace Do_An
         private void calendarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UserControlsPanel.Controls.Clear();
-            UserControlsPanel.Controls.Add(Calendar);
+            UserControlsPanel.Controls.Add(new CalendarComponent());
         }
 
         private void weatherToolStripMenuItem_Click(object sender, EventArgs e)
@@ -143,6 +142,20 @@ namespace Do_An
         {
             AddThingToDoForm addThingToDo = new AddThingToDoForm();
             addThingToDo.ShowDialog();
+        }
+
+        private void addJobsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddThingToDoComponent addThingToDo= new AddThingToDoComponent();
+            UserControlsPanel.Controls.Clear();
+            UserControlsPanel.Controls.Add(addThingToDo);
+        }
+
+        private void settingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SettingComponent Setting = new SettingComponent();
+            UserControlsPanel.Controls.Clear();
+            UserControlsPanel.Controls.Add(Setting);
         }
     }
 }

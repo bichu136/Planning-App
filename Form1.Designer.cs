@@ -98,48 +98,50 @@
             this.settingToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(85, 627);
+            this.menuStrip1.Size = new System.Drawing.Size(153, 627);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // mainToolStripMenuItem
             // 
             this.mainToolStripMenuItem.Name = "mainToolStripMenuItem";
-            this.mainToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
+            this.mainToolStripMenuItem.Size = new System.Drawing.Size(146, 24);
             this.mainToolStripMenuItem.Text = "Main";
             this.mainToolStripMenuItem.Click += new System.EventHandler(this.mainToolStripMenuItem_Click);
             // 
             // calendarToolStripMenuItem
             // 
             this.calendarToolStripMenuItem.Name = "calendarToolStripMenuItem";
-            this.calendarToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
+            this.calendarToolStripMenuItem.Size = new System.Drawing.Size(146, 24);
             this.calendarToolStripMenuItem.Text = "Calendar";
             this.calendarToolStripMenuItem.Click += new System.EventHandler(this.calendarToolStripMenuItem_Click);
             // 
             // weatherToolStripMenuItem
             // 
             this.weatherToolStripMenuItem.Name = "weatherToolStripMenuItem";
-            this.weatherToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
+            this.weatherToolStripMenuItem.Size = new System.Drawing.Size(146, 24);
             this.weatherToolStripMenuItem.Text = "Weather";
             this.weatherToolStripMenuItem.Click += new System.EventHandler(this.weatherToolStripMenuItem_Click);
             // 
             // chartToolStripMenuItem
             // 
             this.chartToolStripMenuItem.Name = "chartToolStripMenuItem";
-            this.chartToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
+            this.chartToolStripMenuItem.Size = new System.Drawing.Size(146, 24);
             this.chartToolStripMenuItem.Text = "Chart";
             // 
             // addJobsToolStripMenuItem
             // 
             this.addJobsToolStripMenuItem.Name = "addJobsToolStripMenuItem";
-            this.addJobsToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
+            this.addJobsToolStripMenuItem.Size = new System.Drawing.Size(146, 24);
             this.addJobsToolStripMenuItem.Text = "AddJobs";
+            this.addJobsToolStripMenuItem.Click += new System.EventHandler(this.addJobsToolStripMenuItem_Click);
             // 
             // settingToolStripMenuItem
             // 
             this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
-            this.settingToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
+            this.settingToolStripMenuItem.Size = new System.Drawing.Size(146, 24);
             this.settingToolStripMenuItem.Text = "Setting";
+            this.settingToolStripMenuItem.Click += new System.EventHandler(this.settingToolStripMenuItem_Click);
             // 
             // UserControlsPanel
             // 

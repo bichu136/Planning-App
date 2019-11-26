@@ -47,6 +47,7 @@ namespace Do_An
             this.Ex1DateTime = new System.Windows.Forms.DateTimePicker();
             this.Ex2DateTime = new System.Windows.Forms.DateTimePicker();
             this.Ex1CbBox = new System.Windows.Forms.ComboBox();
+            this.Ex1ChkBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // TypeCbBox
@@ -176,7 +177,7 @@ namespace Do_An
             // 
             // Ex2DateTime
             // 
-            this.Ex2DateTime.Location = new System.Drawing.Point(159, 86);
+            this.Ex2DateTime.Location = new System.Drawing.Point(159, 142);
             this.Ex2DateTime.Name = "Ex2DateTime";
             this.Ex2DateTime.Size = new System.Drawing.Size(293, 22);
             this.Ex2DateTime.TabIndex = 12;
@@ -184,16 +185,27 @@ namespace Do_An
             // Ex1CbBox
             // 
             this.Ex1CbBox.FormattingEnabled = true;
-            this.Ex1CbBox.Location = new System.Drawing.Point(159, 86);
+            this.Ex1CbBox.Location = new System.Drawing.Point(319, 112);
             this.Ex1CbBox.Name = "Ex1CbBox";
             this.Ex1CbBox.Size = new System.Drawing.Size(121, 24);
             this.Ex1CbBox.TabIndex = 13;
+            // 
+            // Ex1ChkBox
+            // 
+            this.Ex1ChkBox.AutoSize = true;
+            this.Ex1ChkBox.Location = new System.Drawing.Point(98, 90);
+            this.Ex1ChkBox.Name = "Ex1ChkBox";
+            this.Ex1ChkBox.Size = new System.Drawing.Size(109, 21);
+            this.Ex1ChkBox.TabIndex = 14;
+            this.Ex1ChkBox.Text = "Có kế hoạch";
+            this.Ex1ChkBox.UseVisualStyleBackColor = true;
             // 
             // AddThingToDoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(847, 237);
+            this.Controls.Add(this.Ex1ChkBox);
             this.Controls.Add(this.Ex1CbBox);
             this.Controls.Add(this.Ex2DateTime);
             this.Controls.Add(this.Ex1DateTime);
@@ -246,6 +258,7 @@ namespace Do_An
         private System.Windows.Forms.DateTimePicker Ex1DateTime;
         private System.Windows.Forms.DateTimePicker Ex2DateTime;
         private ComboBox Ex1CbBox;
+        private CheckBox Ex1ChkBox;
 
         public ComboBox TypeCbBox1 { get => TypeCbBox; set => TypeCbBox = value; }
         public Label TypeLbl1 { get => TypeLbl; set => TypeLbl = value; }

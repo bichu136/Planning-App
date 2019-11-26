@@ -133,6 +133,12 @@
     <Compile Include="SQLiteManageAndChild\SQLiteManage.cs" />
     <Compile Include="ThingToDos\Record.cs" />
     <Compile Include="ThingToDos\ThingToDo.cs" />
+    <Compile Include="UserControls\AddThingToDoComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AddThingToDoComponent.Designer.cs">
+      <DependentUpon>AddThingToDoComponent.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\CalendarComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -156,6 +162,12 @@
     </Compile>
     <Compile Include="UserControls\ToDoManagerComponent.Designer.cs">
       <DependentUpon>ToDoManagerComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SettingComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SettingComponent.Designer.cs">
+      <DependentUpon>SettingComponent.cs</DependentUpon>
     </Compile>
     <Compile Include="UserForm.cs">
       <SubType>Form</SubType>
@@ -198,8 +210,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControls\AddThingToDoComponent.resx">
+      <DependentUpon>AddThingToDoComponent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\CalendarComponent.resx">
       <DependentUpon>CalendarComponent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SettingComponent.resx">
+      <DependentUpon>SettingComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ThingsToDoComponent.resx">
       <DependentUpon>ThingsToDoComponent.cs</DependentUpon>

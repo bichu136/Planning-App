@@ -11,11 +11,11 @@ namespace Do_An
         int _TTD_ID;
         int _Current;
         DateTime _Date;
-        Record()
+        public Record()
         {
 
         }
-        Record(int TTD_ID,int Current,DateTime Date)
+        public Record(int TTD_ID,DateTime Date,int Current)
         {
             this.TTD_ID = TTD_ID;
             this.Current = Current;
