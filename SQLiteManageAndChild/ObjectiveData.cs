@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace Do_An
@@ -42,7 +43,15 @@ namespace Do_An
         }
         public override DataTable ReadDataTableForDoing()
         {
+            Open();
+            cmd.CommandText = "select ID,Name from ThingToDo where Type = $Type and (status != $Status1)";
+            cmd.Parameters.AddWithValue("$Type", (long)ThingsToDo.types.Objective);
+
+            cmd.Parameters.AddWithValue("$Status1", (long)ThingsToDo.statuses.Done);
             DataTable res = new DataTable();
+            DB.SelectCommand = cmd;
+            DB.Fill(res);
+            cnn.Close();
             return res;
         }
         public override void UpdateByDoing(string ID)
@@ -55,8 +64,19 @@ namespace Do_An
         }
         public void UpdateDone(string ID)
         {
-            cnn.Open();
-            cmd.CommandText = "update ThingToDo";
+            //cnn.Open();
+            //cmd.CommandText = "update ThingToDo";
+        }
+
+        public string Unit(String ID)
+        {
+            //cmd.Reset();
+            Open();
+            cmd.CommandText = "select TxtRow1 from ThingToDo where ID = $ID";
+            cmd.Parameters.AddWithValue("$ID", ID);
+            string res = cmd.ExecuteScalar().ToString();
+            cnn.Close();
+            return res;
         }
     }
 }

@@ -26,7 +26,7 @@ namespace Do_An
 
         public override DataTable ReadDataTable()
         {
-            cnn.Open();
+            Open();
             cmd.CommandText = "select * from Type";
             DataTable dt = new DataTable();
             DB.SelectCommand = cmd;

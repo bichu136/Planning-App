@@ -49,5 +49,15 @@ namespace Do_An
         {
             return base.ReadObject();
         }
+        public long SumOfCurrent(string ID)
+        {
+            cmd.CommandText = "select sum(Record.Current) from record where ID = $ID group by ID";
+            return (int)cmd.ExecuteScalar();
+        }
+        public long CountOfCurrent(string ID)
+        {
+            cmd.CommandText = "select count(Record.Current) from record where ID = $ID group by ID";
+            return (int)cmd.ExecuteScalar();
+        }
     }
 }

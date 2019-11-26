@@ -67,6 +67,19 @@ namespace Do_An
             int x = cmd.ExecuteNonQuery();
             cnn.Close();
         }
+        public override DataTable ReadDataTableForDoing()
+        {
+            Open();
+            cmd.CommandText = "select ID,Name from ThingToDo where Type = $Type and (status != $Status1)";
+            cmd.Parameters.AddWithValue("$Type", (long)ThingsToDo.types.Daily);
+
+            cmd.Parameters.AddWithValue("$Status1", (long)ThingsToDo.statuses.Done);
+            DataTable res = new DataTable();
+            DB.SelectCommand = cmd;
+            DB.Fill(res);
+            cnn.Close();
+            return res;
+        }
         public override void UpdateByDoing(string ID)
         {
             cnn.Open();

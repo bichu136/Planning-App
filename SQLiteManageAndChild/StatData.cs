@@ -27,6 +27,7 @@ namespace Do_An
 
         public override void Insert(string TableName, List<string> columns, List<string> values)
         {
+            
             base.Insert(TableName, columns, values);
         }
 

@@ -146,14 +146,14 @@ namespace Do_An
 
         private void addJobsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddThingToDoComponent addThingToDo= new AddThingToDoComponent();
+            AddThingsToDoComponent addThingToDo= new AddThingsToDoComponent();
             UserControlsPanel.Controls.Clear();
             UserControlsPanel.Controls.Add(addThingToDo);
         }
 
         private void settingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SettingComponent Setting = new SettingComponent();
+            SettingsComponent Setting = new SettingsComponent();
             UserControlsPanel.Controls.Clear();
             UserControlsPanel.Controls.Add(Setting);
         }

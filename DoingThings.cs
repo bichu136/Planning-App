@@ -20,11 +20,16 @@ namespace Do_An
         ObjectiveData oData;
         TimeComponent timeComponent;
         ThingsToDoData cursor;
+        DataTable Namedt;
         public DoingThings()
         {
             timeComponent = new TimeComponent() { Location= new Point(12,100)};
             typedata = new TypeData();
             ttdData = new ThingsToDoData();
+            eData = new EventData();
+            dData = new DailyData();
+            pData = new ProjectData();
+            oData = new ObjectiveData();
             InitializeComponent();
             
             TypeCbBox.DataSource = typedata.ReadDataTable();
@@ -53,7 +58,23 @@ namespace Do_An
         bool flag = false;
         private void NameCbBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Console.WriteLine("NameCbBoxChangeSelected");
+            ComboBox x = (ComboBox)sender;
+            if (x.Items.Count != 0)
+            {
+                switch ((long)TypeCbBox.SelectedValue)
+                {
+                    case (long)ThingsToDo.types.Objective:
+                        HasPlanChkBox.Checked = pData.isCheck();
+                        break;
+                    case (long)ThingsToDo.types.Project:
+                        UnitLbl.Text = oData.Unit(NameCbBox.SelectedValue.ToString());
+                        break;
+
+                }
+                
+            }
+
+            
         }
 
         private void TypeCbBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -66,28 +87,28 @@ namespace Do_An
                     MessageBox.Show("Chưa có công việc loại này");
                 }
                 HideAll();
-                switch ((int)input.SelectedValue)
+                switch ((long)input.SelectedValue)
                 {
 
-                    case (int)ThingsToDo.types.Daily:
+                    case (long)ThingsToDo.types.Daily:
                         cursor = dData;
                         break;
-                    case (int)ThingsToDo.types.Event:
+                    case (long)ThingsToDo.types.Event:
                         cursor = eData;
                         break;
-                    case (int)ThingsToDo.types.Objective:
+                    case (long)ThingsToDo.types.Objective:
                         cursor = oData;
                         LoadOpjective();
                         break;
-                    case (int)ThingsToDo.types.Project:
+                    case (long)ThingsToDo.types.Project:
                         cursor = pData;
                         LoadProject();
                         break;
                 }
-                DataTable dt = cursor.ReadDataTableForDoing();
-                NameCbBox.DataSource = dt;
+                Namedt = cursor.ReadDataTableForDoing();
+                NameCbBox.DataSource = Namedt;
                 NameCbBox.DisplayMember = "Name";
-                NameCbBox.ValueMember = "ID";
+                NameCbBox.ValueMember = "ID";            
             }
             catch(Exception ex)
             {
@@ -100,11 +121,13 @@ namespace Do_An
         }
         private void LoadProject()
         {
-
+            HasPlanChkBox.Show();
         }
         private void LoadOpjective()
         {
-            HasPlanChkBox.Show();
+            
+            UnitLbl.Show();
+            CurrentTxtBox.Show();
         }
         private void HideAll()
         {

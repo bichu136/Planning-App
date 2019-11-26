@@ -29,7 +29,7 @@ namespace Do_An
         {
             if(cnn.State != ConnectionState.Open)
             {
-
+                cnn.Open();
             }
         }
         #region Override method

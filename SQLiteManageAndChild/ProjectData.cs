@@ -6,9 +6,8 @@ namespace Do_An
 {
     class ProjectData : ThingsToDoData
     {
-        public ProjectData()
+        public ProjectData():base()
         {
-            
         }
 
         public override void Close()
@@ -73,6 +72,16 @@ namespace Do_An
 
         }
 
+        public bool isCheck(string ID)
+        {
+            Open();
+            cmd.CommandText = "select IntRow1 from ThingToDo where ID= $ID";
+            cmd.Parameters.AddWithValue("$ID",ID);
+            int res = (int)cmd.ExecuteScalar();
+            cnn.Close();
+            return res!=0;
+        }
+
         public override object[] ReadObject()
         {
             return base.ReadObject();
@@ -81,6 +90,18 @@ namespace Do_An
         public override void StartReadFrom(string TableName, string[] columns)
         {
             base.StartReadFrom(TableName, columns);
+        }
+        public override DataTable ReadDataTableForDoing()
+        {
+            Open();
+            cmd.CommandText = "select ID,Name from ThingToDo where Type = $Type and (status != $Status1)";
+            cmd.Parameters.AddWithValue("$Type", (long)ThingsToDo.types.Project);
+            cmd.Parameters.AddWithValue("$Status1", (long)ThingsToDo.statuses.Done);
+            DataTable res = new DataTable();
+            DB.SelectCommand = cmd;
+            DB.Fill(res);
+            cnn.Close();
+            return res;
         }
         public override void UpdateByDoing(string ID)
         {
