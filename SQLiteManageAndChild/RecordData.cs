@@ -9,20 +9,26 @@ namespace Do_An
 {
     class RecordData : SQLiteManage
     {
-        public RecordData()
+        public RecordData():base()
         {
-            
+            cmd.Parameters.Add("$TTDID", DbType.Int32);
+            cmd.Parameters.Add("$Current", DbType.Int32);
+            cmd.Parameters.Add("$Note", DbType.String);
+            cmd.Parameters.Add("$Date", DbType.String);
         }
 
-        public override void Insert(object values)
+        public override long Insert(object values)
         {
             Record input = (Record)values;
             cnn.Open();
             cmd.CommandText = "insert into Record (TTDID,Date,Current,Note)values($TTDID,$Date,$Current,$Note)";
-            cmd.Parameters.AddWithValue("$TTDID",input.TTD_ID);
-            cmd.Parameters.AddWithValue("$Current", input.TTD_ID);
-            cmd.Parameters.AddWithValue("$Note","");
+            cmd.Parameters["$TTDID"].Value = input.TTD_ID;
+            cmd.Parameters["$Current"].Value = input.Current;
+            cmd.Parameters["$Date"].Value = input.Date.ToString("yyyy'-'MM'-'dd HH:mm:ss");
+            cmd.Parameters["$Note"].Value = "";
+            cmd.ExecuteNonQuery();
             cnn.Close();
+            return 0;
         }
 
         public override void Insert(string TableName, List<string> columns, List<string> values)
@@ -51,13 +57,22 @@ namespace Do_An
         }
         public long SumOfCurrent(string ID)
         {
-            cmd.CommandText = "select sum(Record.Current) from record where ID = $ID group by ID";
-            return (int)cmd.ExecuteScalar();
+            Open();
+            cmd.CommandText = "select sum(Record.Current) from record where TTDID = $TTDID group by TTDID";
+            cmd.Parameters["$TTDID"].Value = ID;
+            long x = (long)cmd.ExecuteScalar();
+            cnn.Close();
+            return x;
+            
         }
         public long CountOfCurrent(string ID)
         {
-            cmd.CommandText = "select count(Record.Current) from record where ID = $ID group by ID";
-            return (int)cmd.ExecuteScalar();
+            Open();
+            cmd.CommandText = "select count(Record.TTDID) from record where TTDID = $TTDID";
+            cmd.Parameters["$TTDID"].Value = ID;
+            long x = (long)cmd.ExecuteScalar();
+            cnn.Close();
+            return x;
         }
     }
 }

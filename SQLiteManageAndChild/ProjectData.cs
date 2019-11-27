@@ -8,6 +8,9 @@ namespace Do_An
     {
         public ProjectData():base()
         {
+            cmd.Parameters.Add("$Type",DbType.Int32);
+            cmd.Parameters.Add("$TxtRow1",DbType.String);
+            cmd.Parameters.Add("$IntRow1",DbType.Int32);
         }
 
         public override void Close()
@@ -50,14 +53,14 @@ namespace Do_An
             base.Insert(TableName, columns, values);
         }
 
-        public override void Insert(object values)
+        public override long Insert(object values)
         {
             Project input = (Project)values;
-            cmd.CommandText = "insert into ThingToDo (Name,Status,lastupdate,TxtRow1,Type,$IntRow1) values ($Name,$Status,$lastupdate,$TxtRow1,$Type,$IntRow1)";
-            cmd.Parameters.AddWithValue("$Type", ThingsToDo.types.Project);
-            cmd.Parameters.AddWithValue("$TxtRow1", input.deadline.ToString("yyyy'-'MM'-'dd HH:mm:ss"));
-            cmd.Parameters.AddWithValue("$IntRow1", input.HasPlan);
-            base.Insert(values);
+            cmd.CommandText = "insert into ThingToDo (Name,Status,lastupdate,TxtRow1,Type,IntRow1) values ($Name,$Status,$lastupdate,$TxtRow1,$Type,$IntRow1)";
+            cmd.Parameters["$Type"].Value = (int)ThingsToDo.types.Project;
+            cmd.Parameters["$TxtRow1"].Value = input.deadline.ToString("yyyy'-'MM'-'dd HH:mm:ss");
+            cmd.Parameters["$IntRow1"].Value =  input.HasPlan;
+            return base.Insert(values);
         }
 
         public override DataTable ReadDataTable()
@@ -77,7 +80,7 @@ namespace Do_An
             Open();
             cmd.CommandText = "select IntRow1 from ThingToDo where ID= $ID";
             cmd.Parameters.AddWithValue("$ID",ID);
-            int res = (int)cmd.ExecuteScalar();
+            int res = Convert.ToInt32(cmd.ExecuteScalar().ToString());
             cnn.Close();
             return res!=0;
         }
@@ -94,29 +97,36 @@ namespace Do_An
         public override DataTable ReadDataTableForDoing()
         {
             Open();
-            cmd.CommandText = "select ID,Name from ThingToDo where Type = $Type and (status != $Status1)";
-            cmd.Parameters.AddWithValue("$Type", (long)ThingsToDo.types.Project);
-            cmd.Parameters.AddWithValue("$Status1", (long)ThingsToDo.statuses.Done);
+            cmd.CommandText = "select ID,Name from ThingToDo where Type = $Type and (status != $Status)";
+            cmd.Parameters["$Type"].Value =  (long)ThingsToDo.types.Project;
+            cmd.Parameters["$Status"].Value = (long)ThingsToDo.statuses.Done;
             DataTable res = new DataTable();
             DB.SelectCommand = cmd;
             DB.Fill(res);
             cnn.Close();
             return res;
         }
-        public override void UpdateByDoing(string ID)
+        public override void UpdateByDoing(string ID,long statuses)
         {
-            cnn.Open();
-            cmd.CommandText = "update ThingToDo set lastupdate = datetime('now') where ID = $ID and IntRow1 = 1";
-            cmd.Parameters.AddWithValue("$ID", ID);
-            int x = cmd.ExecuteNonQuery();
-            cnn.Close();
+            RecordData rData = new RecordData();
+            long Current=0;
+            if (rData.CountOfCurrent(ID) > 0)
+            {
+                 Current = rData.SumOfCurrent(ID);
+            }
+            
+
+            if (Current >= 100) 
+            {
+                base.UpdateByDoing(ID,statuses);
+            }
         }
         public void UpdateForDropped()
         {
             cnn.Open();
             DataTable res = new DataTable();
             cmd.CommandText = "update ThingToDo set Status = -1 where Type = $Type and date(TxtRow1) = date('now')";
-            cmd.Parameters.AddWithValue("$Type", (int)ThingsToDo.types.Event);
+            cmd.Parameters["$Type"].Value = (int)ThingsToDo.types.Project;
             cmd.ExecuteNonQuery();
             cnn.Close();
         }

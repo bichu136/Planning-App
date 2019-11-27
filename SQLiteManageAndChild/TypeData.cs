@@ -14,9 +14,9 @@ namespace Do_An
             base.Close();
         }
 
-        public override void Insert(object values)
+        public override long Insert(object values)
         {
-            base.Insert(values);
+            return base.Insert(values);
         }
 
         public override void Insert(string TableName, List<string> columns, List<string> values)

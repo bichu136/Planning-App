@@ -177,7 +177,7 @@ namespace Do_An
             // 
             // Ex2DateTime
             // 
-            this.Ex2DateTime.Location = new System.Drawing.Point(159, 142);
+            this.Ex2DateTime.Location = new System.Drawing.Point(159, 90);
             this.Ex2DateTime.Name = "Ex2DateTime";
             this.Ex2DateTime.Size = new System.Drawing.Size(293, 22);
             this.Ex2DateTime.TabIndex = 12;
@@ -185,7 +185,7 @@ namespace Do_An
             // Ex1CbBox
             // 
             this.Ex1CbBox.FormattingEnabled = true;
-            this.Ex1CbBox.Location = new System.Drawing.Point(319, 112);
+            this.Ex1CbBox.Location = new System.Drawing.Point(159, 88);
             this.Ex1CbBox.Name = "Ex1CbBox";
             this.Ex1CbBox.Size = new System.Drawing.Size(121, 24);
             this.Ex1CbBox.TabIndex = 13;
@@ -193,7 +193,7 @@ namespace Do_An
             // Ex1ChkBox
             // 
             this.Ex1ChkBox.AutoSize = true;
-            this.Ex1ChkBox.Location = new System.Drawing.Point(98, 90);
+            this.Ex1ChkBox.Location = new System.Drawing.Point(99, 131);
             this.Ex1ChkBox.Name = "Ex1ChkBox";
             this.Ex1ChkBox.Size = new System.Drawing.Size(109, 21);
             this.Ex1ChkBox.TabIndex = 14;

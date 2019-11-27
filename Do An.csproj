@@ -139,19 +139,17 @@
     <Compile Include="UserControls\CalendarComponent.Designer.cs">
       <DependentUpon>CalendarComponent.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="UserControls\ChartComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\ChartComponent.Designer.cs">
       <DependentUpon>ChartComponent.cs</DependentUpon>
-=======
+    </Compile>
     <Compile Include="UserControls\SettingsComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\SettingsComponent.Designer.cs">
       <DependentUpon>SettingsComponent.cs</DependentUpon>
->>>>>>> masterA
     </Compile>
     <Compile Include="UserControls\ThingsToDoComponent.cs">
       <SubType>UserControl</SubType>
@@ -218,6 +216,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControls\AddThingsToDoComponent.resx">
+      <DependentUpon>AddThingsToDoComponent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\CalendarComponent.resx">
       <DependentUpon>CalendarComponent.cs</DependentUpon>
     </EmbeddedResource>

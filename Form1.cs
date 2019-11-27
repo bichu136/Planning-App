@@ -25,7 +25,7 @@ namespace Do_An
         ProjectData Pdata = new ProjectData();
         EventData Edata = new EventData();        
         private List<List<Button>> buttonManeger;
-        private ChartComponent chartComponent = new ChartComponent();
+        private ChartComponent chartComponent = new ChartComponent("0",100);
         public List<List<Button>> ButtonManeger
         {
             //get => buttonManeger; 
@@ -144,13 +144,11 @@ namespace Do_An
             AddThingToDoForm addThingToDo = new AddThingToDoForm();
             addThingToDo.ShowDialog();
         }
-
-<<<<<<< HEAD
         private void chartToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UserControlsPanel.Controls.Clear();
             UserControlsPanel.Controls.Add(chartComponent);
-=======
+        }
         private void addJobsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddThingsToDoComponent addThingToDo= new AddThingsToDoComponent();
@@ -163,7 +161,6 @@ namespace Do_An
             SettingsComponent Setting = new SettingsComponent();
             UserControlsPanel.Controls.Clear();
             UserControlsPanel.Controls.Add(Setting);
->>>>>>> masterA
         }
     }
 }

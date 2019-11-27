@@ -5,6 +5,11 @@ namespace Do_An
 {
     class EventData : ThingsToDoData
     {
+        public EventData() : base()
+        {
+            cmd.Parameters.Add("$TxTRow1",DbType.String);
+            cmd.Parameters.Add("$Type",DbType.Int32);
+        }
         public override void Close()
         {
             base.Close();
@@ -34,13 +39,13 @@ namespace Do_An
             return res;
             
         }
-        public override void Insert(object values)
+        public override long Insert(object values)
         {
             Event input = (Event)values;
             cmd.CommandText = "insert into ThingToDo (Name,Status,lastupdate,TxtRow1,Type) values ($Name,$Status,$lastupdate,$TxtRow1,$Type)";
-            cmd.Parameters.AddWithValue("$TxTRow1", input.beginTime.ToString("yyyy'-'MM'-'dd HH:mm:ss"));
-            cmd.Parameters.AddWithValue("$Type", ThingsToDo.types.Event);
-            base.Insert(values);
+            cmd.Parameters["$TxTRow1"].Value = input.beginTime.ToString("yyyy'-'MM'-'dd HH:mm:ss");
+            cmd.Parameters["$Type"].Value = (int)ThingsToDo.types.Event;
+            return base.Insert(values);
         }
 
         public override DataTable ReadDataTable()
@@ -63,20 +68,16 @@ namespace Do_An
         {
             base.StartReadFrom(TableName, columns);
         }
-        public override void UpdateByDoing(string ID)
+        public override void UpdateByDoing(string ID,long statuses)
         {
-            cnn.Open();
-            cmd.CommandText = "update ThingToDo set Status = 0, lastupdate = datetime('now') where ID = $ID";
-            cmd.Parameters.AddWithValue("$ID", ID);
-            int x = cmd.ExecuteNonQuery();
-            cnn.Close();
+            base.UpdateByDoing(ID,statuses);
         }
         public override DataTable ReadDataTableForDoing()
         {
             Open();
             cmd.CommandText = "select ID,Name from ThingToDo where Type = $Type and (status != $Status1)";
-            cmd.Parameters.AddWithValue("$Type", (long)ThingsToDo.types.Event);
-            cmd.Parameters.AddWithValue("$Status1", (long)ThingsToDo.statuses.Done);
+            cmd.Parameters["$Type"].Value =  (long)ThingsToDo.types.Event;
+            cmd.Parameters["$Status1"].Value = (long)ThingsToDo.statuses.Done;
             DataTable res = new DataTable();
             DB.SelectCommand = cmd;
             DB.Fill(res);
@@ -88,7 +89,7 @@ namespace Do_An
             cnn.Open();
             DataTable res = new DataTable();
             cmd.CommandText = "update ThingToDo set Status = 1 where Type = $Type and date(TxtRow1) = date('now')";
-            cmd.Parameters.AddWithValue("$Type", (int)ThingsToDo.types.Event);
+            cmd.Parameters["$Type"].Value =  (int)ThingsToDo.types.Event;
             cmd.ExecuteNonQuery();
             cnn.Close();
         }

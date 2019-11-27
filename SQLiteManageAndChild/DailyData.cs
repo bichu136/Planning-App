@@ -10,7 +10,9 @@ namespace Do_An
     {
         public DailyData():base()
         {
-               
+            cmd.Parameters.Add("$IntRow1",DbType.Int32);
+            cmd.Parameters.Add("$IntRow2",DbType.Int32);
+            cmd.Parameters.Add("$Type",DbType.Int32);
         }
 
         public override void Close()
@@ -18,15 +20,15 @@ namespace Do_An
             base.Close();
         }
 
-        public override void Insert(object values)
+        public override long Insert(object values)
         {
 
             Daily Input = (Daily)values;
             cmd.CommandText = "insert into ThingToDo (Name,Status,lastupdate,IntRow1,IntRow2,Type) values($Name,$Status,$lastupdate,$IntRow1,$IntRow2,$Type)";
-            cmd.Parameters.AddWithValue("$IntRow1", Input.Factor);
-            cmd.Parameters.AddWithValue("$IntRow2", Input.WeekDayToDo);
-            cmd.Parameters.AddWithValue("$Type", ThingsToDo.types.Daily);
-            base.Insert(values);
+            cmd.Parameters["$IntRow1"].Value = Input.Factor;
+            cmd.Parameters["$IntRow2"].Value = Input.WeekDayToDo;
+            cmd.Parameters["$Type"].Value = (int)ThingsToDo.types.Daily;
+            return base.Insert(values);
         }
         public override void Insert(string Table,List<string> columns, List<string> values)
         {
@@ -37,7 +39,7 @@ namespace Do_An
         {
             cnn.Open();
             cmd.CommandText = "update ThingToDo set Status = 1 where Type = 2 and Status != -1 and date(lastupdate) < date('now') and (IntRow1 = $IntRow1 or IntRow1 =7)";
-            cmd.Parameters.AddWithValue("$IntRow1", (long)DateTime.Now.DayOfWeek);
+            cmd.Parameters["$IntRow1"].Value= (long)DateTime.Now.DayOfWeek;
             int x = cmd.ExecuteNonQuery();
             cnn.Close();
         }
@@ -46,9 +48,8 @@ namespace Do_An
         {
             cnn.Open();
             DataTable res= new DataTable();
-            SQLiteCommand cmd= new SQLiteCommand("select ThingToDo.ID,ThingToDo.Name,Status.Name,ThingToDo.Status from ThingToDo inner join Status On(ThingToDo.Status=Status.ID) where Type = 2 and (IntRow1 = $IntRow1 or IntRow1 =7)", cnn);
-            cmd.Parameters.AddWithValue("$IntRow1", (long)DateTime.Now.DayOfWeek);
-
+            cmd.CommandText= "select ThingToDo.ID,ThingToDo.Name,Status.Name,ThingToDo.Status from ThingToDo inner join Status On(ThingToDo.Status=Status.ID) where Type = 2 and (IntRow1 = $IntRow1 or IntRow1 =7)";
+            cmd.Parameters["$IntRow1"].Value =(long)DateTime.Now.DayOfWeek;
             this.DB.SelectCommand = cmd;
             DB.Fill(res);
             cnn.Close();
@@ -58,33 +59,27 @@ namespace Do_An
         {
             base.StartReadFrom(TableName, columns);
         }
-        public override void UpdateStatusByID(string ID,long statuses)
+        public override void UpdateStatusByID(string ID, long statuses)
         {
-            cmd.CommandText = "update ThingToDo set Status = $Status, lastupdate = datetime('now') where ID = $ID";
-            cmd.Parameters.AddWithValue("$ID", ID);
-            cmd.Parameters.AddWithValue("$Status", statuses);
-            cnn.Open();
-            int x = cmd.ExecuteNonQuery();
-            cnn.Close();
+            base.UpdateByDoing(ID,statuses);
         }
         public override DataTable ReadDataTableForDoing()
         {
             Open();
-            cmd.CommandText = "select ID,Name from ThingToDo where Type = $Type and (status != $Status1)";
-            cmd.Parameters.AddWithValue("$Type", (long)ThingsToDo.types.Daily);
-
-            cmd.Parameters.AddWithValue("$Status1", (long)ThingsToDo.statuses.Done);
+            cmd.CommandText = "select ID,Name from ThingToDo where Type = $Type and (status != $Status)";
+            cmd.Parameters["$Type"].Value =  (long)ThingsToDo.types.Daily;
+            cmd.Parameters["$Status"].Value = (long)ThingsToDo.statuses.Done;
             DataTable res = new DataTable();
             DB.SelectCommand = cmd;
             DB.Fill(res);
             cnn.Close();
             return res;
         }
-        public override void UpdateByDoing(string ID)
+        public override void UpdateByDoing(string ID,long statuses)
         {
             cnn.Open();
             cmd.CommandText = "update ThingToDo set Status = 0, lastupdate = datetime('now') where ID = $ID";
-            cmd.Parameters.AddWithValue("$ID", ID);
+            cmd.Parameters["$ID"].Value =  ID;
             int x = cmd.ExecuteNonQuery();
             cnn.Close();
         }

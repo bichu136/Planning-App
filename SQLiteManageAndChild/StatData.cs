@@ -14,7 +14,7 @@ namespace Do_An
             base.Close();
         }
 
-        public override void Insert(object values)
+        public override long Insert(object values)
         {
             List<string> input = (List<string>)values;
             cnn.Open();
@@ -23,6 +23,7 @@ namespace Do_An
             cmd.Parameters.AddWithValue("$Des", input[1]);
             cmd.ExecuteNonQuery();
             cnn.Close();
+            return 0;
         }
 
         public override void Insert(string TableName, List<string> columns, List<string> values)

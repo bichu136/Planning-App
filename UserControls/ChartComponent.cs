@@ -18,15 +18,29 @@ namespace Do_An.UserControls
         private List<System.Drawing.PointF> PointList;
         private List<System.Drawing.PointF> SubpointList;
         private System.Drawing.PointF CentralPoint;
-        private List<double> ScorePercentage;
+        private List<double> ScorePercentage; //To Column Score
         private List<Label> LabelList;
+        TTDStatsData ScoresData;
+        double Max;
+        DataTable Scores;
         public List<PointF> pointList { get => PointList; set => PointList = value; }
         public List<PointF> subpointList { get => SubpointList; set => SubpointList = value; }
         public PointF centralPoint { get => CentralPoint; set => CentralPoint = value; }
         public List<double> scorePercentage { get => ScorePercentage; set => ScorePercentage = value; }
         public List<Label> labelList { get => LabelList; set => LabelList = value; }
-        public ChartComponent()
+        public ChartComponent(String TTDID,double Max)
         {
+            ScoresData = new TTDStatsData();
+            Scores = ScoresData.ReadScoreForTTD(TTDID);
+            this.Max = Max;
+            InitializeComponent();
+            pen = new Pen(Color.Black);
+            InitializePoint();
+            panelPaint.Paint += PanelPaint_Paint;
+        }
+        private ChartComponent()
+        {
+
             InitializeComponent();
             pen = new Pen(Color.Black);
             InitializePoint();
@@ -46,14 +60,13 @@ namespace Do_An.UserControls
 
         private void InitializePoint()
         {
-            RandomScore();
             pointList = new List<PointF>();
             subpointList = new List<PointF>();
             centralPoint = new PointF((panelPaint.Size.Width / 2), panelPaint.Size.Height / 2);
             PointF SubPoint = new PointF();
             labelList = new List<Label>();
             SubPoint = ConvertPoint(centralPoint);
-            StackPoint(Default.Number);
+            StackPoint(Scores.Rows.Count);
         }
 
         private void RandomScore()
@@ -80,7 +93,7 @@ namespace Do_An.UserControls
 
                 Label NewLabel = new Label();
                 NewLabel.Location = new System.Drawing.Point((int)(NewPoint.X), (int)(NewPoint.Y));
-                NewLabel.Text = Default.TextList[i];
+                NewLabel.Text = Scores.Rows[i].Field<String>("N");
                 int LblX = NewLabel.Location.X;
                 int LblY = NewLabel.Location.Y;
                 float CenX = CentralPoint.X;
@@ -115,7 +128,17 @@ namespace Do_An.UserControls
 
 
                 PointF SubPoint = new PointF();
-                double NewNum = scorePercentage[i];
+                object T = Scores.Rows[i].Field<object>("Score");
+                double NewNum;
+                if (T!= null)
+                {
+                    NewNum = Convert.ToDouble(T.ToString()) / Max;
+                }
+                else
+                {
+                    NewNum = 0;
+                }
+                
                 SubPoint.X = (float)(centralPoint.X + Default.Distance * NewNum * Math.Sin(Angle));
                 SubPoint.Y = (float)(centralPoint.Y - Default.Distance * NewNum * Math.Cos(Angle));
                 subpointList.Add(SubPoint);
@@ -123,7 +146,7 @@ namespace Do_An.UserControls
                 Angle += Step;
             }
         }
-        private System.Drawing.PointF ConvertPoint(System.Drawing.PointF point)
+        private System.Drawing.PointF ConvertPoint(System.Drawing.PointF point) 
         {
             System.Drawing.PointF NewPoint = new System.Drawing.PointF((float)(point.X - Default.Distance), (float)(point.Y - Default.Distance));
             return NewPoint;

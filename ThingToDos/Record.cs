@@ -8,8 +8,8 @@ namespace Do_An
 {
     class Record
     {
-        int _TTD_ID;
-        int _Current;
+        long _TTD_ID;
+        long _Current;
         DateTime _Date;
         public Record()
         {
@@ -22,8 +22,8 @@ namespace Do_An
             this._Date = Date;
         }
 
-        public int TTD_ID { get => _TTD_ID; set => _TTD_ID = value; }
-        public int Current { get => _Current; set => _Current = value; }
+        public long TTD_ID { get => _TTD_ID; set => _TTD_ID = value; }
+        public long Current { get => _Current; set => _Current = value; }
         public DateTime Date { get => _Date; set => _Date = value; }
     }
 }

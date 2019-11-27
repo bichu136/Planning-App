@@ -11,7 +11,7 @@ namespace Do_An
         protected int Status;
         protected DateTime lastupdate;
         public int status { get => Status; }
-        public string id { get => ID; }
+        public string id { get => ID; set => ID = value; }
         public string name { get => Name; }
         public Dictionary<long, int> score { get => Score; }
         public DateTime lastUpDate { get => lastupdate; }

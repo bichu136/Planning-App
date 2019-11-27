@@ -31,31 +31,12 @@ namespace Do_An
             pData = new ProjectData();
             oData = new ObjectiveData();
             InitializeComponent();
-            
+            CurrentTxtBox.KeyPress += Default.OnlyNumberPress;
             TypeCbBox.DataSource = typedata.ReadDataTable();
             TypeCbBox.DisplayMember = "Name";
             TypeCbBox.ValueMember = "ID";
+            TypeCbBox.SelectedIndex = 1;
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            RecordData RData = new RecordData();
-            Record package = new Record((int)NameCbBox.SelectedValue, DateTime.Now.Date, getCurrent());
-            RData.Insert(package);
-            ttdData.UpdateWhenDoingSomethingByID((int)NameCbBox.SelectedValue);
-            this.Close();
-        }
-
-        private int getCurrent()
-        {
-            if (flag = true)
-            {
-                return Convert.ToInt32(CurrentTxtBox);
-            }
-            return 0;
-        }
-
-        bool flag = false;
         private void NameCbBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox x = (ComboBox)sender;
@@ -63,10 +44,10 @@ namespace Do_An
             {
                 switch ((long)TypeCbBox.SelectedValue)
                 {
-                    case (long)ThingsToDo.types.Objective:
-                        HasPlanChkBox.Checked = pData.isCheck();
-                        break;
                     case (long)ThingsToDo.types.Project:
+                        HasPlanChkBox.Checked = pData.isCheck(NameCbBox.SelectedValue.ToString());
+                        break;
+                    case (long)ThingsToDo.types.Objective:
                         UnitLbl.Text = oData.Unit(NameCbBox.SelectedValue.ToString());
                         break;
 
@@ -105,10 +86,12 @@ namespace Do_An
                         LoadProject();
                         break;
                 }
+
                 Namedt = cursor.ReadDataTableForDoing();
                 NameCbBox.DataSource = Namedt;
                 NameCbBox.DisplayMember = "Name";
-                NameCbBox.ValueMember = "ID";            
+                NameCbBox.ValueMember = "ID";
+                NameCbBox.Text = "";
             }
             catch(Exception ex)
             {
@@ -121,7 +104,10 @@ namespace Do_An
         }
         private void LoadProject()
         {
+            UnitLbl.Text = "%";
             HasPlanChkBox.Show();
+            UnitLbl.Show();
+            CurrentTxtBox.Show();
         }
         private void LoadOpjective()
         {
@@ -139,9 +125,19 @@ namespace Do_An
 
         private void DoneBtn_Click(object sender, EventArgs e)
         {
-            cursor.UpdateByDoing(NameCbBox.SelectedValue.ToString());
             RecordData Rdata = new RecordData();
-            Rdata.Insert(new Record() { TTD_ID=(int)NameCbBox.SelectedValue , Date=DateTime.Now.Date,Current = getCurrent() });
+            cursor.UpdateByDoing(NameCbBox.SelectedValue.ToString(), (long)ThingsToDo.statuses.Done);
+            switch ((long)TypeCbBox.SelectedValue)
+            {
+                default:
+                    Rdata.Insert(new Record() { TTD_ID = (int)NameCbBox.SelectedValue, Date = DateTime.Now.Date, Current = 0 });
+                    break;
+                case (long)ThingsToDo.types.Objective:
+                case (long)ThingsToDo.types.Project:
+                    Rdata.Insert(new Record() { TTD_ID = (long)NameCbBox.SelectedValue, Date = DateTime.Now.Date, Current = Convert.ToInt32(CurrentTxtBox.Text) });
+                    break;
+            }
+            this.Close();
         }
     }
 }

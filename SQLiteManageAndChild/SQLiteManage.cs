@@ -50,9 +50,10 @@ namespace Do_An
             cmd.CommandText = "select " + buffer + " from " + TableName;
             reader = cmd.ExecuteReader();
         }
-        public virtual void Insert(object values)
+        public virtual long Insert(object values)
         {
             if (cmd.Parameters.Count == 0) throw new InvalidOperationException();
+            return 0;
             
         }
         public virtual void Insert(String TableName, List<string> columns, List<string> values)

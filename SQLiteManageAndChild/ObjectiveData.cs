@@ -6,6 +6,13 @@ namespace Do_An
 {
     class ObjectiveData : ThingsToDoData
     {
+        public ObjectiveData() : base()
+        {
+            
+            cmd.Parameters.Add("$IntRow1",DbType.Int32);
+            cmd.Parameters.Add("$TxtRow1",DbType.String);
+            cmd.Parameters.Add("$Type",DbType.Int32);
+        }
         public override void Close()
         {
             base.Close();
@@ -17,14 +24,14 @@ namespace Do_An
             base.Insert(TableName, columns, values);
         }
 
-        public override void Insert(object values)
+        public override long Insert(object values)
         {
             Objective input = (Objective)values;
             cmd.CommandText = "insert into ThingToDo (Name,Status,lastupdate,IntRow1,TxtRow1,Type) values ($Name,$Status,$lastupdate,$IntRow1,$TxtRow1,$Type)";
-            cmd.Parameters.AddWithValue("$IntRow1", input.goal);
-            cmd.Parameters.AddWithValue("$TxtRow1", input.unit);
-            cmd.Parameters.AddWithValue("$Type", ThingsToDo.types.Objective);
-            base.Insert(values);
+            cmd.Parameters["$IntRow1"].Value = input.goal;
+            cmd.Parameters["$TxtRow1"].Value = input.unit;
+            cmd.Parameters["$Type"].Value = ThingsToDo.types.Objective;
+            return base.Insert(values);
         }
 
         public override DataTable ReadDataTable()
@@ -44,23 +51,34 @@ namespace Do_An
         public override DataTable ReadDataTableForDoing()
         {
             Open();
-            cmd.CommandText = "select ID,Name from ThingToDo where Type = $Type and (status != $Status1)";
+            cmd.CommandText = "select ID,Name from ThingToDo where Type = $Type and (status != $Status)";
             cmd.Parameters.AddWithValue("$Type", (long)ThingsToDo.types.Objective);
-
-            cmd.Parameters.AddWithValue("$Status1", (long)ThingsToDo.statuses.Done);
+            cmd.Parameters.AddWithValue("$Status", (long)ThingsToDo.statuses.Done);
             DataTable res = new DataTable();
             DB.SelectCommand = cmd;
             DB.Fill(res);
             cnn.Close();
             return res;
         }
-        public override void UpdateByDoing(string ID)
+        public override void UpdateByDoing(string ID,long statuses)
+        {
+            RecordData rData = new RecordData();
+            long Current=0;
+            if (rData.CountOfCurrent(ID)>0)
+                 Current = rData.SumOfCurrent(ID);
+            if (Current > getGoal(ID))
+            {
+                base.UpdateByDoing(ID, statuses);
+            }
+        }
+        private long getGoal(string ID)
         {
             cnn.Open();
-            cmd.CommandText = "update ThingToDo set lastupdate = datetime('now') where ID = $ID";
-            cmd.Parameters.AddWithValue("$ID", ID);
-            int x = cmd.ExecuteNonQuery();
+            cmd.CommandText = "select IntRow1 from ThingToDo where ID=$ID";
+            cmd.Parameters["$ID"].Value = ID;
+            long x = (long)cmd.ExecuteScalar();
             cnn.Close();
+            return x;
         }
         public void UpdateDone(string ID)
         {
@@ -73,7 +91,7 @@ namespace Do_An
             //cmd.Reset();
             Open();
             cmd.CommandText = "select TxtRow1 from ThingToDo where ID = $ID";
-            cmd.Parameters.AddWithValue("$ID", ID);
+            cmd.Parameters["$ID"].Value =  ID;
             string res = cmd.ExecuteScalar().ToString();
             cnn.Close();
             return res;

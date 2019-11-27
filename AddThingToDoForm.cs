@@ -154,25 +154,30 @@ namespace Do_An
 
         private void AddThingsToDo(object sender, EventArgs e)
         {
+            if (!checkReqirement())
+            {
+                MessageBox.Show("not enough filling");
+                return;
+            }
             ThingsToDo input;
             ThingsToDoData data;
             Do_An.TTDStatsData StatData = new TTDStatsData();
             switch (TypeCbBox.SelectedIndex)
             {
                 case 0:
-                    input = new Objective(NameTxtBox.Text,Scores,DateTime.Now,Convert.ToInt32(Ex1TxtBox.Text),Ex2TxtBox1.Text) ;
+                    input = new Objective(NameTxtBox.Text, Scores, DateTime.Now, Convert.ToInt32(Ex1TxtBox.Text), Ex2TxtBox1.Text);
                     data = new ObjectiveData();
                     break;
                 case 1:
-                    input = new Daily(NameTxtBox.Text, Scores, DateTime.Now, Convert.ToInt32(Ex1TxtBox.Text),Ex1CbBox.SelectedIndex);
+                    input = new Daily(NameTxtBox.Text, Scores, DateTime.Now, Convert.ToInt32(Ex1TxtBox.Text), Ex1CbBox.SelectedIndex);
                     data = new DailyData();
                     break;
                 case 2:
-                    input = new Event( NameTxtBox.Text, Scores, DateTime.Now, Ex1DateTime.Value);
+                    input = new Event(NameTxtBox.Text, Scores, DateTime.Now, Ex1DateTime.Value);
                     data = new EventData();
                     break;
                 case 3:
-                    input = new Project( NameTxtBox.Text, Scores, DateTime.Now, Ex1DateTime.Value,Ex1ChkBox.Checked);
+                    input = new Project(NameTxtBox.Text, Scores, DateTime.Now, Ex1DateTime.Value, Ex1ChkBox.Checked);
                     data = new ProjectData();
                     break;
                 default:
@@ -181,7 +186,7 @@ namespace Do_An
                     break;
             }
             //Program.manager.Data.Add(input);
-            data.Insert(input);
+            input.id = data.Insert(input).ToString();
             StatData.Insert(input);
             this.Close();
         }
