@@ -25,7 +25,7 @@ namespace Do_An
         ProjectData Pdata = new ProjectData();
         EventData Edata = new EventData();        
         private List<List<Button>> buttonManeger;
-        private ChartComponent chartComponent = new ChartComponent("0",100);
+        private ChartComponent chartComponent = new ChartComponent("0",50);
         public List<List<Button>> ButtonManeger
         {
             //get => buttonManeger; 

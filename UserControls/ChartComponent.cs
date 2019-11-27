@@ -42,7 +42,7 @@ namespace Do_An.UserControls
         {
 
             InitializeComponent();
-            pen = new Pen(Color.Black);
+            pen = new Pen(Color.FromArgb(30,Color.DarkGray));
             InitializePoint();
             panelPaint.Paint += PanelPaint_Paint;
         }
@@ -54,8 +54,8 @@ namespace Do_An.UserControls
 
                 e.Graphics.DrawLine(pen, centralPoint.X, centralPoint.Y, point.X, point.Y);
             }
-
-            e.Graphics.FillPolygon(new SolidBrush(Color.Orange), subpointList.ToArray(), System.Drawing.Drawing2D.FillMode.Winding);
+            Brush x = new SolidBrush(Color.FromArgb(100, Color.Red)) ;
+            e.Graphics.FillPolygon(x, subpointList.ToArray(), System.Drawing.Drawing2D.FillMode.Winding);
         }
 
         private void InitializePoint()
@@ -90,39 +90,46 @@ namespace Do_An.UserControls
                 NewPoint.X = (float)(centralPoint.X + Default.Distance * Math.Sin(Angle));
                 NewPoint.Y = (float)(centralPoint.Y - Default.Distance * Math.Cos(Angle));
                 pointList.Add(NewPoint);
-
+                int LblX = (int)NewPoint.X;
+                int LblY = (int)NewPoint.Y;
                 Label NewLabel = new Label();
-                NewLabel.Location = new System.Drawing.Point((int)(NewPoint.X), (int)(NewPoint.Y));
+                //NewLabel.Size
                 NewLabel.Text = Scores.Rows[i].Field<String>("N");
-                int LblX = NewLabel.Location.X;
-                int LblY = NewLabel.Location.Y;
+                NewLabel.Margin = new Padding(0, 0, 0, 0);
+                NewLabel.AutoSize = true;                
+                int WLbl = NewLabel.PreferredSize.Width;
+                int HLbl = NewLabel.PreferredSize.Height;
                 float CenX = CentralPoint.X;
                 float CenY = CentralPoint.Y;
+                
                 if (LblX <= CenX && LblX >= (LblX - Default.Distance))
                 {
                     if (LblY == (CenY - Default.Distance))
                     {
-                        NewLabel.Location = new System.Drawing.Point(LblX, LblY - 10);
-                        NewLabel.Anchor = AnchorStyles.Top;
+                        //NewLabel.Anchor = AnchorStyles.Top;
+                        NewLabel.Location = new System.Drawing.Point((int)(NewPoint.X) - WLbl / 2, (int)(NewPoint.Y)-HLbl);
+                        
                     }
                     else if (LblY == CenY + Default.Distance)
                     {
-                        NewLabel.Location = new System.Drawing.Point(LblX, LblY + 10);
-                        NewLabel.Anchor = AnchorStyles.Bottom;
+                        //NewLabel.Anchor = AnchorStyles.Bottom;
+                        NewLabel.Location = new System.Drawing.Point((int)(NewPoint.X) - WLbl / 2, (int)(NewPoint.Y));
+                        
                     }
                     else
                     {
-                        NewLabel.Location = new System.Drawing.Point(LblX - 60, LblY);
-                        NewLabel.Anchor = AnchorStyles.Left;
+                        //NewLabel.Anchor = AnchorStyles.Left;
+                        NewLabel.Location = new System.Drawing.Point((int)(NewPoint.X)-WLbl, (int)(NewPoint.Y)-HLbl);
+                        
                     }
                 }
                 else
                 {
-                    NewLabel.Location = new System.Drawing.Point(LblX + 10, LblY);
-                    NewLabel.Anchor = AnchorStyles.Right;
+                    //NewLabel.Anchor = AnchorStyles.Right;
+                    NewLabel.Location = new System.Drawing.Point((int)(NewPoint.X), (int)(NewPoint.Y));
+                    
                 }
-                NewLabel.Margin = new Padding(0, 0, 0, 0);
-                NewLabel.AutoSize = true;
+                //NewLabel.Location = new System.Drawing.Point((int)(NewPoint.X), (int)(NewPoint.Y));
                 labelList.Add(NewLabel);
                 panelPaint.Controls.Add(NewLabel);
 
@@ -132,11 +139,11 @@ namespace Do_An.UserControls
                 double NewNum;
                 if (T!= null)
                 {
-                    NewNum = Convert.ToDouble(T.ToString()) / Max;
+                    NewNum = (Convert.ToDouble(T.ToString()) / Max)+0.05;
                 }
                 else
                 {
-                    NewNum = 0;
+                    NewNum = 0.05;
                 }
                 
                 SubPoint.X = (float)(centralPoint.X + Default.Distance * NewNum * Math.Sin(Angle));

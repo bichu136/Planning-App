@@ -31,6 +31,7 @@ namespace Do_An
             pData = new ProjectData();
             oData = new ObjectiveData();
             InitializeComponent();
+            this.Controls.Add(timeComponent);
             CurrentTxtBox.KeyPress += Default.OnlyNumberPress;
             TypeCbBox.DataSource = typedata.ReadDataTable();
             TypeCbBox.DisplayMember = "Name";
@@ -39,6 +40,7 @@ namespace Do_An
         }
         private void NameCbBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            double Max = 0;
             ComboBox x = (ComboBox)sender;
             if (x.Items.Count != 0)
             {
@@ -46,13 +48,17 @@ namespace Do_An
                 {
                     case (long)ThingsToDo.types.Project:
                         HasPlanChkBox.Checked = pData.isCheck(NameCbBox.SelectedValue.ToString());
+                        Max = 50;
                         break;
                     case (long)ThingsToDo.types.Objective:
                         UnitLbl.Text = oData.Unit(NameCbBox.SelectedValue.ToString());
+                        Max = 75;
                         break;
-
+                    default:
+                        Max = 20;
+                        break;
                 }
-                
+                addChart(x.SelectedValue.ToString(), Max);
             }
 
             
@@ -91,7 +97,6 @@ namespace Do_An
                 NameCbBox.DataSource = Namedt;
                 NameCbBox.DisplayMember = "Name";
                 NameCbBox.ValueMember = "ID";
-                NameCbBox.Text = "";
             }
             catch(Exception ex)
             {
@@ -138,6 +143,16 @@ namespace Do_An
                     break;
             }
             this.Close();
+        }
+        private void addChart(String TTDID, double Max)
+        {
+            StatPanel.Controls.Clear();
+            if (TTDID == "")
+            {
+                return;
+            }
+            
+            StatPanel.Controls.Add(new UserControls.ChartComponent(TTDID,Max));
         }
     }
 }

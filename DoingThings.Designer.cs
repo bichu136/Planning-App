@@ -107,13 +107,13 @@
             this.InformPanel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.InformPanel.Location = new System.Drawing.Point(460, 13);
             this.InformPanel.Name = "InformPanel";
-            this.InformPanel.Size = new System.Drawing.Size(566, 353);
+            this.InformPanel.Size = new System.Drawing.Size(566, 513);
             this.InformPanel.TabIndex = 2;
             // 
             // Goal_DeadlineLbl
             // 
             this.Goal_DeadlineLbl.AutoSize = true;
-            this.Goal_DeadlineLbl.Location = new System.Drawing.Point(300, 183);
+            this.Goal_DeadlineLbl.Location = new System.Drawing.Point(407, 313);
             this.Goal_DeadlineLbl.Name = "Goal_DeadlineLbl";
             this.Goal_DeadlineLbl.Size = new System.Drawing.Size(46, 17);
             this.Goal_DeadlineLbl.TabIndex = 4;
@@ -122,7 +122,7 @@
             // ValueGoal_DeadlineLbl
             // 
             this.ValueGoal_DeadlineLbl.AutoSize = true;
-            this.ValueGoal_DeadlineLbl.Location = new System.Drawing.Point(391, 183);
+            this.ValueGoal_DeadlineLbl.Location = new System.Drawing.Point(498, 313);
             this.ValueGoal_DeadlineLbl.Name = "ValueGoal_DeadlineLbl";
             this.ValueGoal_DeadlineLbl.Size = new System.Drawing.Size(46, 17);
             this.ValueGoal_DeadlineLbl.TabIndex = 4;
@@ -131,7 +131,7 @@
             // ValueCurrentBtn
             // 
             this.ValueCurrentBtn.AutoSize = true;
-            this.ValueCurrentBtn.Location = new System.Drawing.Point(391, 128);
+            this.ValueCurrentBtn.Location = new System.Drawing.Point(498, 258);
             this.ValueCurrentBtn.Name = "ValueCurrentBtn";
             this.ValueCurrentBtn.Size = new System.Drawing.Size(46, 17);
             this.ValueCurrentBtn.TabIndex = 4;
@@ -140,7 +140,7 @@
             // CurrentLbl
             // 
             this.CurrentLbl.AutoSize = true;
-            this.CurrentLbl.Location = new System.Drawing.Point(300, 128);
+            this.CurrentLbl.Location = new System.Drawing.Point(407, 258);
             this.CurrentLbl.Name = "CurrentLbl";
             this.CurrentLbl.Size = new System.Drawing.Size(46, 17);
             this.CurrentLbl.TabIndex = 4;
@@ -148,9 +148,9 @@
             // 
             // StatPanel
             // 
-            this.StatPanel.Location = new System.Drawing.Point(77, 128);
+            this.StatPanel.Location = new System.Drawing.Point(3, 95);
             this.StatPanel.Name = "StatPanel";
-            this.StatPanel.Size = new System.Drawing.Size(181, 155);
+            this.StatPanel.Size = new System.Drawing.Size(398, 415);
             this.StatPanel.TabIndex = 3;
             // 
             // NameLbl
@@ -195,7 +195,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1038, 377);
+            this.ClientSize = new System.Drawing.Size(1038, 524);
             this.Controls.Add(this.InformPanel);
             this.Controls.Add(this.DoneBtn);
             this.Controls.Add(this.UnitPanel);

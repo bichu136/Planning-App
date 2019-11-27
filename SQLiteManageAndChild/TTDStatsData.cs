@@ -48,7 +48,7 @@ namespace Do_An
         public DataTable ReadScoreForTTD(string TTDID)
         {
             cnn.Open();
-            cmd.CommandText = "select Stats.Name N,X.Score,Stats.ID from Stats left join (select TTD_Stats.StatsID,TTD_Stats.Score from TTD_Stats where TTDID = 0) X on(X.StatsID = Stats.ID)";
+            cmd.CommandText = "select Stats.Name N,X.Score,Stats.ID from Stats left join (select TTD_Stats.StatsID,TTD_Stats.Score from TTD_Stats where TTDID = $TTDID) X on(X.StatsID = Stats.ID)";
             cmd.Parameters["$TTDID"].Value = TTDID;
             DB.SelectCommand = cmd;
             DataTable res = new DataTable();

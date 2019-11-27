@@ -36,16 +36,15 @@
             this.panelPaint.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelPaint.Location = new System.Drawing.Point(0, 0);
             this.panelPaint.Name = "panelPaint";
-            this.panelPaint.Size = new System.Drawing.Size(335, 307);
+            this.panelPaint.Size = new System.Drawing.Size(400, 400);
             this.panelPaint.TabIndex = 0;
             // 
             // ChartComponent
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.panelPaint);
             this.Name = "ChartComponent";
-            this.Size = new System.Drawing.Size(335, 307);
+            this.Size = new System.Drawing.Size(400, 400);
             this.ResumeLayout(false);
 
         }

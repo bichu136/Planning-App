@@ -127,8 +127,8 @@ namespace Do_An
             // 
             // AddBtn
             // 
-            this.AddBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddBtn.Location = new System.Drawing.Point(702, 171);
+            this.AddBtn.AutoSize = true;
+            this.AddBtn.Location = new System.Drawing.Point(597, 136);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(133, 54);
             this.AddBtn.TabIndex = 7;
