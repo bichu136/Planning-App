@@ -139,11 +139,11 @@
     <Compile Include="UserControls\CalendarComponent.Designer.cs">
       <DependentUpon>CalendarComponent.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ChartComponent.cs">
+    <Compile Include="UserControls\StatComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\ChartComponent.Designer.cs">
-      <DependentUpon>ChartComponent.cs</DependentUpon>
+    <Compile Include="UserControls\StatComponent.Designer.cs">
+      <DependentUpon>StatComponent.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SettingsComponent.cs">
       <SubType>UserControl</SubType>
@@ -222,8 +222,11 @@
     <EmbeddedResource Include="UserControls\CalendarComponent.resx">
       <DependentUpon>CalendarComponent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ChartComponent.resx">
-      <DependentUpon>ChartComponent.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\StatComponent.resx">
+      <DependentUpon>StatComponent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SettingsComponent.resx">
+      <DependentUpon>SettingsComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ThingsToDoComponent.resx">
       <DependentUpon>ThingsToDoComponent.cs</DependentUpon>

@@ -152,7 +152,7 @@ namespace Do_An
                 return;
             }
             
-            StatPanel.Controls.Add(new UserControls.ChartComponent(TTDID,Max));
+            StatPanel.Controls.Add(new UserControls.StatsComponent(TTDID,Max));
         }
     }
 }
