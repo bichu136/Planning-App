@@ -205,9 +205,10 @@
             // CalendarComponent
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.calendarPanel);
             this.Name = "CalendarComponent";
-            this.Size = new System.Drawing.Size(986, 565);
+            this.Size = new System.Drawing.Size(984, 563);
             this.calendarPanel.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel5.ResumeLayout(false);

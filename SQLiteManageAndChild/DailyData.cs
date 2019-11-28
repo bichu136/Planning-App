@@ -38,8 +38,8 @@ namespace Do_An
         public void UpdateNewDay()
         {
             cnn.Open();
-            cmd.CommandText = "update ThingToDo set Status = 1 where Type = 2 and Status != -1 and date(lastupdate) < date('now') and (IntRow1 = $IntRow1 or IntRow1 =7)";
-            cmd.Parameters["$IntRow1"].Value= (long)DateTime.Now.DayOfWeek;
+            cmd.CommandText = "update ThingToDo set Status = 1 where Type = 2 and Status != -1 and date(lastupdate) < date('now') and (IntRow2 = $IntRow2 or IntRow2 =7)";
+            cmd.Parameters["$IntRow2"].Value= (long)DateTime.Now.DayOfWeek;
             int x = cmd.ExecuteNonQuery();
             cnn.Close();
         }
@@ -48,8 +48,8 @@ namespace Do_An
         {
             cnn.Open();
             DataTable res= new DataTable();
-            cmd.CommandText= "select ThingToDo.ID,ThingToDo.Name,Status.Name,ThingToDo.Status from ThingToDo inner join Status On(ThingToDo.Status=Status.ID) where Type = 2 and (IntRow1 = $IntRow1 or IntRow1 =7)";
-            cmd.Parameters["$IntRow1"].Value =(long)DateTime.Now.DayOfWeek;
+            cmd.CommandText= "select ThingToDo.ID,ThingToDo.Name,Status.Name,ThingToDo.Status from ThingToDo inner join Status On(ThingToDo.Status=Status.ID) where Type = 2 and (IntRow2 = $IntRow2 or IntRow2 =7)";
+            cmd.Parameters["$IntRow2"].Value =(long)DateTime.Now.DayOfWeek;
             this.DB.SelectCommand = cmd;
             DB.Fill(res);
             cnn.Close();

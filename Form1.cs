@@ -18,7 +18,7 @@ namespace Do_An
         #region Properties Of Class
         
         private AddThingToDoForm addThingToDoForm;
-        ToDoManagerComponent toDoManager = new ToDoManagerComponent();
+        
         Weather weather;
         WeatherForecast forecast = new WeatherForecast();
         DailyData Ddata = new DailyData();
@@ -123,6 +123,7 @@ namespace Do_An
 
         private void mainToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ToDoManagerComponent toDoManager = new ToDoManagerComponent();
             UserControlsPanel.Controls.Clear();
             UserControlsPanel.Controls.Add(toDoManager);
         }

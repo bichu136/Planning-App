@@ -19,12 +19,7 @@ namespace Do_An
         public ToDoManagerComponent()
         {
             InitializeComponent();
-
             //AddJobsBtn.Click += AddJobs_Click;
-            
-            
-            
-
         }
 
 
@@ -32,8 +27,11 @@ namespace Do_An
         {
             foreach (DataGridViewRow row in DailyDataGrid.Rows)
             {
-                Ddata.UpdateStatusByID(row.Cells["ID"].Value.ToString(), (long)row.Cells["DONE"].Value);
-                RData.Insert(new Record(Convert.ToInt32(row.Cells["ID"].Value.ToString()),DateTime.Now,0));
+                if ((long)row.Cells["DONE"].Value == 0)
+                {
+                    Ddata.UpdateStatusByID(row.Cells["ID"].Value.ToString(), (long)row.Cells["DONE"].Value);
+                    RData.Insert(new Record(Convert.ToInt32(row.Cells["ID"].Value.ToString()), DateTime.Now, 0));
+                }
             }
         }
 

@@ -146,8 +146,8 @@
             // 
             // ToDoManagerComponent
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.button4);
             this.Controls.Add(this.ShowDailyPanel);
             this.Controls.Add(this.panel1);

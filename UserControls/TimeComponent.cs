@@ -27,11 +27,12 @@ namespace Do_An
             HourLbl.Text = "00";
             Clock = TimeSpan.Zero;
             ToggleBtn.Text = "Start";
+            ToggleBtn.Click += BeginTimer_Click;
 
         }
         private void Timer_Tick(object sender, EventArgs e)
         {
-            Clock.Add(TimeSpan.FromTicks(TimeSpan.TicksPerSecond));
+            Clock = Clock.Add(TimeSpan.FromTicks(TimeSpan.TicksPerSecond));
             UpdateLabels(Clock);
         }
 
@@ -46,9 +47,9 @@ namespace Do_An
 
         private void UpdateLabels(TimeSpan clock)
         {
-            SecLbl.Text = (clock.TotalSeconds - clock.TotalMinutes * 60).ToString().PadRight(2,'0');
-            MinLbl.Text = (clock.TotalMinutes - clock.TotalHours * 60).ToString().PadRight(2, '0');
-            HourLbl.Text = (clock.TotalHours).ToString().PadRight(2, '0');
+            SecLbl.Text = (clock.TotalSeconds - (int)clock.TotalMinutes * 60).ToString();
+            MinLbl.Text = ((int)clock.TotalMinutes - (int)clock.TotalHours * 60).ToString();
+            HourLbl.Text = ((int)clock.TotalHours).ToString();
         }
 
         private void EndTimer_Click(object sender, EventArgs e)

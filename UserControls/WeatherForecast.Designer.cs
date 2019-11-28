@@ -121,6 +121,7 @@
             // WeatherForecast
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.panelWeatherIcon);
             this.Controls.Add(this.WAreaLbl);
             this.Controls.Add(this.labelArea);
@@ -131,7 +132,7 @@
             this.Controls.Add(this.labelTemperature);
             this.Controls.Add(this.labelDay);
             this.Name = "WeatherForecast";
-            this.Size = new System.Drawing.Size(371, 225);
+            this.Size = new System.Drawing.Size(986, 565);
             this.ResumeLayout(false);
             this.PerformLayout();
 
