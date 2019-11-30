@@ -69,6 +69,11 @@ namespace Do_An
             x =(long)cmd.ExecuteScalar();
             return x;
         }
+
+        public ThingsToDo GetTTDOn(DateTime dateTime)
+        {
+            return null;
+        }
     }
 
 }

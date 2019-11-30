@@ -42,27 +42,24 @@ namespace Do_An
         {
             double Max = 0;
             ComboBox x = (ComboBox)sender;
-            if (x.Items.Count != 0)
+            DataTable dt= (DataTable)x.DataSource;
+            switch ((long)TypeCbBox.SelectedValue)
             {
-                switch ((long)TypeCbBox.SelectedValue)
-                {
-                    case (long)ThingsToDo.types.Project:
-                        HasPlanChkBox.Checked = pData.isCheck(NameCbBox.SelectedValue.ToString());
-                        Max = 50;
-                        break;
-                    case (long)ThingsToDo.types.Objective:
-                        UnitLbl.Text = oData.Unit(NameCbBox.SelectedValue.ToString());
-                        Max = 75;
-                        break;
-                    default:
-                        Max = 20;
-                        break;
+                 case (long)ThingsToDo.types.Project:
+                     HasPlanChkBox.Checked = pData.isCheck(NameCbBox.SelectedValue.ToString());
+                     Max = 50;
+                     break;
+                 case (long)ThingsToDo.types.Objective:
+                     UnitLbl.Text = oData.Unit(NameCbBox.SelectedValue.ToString());
+                     Max = 75;
+                     break;
+                 default:
+                     Max = 20;
+                     break;
                 }
                 addChart(x.SelectedValue.ToString(), Max);
-            }
 
-            
-        }
+        }                       
 
         private void TypeCbBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -94,9 +91,17 @@ namespace Do_An
                 }
 
                 Namedt = cursor.ReadDataTableForDoing();
+                //NameCbBox.DataSource = null;
                 NameCbBox.DataSource = Namedt;
                 NameCbBox.DisplayMember = "Name";
                 NameCbBox.ValueMember = "ID";
+                NameCbBox.Text = "";
+                if(Namedt.Rows.Count == 0)
+                {
+                    CurrentLbl.Hide();
+                    ValueGoal_DeadlineLbl.Hide();
+                    Goal_DeadlineLbl.Hide();
+                }
             }
             catch(Exception ex)
             {

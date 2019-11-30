@@ -40,10 +40,10 @@
             this.buttonThursday = new System.Windows.Forms.Button();
             this.buttonWednesday = new System.Windows.Forms.Button();
             this.buttonTuesday = new System.Windows.Forms.Button();
-            this.buttonMonday = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.buttonToday = new System.Windows.Forms.Button();
             this.dateTimePickerMainForm = new System.Windows.Forms.DateTimePicker();
+            this.buttonMonday = new System.Windows.Forms.Button();
             this.calendarPanel.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -165,15 +165,6 @@
             this.buttonTuesday.Text = "Tuesday";
             this.buttonTuesday.UseVisualStyleBackColor = true;
             // 
-            // buttonMonday
-            // 
-            this.buttonMonday.Location = new System.Drawing.Point(96, 3);
-            this.buttonMonday.Name = "buttonMonday";
-            this.buttonMonday.Size = new System.Drawing.Size(93, 48);
-            this.buttonMonday.TabIndex = 0;
-            this.buttonMonday.Text = "Monday";
-            this.buttonMonday.UseVisualStyleBackColor = true;
-            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.buttonToday);
@@ -186,7 +177,7 @@
             // buttonToday
             // 
             this.buttonToday.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonToday.Location = new System.Drawing.Point(705, 0);
+            this.buttonToday.Location = new System.Drawing.Point(533, 0);
             this.buttonToday.Name = "buttonToday";
             this.buttonToday.Size = new System.Drawing.Size(75, 29);
             this.buttonToday.TabIndex = 1;
@@ -196,11 +187,21 @@
             // 
             // dateTimePickerMainForm
             // 
-            this.dateTimePickerMainForm.Location = new System.Drawing.Point(443, 2);
+            this.dateTimePickerMainForm.Location = new System.Drawing.Point(300, 2);
             this.dateTimePickerMainForm.Name = "dateTimePickerMainForm";
             this.dateTimePickerMainForm.Size = new System.Drawing.Size(227, 22);
             this.dateTimePickerMainForm.TabIndex = 0;
             this.dateTimePickerMainForm.ValueChanged += new System.EventHandler(this.dateTimePickerMainForm_ValueChanged);
+            // 
+            // buttonMonday
+            // 
+            this.buttonMonday.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.buttonMonday.Location = new System.Drawing.Point(96, 3);
+            this.buttonMonday.Name = "buttonMonday";
+            this.buttonMonday.Size = new System.Drawing.Size(93, 48);
+            this.buttonMonday.TabIndex = 0;
+            this.buttonMonday.Text = "Monday";
+            this.buttonMonday.UseVisualStyleBackColor = true;
             // 
             // CalendarComponent
             // 

@@ -13,7 +13,7 @@ namespace Do_An
     public partial class CalendarComponent : UserControl
     {
         private List<List<Button>> buttonManeger;
-
+        private ToolTip Tips;
         public List<List<Button>> ButtonManeger
         {
             //get => buttonManeger; 
@@ -25,8 +25,61 @@ namespace Do_An
         private List<string> dayOfWeek = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
         public CalendarComponent()
         {
+            Tips = new ToolTip();
+            Tips.InitialDelay = 1000;
+            Tips.ReshowDelay = 1000;
+            Tips.AutoPopDelay = 5000;   
             InitializeComponent();
+            SetWeeklyTask();
             LoadCanlenderMatrix();
+        }
+
+        private void WeekDayButtonSetup(Button weekdayButton)
+        {
+            DataTable info = (DataTable)weekdayButton.Tag;
+            String x ="You have " + info.Rows.Count.ToString() +" thing to do on this weekday.";
+            Tips.SetToolTip(weekdayButton,x);
+            
+        }
+        private void DayButtonSetup(Button dayButton)
+        {
+            dayButton.Image = null;
+            DataTable info = (DataTable)dayButton.Tag;
+            String x = "You have " + info.Rows.Count.ToString() + " Event on this weekday.";
+            Tips.SetToolTip(dayButton, x);
+            dayButton.ImageAlign = ContentAlignment.BottomRight;
+            if (info.Rows.Count > 0)
+            {
+                Image Temp = new Bitmap(@"resources//WeeklyAlert.png");
+                dayButton.Image = new Bitmap(Temp,25,25);
+            }
+
+
+        }
+        private void SetWeeklyTask()
+        {
+
+            DailyData dData = new DailyData();
+            buttonMonday.ImageAlign = ContentAlignment.BottomRight;
+            buttonTuesday.ImageAlign = ContentAlignment.BottomRight;
+            buttonWednesday.ImageAlign = ContentAlignment.BottomRight;
+            buttonFriday.ImageAlign = ContentAlignment.BottomRight;
+            buttonSaturday.ImageAlign = ContentAlignment.BottomRight;
+            buttonSunday.ImageAlign = ContentAlignment.BottomRight;
+            buttonMonday.Tag = dData.getWeeklyTaskOn((int)DayOfWeek.Monday);
+            buttonTuesday.Tag = dData.getWeeklyTaskOn((int)DayOfWeek.Tuesday);
+            buttonWednesday.Tag = dData.getWeeklyTaskOn((int)DayOfWeek.Wednesday);
+            buttonThursday.Tag = dData.getWeeklyTaskOn((int)DayOfWeek.Thursday);
+            buttonFriday.Tag = dData.getWeeklyTaskOn((int)DayOfWeek.Friday);
+            buttonSaturday.Tag = dData.getWeeklyTaskOn((int)DayOfWeek.Saturday);
+            buttonSunday.Tag = dData.getWeeklyTaskOn((int)DayOfWeek.Sunday);
+            WeekDayButtonSetup(buttonMonday);
+            WeekDayButtonSetup(buttonTuesday);
+            WeekDayButtonSetup(buttonWednesday);
+            WeekDayButtonSetup(buttonThursday);
+            WeekDayButtonSetup(buttonFriday);
+            WeekDayButtonSetup(buttonSaturday);
+            WeekDayButtonSetup(buttonSunday);
         }
         #region Calendar
         private void LoadCanlenderMatrix()
@@ -53,8 +106,9 @@ namespace Do_An
 
         private void NewButton_DoubleClick(object sender, EventArgs e)
         {
-            //addThingToDoForm.
-            //addThingToDoForm.Show();
+            Button ThisBtn = (Button)sender;
+            DataTable info = (DataTable)ThisBtn.Tag;
+            //TODOS: mở form cho thấy các event trong ngày.
         }
 
         private void NewButton_Click(object sender, EventArgs e)
@@ -132,14 +186,20 @@ namespace Do_An
         public void AddNumberToMaxtrix(DateTime dateTime)
         {
             ClearValueinMatrix();
+            //ClearDeadlineNote();
+            LoadPanelProject();
             DateTime Target = new DateTime(dateTime.Year, dateTime.Month, 1);
             int Line = 0;
-
+            EventData EData = new EventData();
+            
             for (int i = 1; i <= DayOfMonth(dateTime); i++)
             {
                 int Column = dayOfWeek.IndexOf(Target.DayOfWeek.ToString());
                 Button button = buttonManeger[Line][Column];
+                button.Tag = EData.GetEventOn(new DateTime(dateTime.Year,dateTime.Month,i));
                 button.Text = i.ToString();
+                DayButtonSetup(button);
+                //button.Tag = EventData.GetEventOn(new DateTime(dateTime.Year,dateTime.Month,i));
                 Column++;
 
                 if (CompareDay(Target, DateTime.Now))
@@ -196,5 +256,14 @@ namespace Do_An
         //    this.Visible = true;
         //}
         #endregion
+        public void LoadPanelProject()
+        {
+            //
+            //TODO: tạo ra một panel ơ bên phải, show các deadlines còn hiện hữu của tháng, chỉ show tên thôi.
+            //nếu cần lấy cái gì từ database thì hãy tạo 1 hàm ở trong SQLitemanageAndChild/ProjectData.cs
+            //đọc thêm hướng dẫn ở mục project trên github để bk thêm thông tin về cách lấy dữ liệu. hoặc xem các hàm trc để hiểu rõ hơn.
+            //
+        }
     }
+    
 }

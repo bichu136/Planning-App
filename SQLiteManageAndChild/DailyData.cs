@@ -44,6 +44,18 @@ namespace Do_An
             cnn.Close();
         }
 
+        public DataTable getWeeklyTaskOn(int DayOfWeeks)
+        {
+            DataTable res = new DataTable();
+            Open();
+            cmd.CommandText = "select ID,Name from ThingToDo where Type = 2 and IntRow2 = $IntRow2";
+            cmd.Parameters["$IntRow2"].Value = DayOfWeeks;
+            DB.SelectCommand = cmd;
+            DB.Fill(res);
+            cnn.Close();
+            return res;
+        }
+
         public override DataTable ReadDataTable()
         {
             cnn.Open();
