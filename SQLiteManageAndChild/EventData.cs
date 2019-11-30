@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace Do_An
@@ -75,9 +76,9 @@ namespace Do_An
         public override DataTable ReadDataTableForDoing()
         {
             Open();
-            cmd.CommandText = "select ID,Name from ThingToDo where Type = $Type and (status != $Status1)";
+            cmd.CommandText = "select ID,Name from ThingToDo where Type = $Type and (status != $Status)";
             cmd.Parameters["$Type"].Value =  (long)ThingsToDo.types.Event;
-            cmd.Parameters["$Status1"].Value = (long)ThingsToDo.statuses.Done;
+            cmd.Parameters["$Status"].Value = (long)ThingsToDo.statuses.Done;
             DataTable res = new DataTable();
             DB.SelectCommand = cmd;
             DB.Fill(res);
@@ -92,6 +93,18 @@ namespace Do_An
             cmd.Parameters["$Type"].Value =  (int)ThingsToDo.types.Event;
             cmd.ExecuteNonQuery();
             cnn.Close();
+        }
+
+        public DataTable GetEventOn(DateTime dateTime)
+        {
+            DataTable res= new DataTable();
+            cnn.Open();
+            cmd.CommandText = "select ID,Name from ThingToDo where Type = 3 and (date(TxtRow1) = date($TxtRow1))";
+            cmd.Parameters["$TxtRow1"].Value = dateTime.ToString("yyyy'-'MM'-'dd HH:mm:ss");
+            DB.SelectCommand = cmd;
+            DB.Fill(res);
+            cnn.Close();
+            return res;
         }
     }
 }
