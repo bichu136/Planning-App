@@ -147,7 +147,7 @@ namespace Do_An
         private void chartToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UserControlsPanel.Controls.Clear();
-            UserControlsPanel.Controls.Add(new StatsComponent("0", 50));
+            UserControlsPanel.Controls.Add(new ChartComponent());
         }
         private void addJobsToolStripMenuItem_Click(object sender, EventArgs e)
         {

@@ -135,19 +135,24 @@ namespace Do_An
 
         private void DoneBtn_Click(object sender, EventArgs e)
         {
-            RecordData Rdata = new RecordData();
-            cursor.UpdateByDoing(NameCbBox.SelectedValue.ToString(), (long)ThingsToDo.statuses.Done);
-            switch ((long)TypeCbBox.SelectedValue)
+            if (CheckRequirement())
             {
-                default:
-                    Rdata.Insert(new Record() { TTD_ID = (int)NameCbBox.SelectedValue, Date = DateTime.Now.Date, Current = 0 });
-                    break;
-                case (long)ThingsToDo.types.Objective:
-                case (long)ThingsToDo.types.Project:
-                    Rdata.Insert(new Record() { TTD_ID = (long)NameCbBox.SelectedValue, Date = DateTime.Now.Date, Current = Convert.ToInt32(CurrentTxtBox.Text) });
-                    break;
+                RecordData Rdata = new RecordData();
+                cursor.UpdateByDoing(NameCbBox.SelectedValue.ToString(), (long)ThingsToDo.statuses.Done);
+                switch ((long)TypeCbBox.SelectedValue)
+                {
+                    default:
+                        Rdata.Insert(new Record() { TTD_ID = (int)NameCbBox.SelectedValue, Date = DateTime.Now.Date, Current = 0 });
+                        break;
+                    case (long)ThingsToDo.types.Objective:
+                    case (long)ThingsToDo.types.Project:
+                        Rdata.Insert(new Record() { TTD_ID = (long)NameCbBox.SelectedValue, Date = DateTime.Now.Date, Current = Convert.ToInt32(CurrentTxtBox.Text) });
+                        break;
+                }
+                this.Close();
+                return;
             }
-            this.Close();
+            MessageBox.Show("bạn chưa điền đủ thông tin.");
         }
         private void addChart(String TTDID, double Max)
         {
@@ -158,6 +163,18 @@ namespace Do_An
             }
             
             StatPanel.Controls.Add(new UserControls.StatsComponent(TTDID,Max));
+        }
+        private bool CheckRequirement()
+        {
+            if (CurrentTxtBox.Visible)
+            {   
+                return (CurrentTxtBox.Text != "");
+            }
+            if (NameCbBox.SelectedValue == null)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
