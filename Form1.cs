@@ -25,7 +25,6 @@ namespace Do_An
         ProjectData Pdata = new ProjectData();
         EventData Edata = new EventData();        
         private List<List<Button>> buttonManeger;
-        private StatsComponent chartComponent = new StatsComponent("0",50);
         public List<List<Button>> ButtonManeger
         {
             //get => buttonManeger; 
@@ -148,7 +147,7 @@ namespace Do_An
         private void chartToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UserControlsPanel.Controls.Clear();
-            UserControlsPanel.Controls.Add(chartComponent);
+            UserControlsPanel.Controls.Add(new StatsComponent("0", 50));
         }
         private void addJobsToolStripMenuItem_Click(object sender, EventArgs e)
         {

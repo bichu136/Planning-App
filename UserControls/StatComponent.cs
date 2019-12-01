@@ -12,13 +12,12 @@ namespace Do_An.UserControls
 {
     public partial class StatsComponent : UserControl
     {
-        Random random = new Random();
         public Graphics g;
         public Pen pen;
         private List<System.Drawing.PointF> PointList;
         private List<System.Drawing.PointF> SubpointList;
         private System.Drawing.PointF CentralPoint;
-        private List<double> ScorePercentage; //To Column Score
+        //private List<double> ScorePercentage; //To Column Score
         private List<Label> LabelList;
         TTDStatsData ScoresData;
         double Max;
@@ -26,12 +25,17 @@ namespace Do_An.UserControls
         public List<PointF> pointList { get => PointList; set => PointList = value; }
         public List<PointF> subpointList { get => SubpointList; set => SubpointList = value; }
         public PointF centralPoint { get => CentralPoint; set => CentralPoint = value; }
-        public List<double> scorePercentage { get => ScorePercentage; set => ScorePercentage = value; }
+        //public List<double> scorePercentage { get => ScorePercentage; set => ScorePercentage = value; }
         public List<Label> labelList { get => LabelList; set => LabelList = value; }
         public StatsComponent(String TTDID,double Max)
         {
             ScoresData = new TTDStatsData();
             Scores = ScoresData.ReadScoreForTTD(TTDID);
+            if (Scores.Rows.Count == 0)
+            {
+                MessageBox.Show("Data Invalid. Please insert data", "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             this.Max = Max;
             InitializeComponent();
             pen = new Pen(Color.Black);
@@ -56,6 +60,7 @@ namespace Do_An.UserControls
             }
             Brush x = new SolidBrush(Color.FromArgb(100, Color.Red)) ;
             e.Graphics.FillPolygon(x, subpointList.ToArray(), System.Drawing.Drawing2D.FillMode.Winding);
+            x.Dispose();
         }
 
         private void InitializePoint()
@@ -63,21 +68,10 @@ namespace Do_An.UserControls
             pointList = new List<PointF>();
             subpointList = new List<PointF>();
             centralPoint = new PointF((panelPaint.Size.Width / 2), panelPaint.Size.Height / 2);
-            PointF SubPoint = new PointF();
+            //PointF SubPoint = new PointF();
             labelList = new List<Label>();
-            SubPoint = ConvertPoint(centralPoint);
+            //SubPoint = ConvertPoint(centralPoint);
             StackPoint(Scores.Rows.Count);
-        }
-
-        private void RandomScore()
-        {
-            scorePercentage = new List<double>();
-            int Number = (int)(Default.Number);
-            for (int i = 0; i < Number; i++)
-            {
-                double NewNum = random.NextDouble();
-                scorePercentage.Add(NewNum);
-            }
         }
 
         private void StackPoint(double num)
