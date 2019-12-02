@@ -140,14 +140,16 @@ namespace Do_An
             switch ((long)TypeCbBox.SelectedValue)
             {
                 default:
-                    Rdata.Insert(new Record() { TTD_ID = (int)NameCbBox.SelectedValue, Date = DateTime.Now.Date, Current = 0 });
+                    Rdata.Insert(new Record() { TTD_ID = (long)NameCbBox.SelectedValue, Date = DateTime.Now.Date, Current = 0 });
                     break;
                 case (long)ThingsToDo.types.Objective:
                 case (long)ThingsToDo.types.Project:
+
                     Rdata.Insert(new Record() { TTD_ID = (long)NameCbBox.SelectedValue, Date = DateTime.Now.Date, Current = Convert.ToInt32(CurrentTxtBox.Text) });
                     break;
             }
             this.Close();
+            return;
         }
         private void addChart(String TTDID, double Max)
         {
