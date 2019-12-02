@@ -139,8 +139,7 @@ namespace Do_An
             {
                 return;
             }
-
-
+            //TODO: làm cái để nhấn button rồi load lại cái EventDgv
         }
         private void NewButton_Click1(object sender, EventArgs e)
         {
