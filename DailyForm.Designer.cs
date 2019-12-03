@@ -101,9 +101,9 @@
             // 
             // vScrollBar1
             // 
-            this.vScrollBar1.Location = new System.Drawing.Point(250, 0);
+            this.vScrollBar1.Location = new System.Drawing.Point(261, 0);
             this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(21, 100);
+            this.vScrollBar1.Size = new System.Drawing.Size(21, 270);
             this.vScrollBar1.TabIndex = 0;
             // 
             // DailyForm
