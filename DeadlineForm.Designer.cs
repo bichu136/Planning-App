@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Cancel_Button = new System.Windows.Forms.Button();
-            this.Add_Button = new System.Windows.Forms.Button();
-            this.Passed_Panel = new System.Windows.Forms.Panel();
             this.Passed_Label = new System.Windows.Forms.Label();
             this.Onwaiting_Panel = new System.Windows.Forms.Panel();
             this.Ongoing_Label = new System.Windows.Forms.Label();
@@ -39,36 +36,6 @@
             this.expiredDeadlinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // Cancel_Button
-            // 
-            this.Cancel_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cancel_Button.Location = new System.Drawing.Point(234, 422);
-            this.Cancel_Button.Name = "Cancel_Button";
-            this.Cancel_Button.Size = new System.Drawing.Size(135, 51);
-            this.Cancel_Button.TabIndex = 15;
-            this.Cancel_Button.Text = "Cancel";
-            this.Cancel_Button.UseVisualStyleBackColor = true;
-            this.Cancel_Button.Click += new System.EventHandler(this.Cancel_Button_Click);
-            // 
-            // Add_Button
-            // 
-            this.Add_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Add_Button.Location = new System.Drawing.Point(45, 422);
-            this.Add_Button.Name = "Add_Button";
-            this.Add_Button.Size = new System.Drawing.Size(183, 51);
-            this.Add_Button.TabIndex = 14;
-            this.Add_Button.Text = "Add Deadlines";
-            this.Add_Button.UseVisualStyleBackColor = true;
-            // 
-            // Passed_Panel
-            // 
-            this.Passed_Panel.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
-            this.Passed_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Passed_Panel.Location = new System.Drawing.Point(45, 316);
-            this.Passed_Panel.Name = "Passed_Panel";
-            this.Passed_Panel.Size = new System.Drawing.Size(680, 100);
-            this.Passed_Panel.TabIndex = 13;
             // 
             // Passed_Label
             // 
@@ -81,6 +48,7 @@
             // 
             // Onwaiting_Panel
             // 
+            this.Onwaiting_Panel.AutoScroll = true;
             this.Onwaiting_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Onwaiting_Panel.Location = new System.Drawing.Point(45, 77);
             this.Onwaiting_Panel.Name = "Onwaiting_Panel";
@@ -126,10 +94,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(774, 473);
-            this.Controls.Add(this.Cancel_Button);
-            this.Controls.Add(this.Add_Button);
-            this.Controls.Add(this.Passed_Panel);
+            this.ClientSize = new System.Drawing.Size(774, 406);
             this.Controls.Add(this.Passed_Label);
             this.Controls.Add(this.Onwaiting_Panel);
             this.Controls.Add(this.Ongoing_Label);
@@ -146,10 +111,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button Cancel_Button;
-        private System.Windows.Forms.Button Add_Button;
-        private System.Windows.Forms.Panel Passed_Panel;
         private System.Windows.Forms.Label Passed_Label;
         private System.Windows.Forms.Panel Onwaiting_Panel;
         private System.Windows.Forms.Label Ongoing_Label;
