@@ -36,7 +36,6 @@ namespace Do_An
             SetWeeklyTask();
             LoadCanlenderMatrix();
         }
-
         private void WeekDayButtonSetup(Button weekdayButton)
         {
             DataTable info = (DataTable)weekdayButton.Tag;
@@ -109,9 +108,7 @@ namespace Do_An
 
         private void NewButton_DoubleClick(object sender, EventArgs e)
         {
-            Button ThisBtn = (Button)sender;
-            DataTable info = (DataTable)ThisBtn.Tag;
-            //TODOS: mở form cho thấy các event trong ngày.
+            
         }
 
         private void NewButton_Click(object sender, EventArgs e)
@@ -143,6 +140,10 @@ namespace Do_An
                 return;
             }
             //TODO: làm cái để nhấn button rồi load lại cái EventDgv
+            Button ThisBtn = (Button)sender;
+            DataTable info = (DataTable)ThisBtn.Tag;
+            //TODOS: mở form cho thấy các event trong ngày.
+            EventDgv.DataSource = info;
         }
         private void NewButton_Click1(object sender, EventArgs e)
         {
