@@ -153,7 +153,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.recordBtn);
             this.Name = "ToDoManagerComponent";
-            this.Size = new System.Drawing.Size(986, 565);
+            this.Size = new System.Drawing.Size(1217, 567);
             this.Load += new System.EventHandler(this.ToDoManagerComponent_Load);
             this.ShowDailyPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DailyDataGrid)).EndInit();

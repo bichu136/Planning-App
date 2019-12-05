@@ -101,6 +101,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "DeadlineForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.DeadlineForm_Load);
             this.menuStrip1.ResumeLayout(false);

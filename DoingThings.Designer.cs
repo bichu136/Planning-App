@@ -213,6 +213,7 @@
             this.Controls.Add(this.DoneBtn);
             this.Controls.Add(this.UnitPanel);
             this.Name = "DoingThings";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add new Record";
             this.UnitPanel.ResumeLayout(false);
             this.UnitPanel.PerformLayout();

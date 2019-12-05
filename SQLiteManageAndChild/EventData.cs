@@ -71,6 +71,7 @@ namespace Do_An
         }
         public override void UpdateByDoing(string ID,long statuses)
         {
+
             base.UpdateByDoing(ID,statuses);
         }
         public override DataTable ReadDataTableForDoing()

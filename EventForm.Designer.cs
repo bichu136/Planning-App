@@ -87,6 +87,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "EventForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "EventForm";
             this.Load += new System.EventHandler(this.EventForm_Load);
             this.menuStrip1.ResumeLayout(false);

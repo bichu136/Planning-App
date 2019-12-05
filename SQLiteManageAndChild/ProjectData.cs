@@ -130,5 +130,19 @@ namespace Do_An
             cmd.ExecuteNonQuery();
             cnn.Close();
         }
+
+        internal DataTable Read_OnGoingMonth(DateTime dateTime)
+        {
+            string s = dateTime.ToString("yyyy'-'MM'-'dd HH:mm:ss");
+            cnn.Open();
+            cmd.Parameters["$TxtRow1"].Value = s;
+            cmd.Parameters["$Type"].Value = (int)ThingsToDo.types.Project;
+            cmd.CommandText = "SELECT strftime('%m', TxtRow1) Month, strftime('%Y', TxtRow1) Year from ThingToDo WHERE  Month = strftime('%m',$TxtRow1) and Year = strftime('%Y',$TxtRow1) and Type = $Type ";
+            DB.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            DB.Fill(dt);
+            cnn.Close();
+            return dt;
+        }
     }
 }

@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.StatisticButton = new System.Windows.Forms.Button();
-            this.btnPanel = new System.Windows.Forms.Panel();
-            this.SettingBtn = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.calendarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,38 +36,8 @@
             this.addJobsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UserControlsPanel = new System.Windows.Forms.Panel();
-            this.btnPanel.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // StatisticButton
-            // 
-            this.StatisticButton.Location = new System.Drawing.Point(12, 3);
-            this.StatisticButton.Name = "StatisticButton";
-            this.StatisticButton.Size = new System.Drawing.Size(133, 47);
-            this.StatisticButton.TabIndex = 0;
-            this.StatisticButton.Text = "Show Your result";
-            this.StatisticButton.UseVisualStyleBackColor = true;
-            // 
-            // btnPanel
-            // 
-            this.btnPanel.Controls.Add(this.SettingBtn);
-            this.btnPanel.Controls.Add(this.StatisticButton);
-            this.btnPanel.Location = new System.Drawing.Point(114, 580);
-            this.btnPanel.Name = "btnPanel";
-            this.btnPanel.Size = new System.Drawing.Size(291, 47);
-            this.btnPanel.TabIndex = 1;
-            this.btnPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.btnPanel_Paint);
-            // 
-            // SettingBtn
-            // 
-            this.SettingBtn.Location = new System.Drawing.Point(151, 3);
-            this.SettingBtn.Name = "SettingBtn";
-            this.SettingBtn.Size = new System.Drawing.Size(81, 46);
-            this.SettingBtn.TabIndex = 5;
-            this.SettingBtn.Text = "Setting.";
-            this.SettingBtn.UseVisualStyleBackColor = true;
-            this.SettingBtn.Click += new System.EventHandler(this.SettingBtn_Click);
             // 
             // menuStrip1
             // 
@@ -86,7 +53,7 @@
             this.settingToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(85, 627);
+            this.menuStrip1.Size = new System.Drawing.Size(85, 590);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -136,20 +103,18 @@
             // 
             this.UserControlsPanel.Location = new System.Drawing.Point(114, 12);
             this.UserControlsPanel.Name = "UserControlsPanel";
-            this.UserControlsPanel.Size = new System.Drawing.Size(986, 565);
+            this.UserControlsPanel.Size = new System.Drawing.Size(1217, 567);
             this.UserControlsPanel.TabIndex = 5;
             // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1110, 627);
+            this.ClientSize = new System.Drawing.Size(1347, 590);
             this.Controls.Add(this.UserControlsPanel);
-            this.Controls.Add(this.btnPanel);
             this.Controls.Add(this.menuStrip1);
             this.Name = "MainForm";
             this.Text = "Planning App";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.btnPanel.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -157,9 +122,6 @@
 
         }
         #endregion
-        private System.Windows.Forms.Button StatisticButton;
-        private System.Windows.Forms.Panel btnPanel;
-        private System.Windows.Forms.Button SettingBtn;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem mainToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem calendarToolStripMenuItem;

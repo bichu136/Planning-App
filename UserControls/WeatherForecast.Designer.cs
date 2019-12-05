@@ -132,7 +132,7 @@
             this.Controls.Add(this.labelTemperature);
             this.Controls.Add(this.labelDay);
             this.Name = "WeatherForecast";
-            this.Size = new System.Drawing.Size(986, 565);
+            this.Size = new System.Drawing.Size(1217, 567);
             this.ResumeLayout(false);
             this.PerformLayout();
 
