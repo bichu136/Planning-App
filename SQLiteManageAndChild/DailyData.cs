@@ -38,7 +38,7 @@ namespace Do_An
         public void UpdateNewDay()
         {
             cnn.Open();
-            cmd.CommandText = "update ThingToDo set Status = 1 where Type = 2 and (Status != 0 or Status != -1)  and date(lastupdate) < date('now') and (IntRow2 = $IntRow2 or IntRow2 =7)";
+            cmd.CommandText = "update ThingToDo set Status = 1 where Type = 2 and Status = 0 and date(lastupdate) < date('now','localtime') and (IntRow2 = $IntRow2 or IntRow2 =7)";
             cmd.Parameters["$IntRow2"].Value= (long)DateTime.Now.DayOfWeek;
             int x = cmd.ExecuteNonQuery();
             cnn.Close();
@@ -90,7 +90,7 @@ namespace Do_An
         public override void UpdateByDoing(string ID,long statuses)
         {
             cnn.Open();
-            cmd.CommandText = "update ThingToDo set Status = 0, lastupdate = datetime('now') where ID = $ID";
+            cmd.CommandText = "update ThingToDo set Status = 0, lastupdate = date('now','localtime') where ID = $ID";
             cmd.Parameters["$ID"].Value =  ID;
             int x = cmd.ExecuteNonQuery();
             cnn.Close();

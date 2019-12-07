@@ -24,7 +24,7 @@ namespace Do_An
         public string getNextEvent()
         {
             cnn.Open();
-            cmd.CommandText = "select Name,TxtRow1 from ThingToDo where Type = 3 and date(TxtRow1) > date('now') order by date(TxtRow1) asc limit 1";
+            cmd.CommandText = "select Name,TxtRow1 from ThingToDo where Type = 3 and date(TxtRow1) > date('now','localtime') order by date(TxtRow1) asc limit 1";
             reader = cmd.ExecuteReader();
             if (reader.HasRows == false)
             {
@@ -90,7 +90,7 @@ namespace Do_An
         {
             cnn.Open();
             DataTable res = new DataTable();
-            cmd.CommandText = "update ThingToDo set Status = 1 where Type = $Type and date(TxtRow1) = date('now')";
+            cmd.CommandText = "update ThingToDo set Status = 1 where Type = $Type and date(TxtRow1) = date('now','localtime')";
             cmd.Parameters["$Type"].Value =  (int)ThingsToDo.types.Event;
             cmd.ExecuteNonQuery();
             cnn.Close();

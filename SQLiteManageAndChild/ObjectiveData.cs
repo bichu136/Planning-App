@@ -71,7 +71,7 @@ namespace Do_An
                 base.UpdateByDoing(ID, statuses);
             }
         }
-        private long getGoal(string ID)
+        public long getGoal(string ID)
         {
             cnn.Open();
             cmd.CommandText = "select IntRow1 from ThingToDo where ID=$ID";
@@ -85,7 +85,6 @@ namespace Do_An
             //cnn.Open();
             //cmd.CommandText = "update ThingToDo";
         }
-
         public string Unit(String ID)
         {
             //cmd.Reset();

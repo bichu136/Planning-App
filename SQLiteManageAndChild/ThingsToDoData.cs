@@ -44,13 +44,13 @@ namespace Do_An
         public void UpdateDropStatus()
         {
             cnn.Open();
-            cmd.CommandText = "Update ThingsToDo set status = $status where date(lastupdate,'+1 month') < date('now')";
+            cmd.CommandText = "Update ThingsToDo set status = $status where date(lastupdate,'+1 month') < date('now','localtime')";
             cmd.Parameters["$Status"].Value =  ThingsToDo.statuses.Dropped;
             cnn.Close();
         }
         public virtual void UpdateByDoing(string ID, long statuses)
         {
-            cmd.CommandText = "update ThingToDo set Status = $Status, lastupdate = datetime('now') where ID = $ID";
+            cmd.CommandText = "update ThingToDo set Status = $Status, lastupdate = date('now','localtime') where ID = $ID";
             cmd.Parameters["$ID"].Value = ID;
             cmd.Parameters["$Status"].Value = statuses;
             cnn.Open();
@@ -73,6 +73,16 @@ namespace Do_An
         public ThingsToDo GetTTDOn(DateTime dateTime)
         {
             return null;
+        }
+
+        public String ReadStatusByID(string ID)
+        {
+            cmd.CommandText = "select Status from ThingToDo where ID = $ID";
+            cmd.Parameters["$ID"].Value = ID;
+            cnn.Open();
+            String x = cmd.ExecuteScalar().ToString();
+            cnn.Close();
+            return x;
         }
     }
 

@@ -84,20 +84,16 @@
             // 
             this.panel3.Controls.Add(this.ProjectDgv);
             this.panel3.Controls.Add(this.label2);
-<<<<<<< HEAD
             this.panel3.Location = new System.Drawing.Point(800, 61);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(367, 201);
-=======
             this.panel3.Location = new System.Drawing.Point(800, 63);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(367, 182);
->>>>>>> master
             this.panel3.TabIndex = 4;
             // 
             // ProjectDgv
             // 
-<<<<<<< HEAD
             this.ProjectDgv.AllowUserToAddRows = false;
             this.ProjectDgv.AllowUserToDeleteRows = false;
             this.ProjectDgv.AllowUserToResizeColumns = false;
@@ -111,14 +107,12 @@
             this.ProjectDgv.RowHeadersWidth = 51;
             this.ProjectDgv.RowTemplate.Height = 24;
             this.ProjectDgv.Size = new System.Drawing.Size(366, 179);
-=======
             this.ProjectDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ProjectDgv.Location = new System.Drawing.Point(0, 20);
             this.ProjectDgv.Name = "ProjectDgv";
             this.ProjectDgv.RowHeadersWidth = 51;
             this.ProjectDgv.RowTemplate.Height = 24;
             this.ProjectDgv.Size = new System.Drawing.Size(366, 159);
->>>>>>> master
             this.ProjectDgv.TabIndex = 1;
             // 
             // label2
@@ -135,26 +129,21 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.EventDgv);
             this.panel1.Controls.Add(this.label1);
-<<<<<<< HEAD
             this.panel1.Location = new System.Drawing.Point(795, 263);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(377, 230);
-=======
             this.panel1.Location = new System.Drawing.Point(795, 251);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(377, 242);
->>>>>>> master
             this.panel1.TabIndex = 3;
             // 
             // EventDgv
             // 
-<<<<<<< HEAD
             this.EventDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.EventDgv.Location = new System.Drawing.Point(4, 21);
             this.EventDgv.Name = "EventDgv";
             this.EventDgv.RowHeadersWidth = 51;
             this.EventDgv.RowTemplate.Height = 24;
-=======
             this.EventDgv.AllowUserToAddRows = false;
             this.EventDgv.AllowUserToDeleteRows = false;
             this.EventDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -164,7 +153,6 @@
             this.EventDgv.RowHeadersWidth = 51;
             this.EventDgv.RowTemplate.Height = 24;
             this.EventDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
->>>>>>> master
             this.EventDgv.Size = new System.Drawing.Size(366, 214);
             this.EventDgv.TabIndex = 1;
             // 

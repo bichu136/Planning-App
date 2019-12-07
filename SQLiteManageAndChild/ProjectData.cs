@@ -20,7 +20,7 @@ namespace Do_An
         public String getNearestDeadline()
         {
             cnn.Open();
-            cmd.CommandText = "select Name from ThingToDo where Type = 4 and date(TxtRow1) > date('now') order by date(TxtRow1) asc limit 1";
+            cmd.CommandText = "select Name from ThingToDo where Type = 4 and date(TxtRow1) > date('now','localtime') order by date(TxtRow1) asc limit 1";
             reader = cmd.ExecuteReader();
             if (reader.HasRows == false)
             {
@@ -125,7 +125,7 @@ namespace Do_An
         {
             cnn.Open();
             DataTable res = new DataTable();
-            cmd.CommandText = "update ThingToDo set Status = -1 where Type = $Type and date(TxtRow1) = date('now')";
+            cmd.CommandText = "update ThingToDo set Status = -1 where Type = $Type and date(TxtRow1) = date('now','localtime')";
             cmd.Parameters["$Type"].Value = (int)ThingsToDo.types.Project;
             cmd.ExecuteNonQuery();
             cnn.Close();
@@ -137,7 +137,7 @@ namespace Do_An
             cnn.Open();
             cmd.Parameters["$TxtRow1"].Value = s;
             cmd.Parameters["$Type"].Value = (int)ThingsToDo.types.Project;
-            cmd.CommandText = "SELECT strftime('%m', TxtRow1) Month, strftime('%Y', TxtRow1) Year from ThingToDo WHERE  Month = strftime('%m',$TxtRow1) and Year = strftime('%Y',$TxtRow1) and Type = $Type ";
+            cmd.CommandText = "SELECT Name,date(TxtRow1) Occur_in from ThingToDo WHERE   strftime('%m',TxtRow1) = strftime('%m',$TxtRow1) and  strftime('%Y',TxtRow1) = strftime('%Y',$TxtRow1) and Type = $Type ";
             DB.SelectCommand = cmd;
             DataTable dt = new DataTable();
             DB.Fill(dt);

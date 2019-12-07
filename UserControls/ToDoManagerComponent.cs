@@ -20,8 +20,22 @@ namespace Do_An
         {
             InitializeComponent();
             //AddJobsBtn.Click += AddJobs_Click;
+            DailyDataGrid.CellClick += DailyDataGrid_CellContentClick;
         }
 
+        private void DailyDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex<0)
+            {
+                DailyDataGrid.ClearSelection();
+                return;
+                 
+            }
+            if ((long)DailyDataGrid.Rows[e.RowIndex].Cells["Status"].Value != 0 || e.ColumnIndex != DailyDataGrid.Columns["DONE"].Index)
+            {
+                DailyDataGrid.ClearSelection();
+            }
+        }
 
         private void UpdateDailyBtn_Click(object sender, EventArgs e)
         {
@@ -33,6 +47,9 @@ namespace Do_An
                     RData.Insert(new Record(Convert.ToInt32(row.Cells["ID"].Value.ToString()), DateTime.Now, 0));
                 }
             }
+            MessageBox.Show("Daily To Do have been update", "Notice",MessageBoxButtons.OK, MessageBoxIcon.Information);
+            UpdateDailyBtn.Text = "You have been update your daily to do.";
+            UpdateDailyBtn.Enabled = false;
         }
 
         private void ShowDeadlinesBtn_Click(object sender, EventArgs e)
@@ -53,7 +70,7 @@ namespace Do_An
             DeadlineLabel.Text = Pdata.getNearestDeadline();
             //EventLabel Update.
             label2.Text = Edata.getNextEvent();
-            //DailyDatGrid Update.
+            //DailyDatGrid Update
             DailyDataGrid.DataSource = Ddata.ReadDataTable();
             DailyDataGrid.Columns["ID"].Visible = false;
             DailyDataGrid.Columns["Name1"].Visible = false;
@@ -65,7 +82,13 @@ namespace Do_An
             checkboxes.ValueMember = "ID";
             // bind với cột status.
             checkboxes.DataPropertyName = "Status";
+
             DailyDataGrid.Columns.Add(checkboxes);
+
+            for (int i = 0; i < DailyDataGrid.Rows.Count; i++)
+            {
+                
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)

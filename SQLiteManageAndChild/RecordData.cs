@@ -60,7 +60,8 @@ namespace Do_An
             Open();
             cmd.CommandText = "select sum(Record.Current) from record where TTDID = $TTDID group by TTDID";
             cmd.Parameters["$TTDID"].Value = ID;
-            long x = (long)cmd.ExecuteScalar();
+            object t = cmd.ExecuteScalar();
+            long x = (t==null)? 0 : (long)t;
             cnn.Close();
             return x;
             
@@ -68,11 +69,13 @@ namespace Do_An
         public long CountOfCurrent(string ID)
         {
             Open();
-            cmd.CommandText = "select count(Record.TTDID) from record where TTDID = $TTDID";
+            cmd.CommandText = "select count(Record.TTDID) from record where TTDID = $TTDID group by TTDID";
             cmd.Parameters["$TTDID"].Value = ID;
-            long x = (long)cmd.ExecuteScalar();
+            object t = cmd.ExecuteScalar();
+            string x = (t == null)? "0": t.ToString();
+            long z = Int64.Parse(x);
             cnn.Close();
-            return x;
+            return z;
         }
     }
 }
