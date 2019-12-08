@@ -77,5 +77,45 @@ namespace Do_An
             cnn.Close();
             return z;
         }
+        public DataTable GetDailyScores()
+        {
+            cmd.CommandText = "select Stats.Name,temp2.x from Stats left join(select TTD_Stats.StatsID,sum(TTD_Stats.Score * (temp.result1)) x from TTD_Stats,(select count(Record.Current) result1,Record.TTDID from Record,ThingToDo where ThingToDo.ID = Record.TTDID and ThingToDo.Type = 2 group by TTDID) temp where temp.TTDID = TTD_Stats.TTDID group by TTD_Stats.StatsID) temp2 on Stats.ID = temp2.StatsID";
+            DataTable res = new DataTable();
+            Open();
+            DB.SelectCommand = cmd;
+            DB.Fill(res);
+            cnn.Close();
+            return res;
+        }
+        public DataTable GetEventScores()
+        {
+            cmd.CommandText = "select Stats.Name,temp2.x from Stats left join(select TTD_Stats.StatsID,sum(TTD_Stats.Score * (temp.result1)) x from TTD_Stats,(select count(Record.Current) result1,Record.TTDID from Record,ThingToDo where ThingToDo.ID = Record.TTDID and ThingToDo.Type = 3 group by TTDID) temp where temp.TTDID = TTD_Stats.TTDID group by TTD_Stats.StatsID) temp2 on Stats.ID = temp2.StatsID";
+            DataTable res = new DataTable();
+            Open();
+            DB.SelectCommand = cmd;
+            DB.Fill(res);
+            cnn.Close();
+            return res;
+        }
+        public DataTable GetObjectScores()
+        {
+            cmd.CommandText = "select Stats.Name,temp2.x,Stats.ID from Stats left join(select TTD_Stats.StatsID,sum(TTD_Stats.Score * (temp.result1)) x from TTD_Stats,(select sum(Record.Current / (1.0 * ThingToDo.IntRow1)) result1,Record.TTDID from Record,ThingToDo where ThingToDo.ID = Record.TTDID and ThingToDo.Type = 1 group by TTDID) temp where temp.TTDID = TTD_Stats.TTDID group by TTD_Stats.StatsID) temp2 on Stats.ID = temp2.StatsID ";
+            DataTable res = new DataTable();
+            Open();
+            DB.SelectCommand = cmd;
+            DB.Fill(res);
+            cnn.Close();
+            return res;
+        }
+        public DataTable GetProjectScores()
+        {
+            cmd.CommandText = " select Stats.Name,temp2.x from Stats left join ( select TTD_Stats.StatsID,sum(TTD_Stats.Score * (temp.result1 / 100.0)) x from TTD_Stats,(select sum(Record.Current) result1,Record.TTDID from Record,ThingToDo where ThingToDo.ID = Record.TTDID and ThingToDo.Type = 4 group by TTDID) temp where temp.TTDID = TTD_Stats.TTDID group by TTD_Stats.StatsID) temp2 on Stats.ID = temp2.StatsID ";
+            DataTable res = new DataTable();
+            Open();
+            DB.SelectCommand = cmd;
+            DB.Fill(res);
+            cnn.Close();
+            return res;
+        }
     }
 }
