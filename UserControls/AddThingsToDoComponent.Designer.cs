@@ -133,7 +133,7 @@
             // 
             this.AddBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.AddBtn.AutoSize = true;
-            this.AddBtn.Location = new System.Drawing.Point(1069, 496);
+            this.AddBtn.Location = new System.Drawing.Point(838, 494);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(133, 54);
             this.AddBtn.TabIndex = 22;
@@ -186,7 +186,7 @@
             // 
             this.TypeLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.TypeLbl.AutoSize = true;
-            this.TypeLbl.Location = new System.Drawing.Point(26, 515);
+            this.TypeLbl.Location = new System.Drawing.Point(26, 513);
             this.TypeLbl.Name = "TypeLbl";
             this.TypeLbl.Size = new System.Drawing.Size(40, 17);
             this.TypeLbl.TabIndex = 16;
@@ -196,7 +196,7 @@
             // 
             this.TypeCbBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.TypeCbBox.FormattingEnabled = true;
-            this.TypeCbBox.Location = new System.Drawing.Point(89, 512);
+            this.TypeCbBox.Location = new System.Drawing.Point(89, 510);
             this.TypeCbBox.Name = "TypeCbBox";
             this.TypeCbBox.Size = new System.Drawing.Size(241, 24);
             this.TypeCbBox.TabIndex = 15;
@@ -224,7 +224,7 @@
             this.Controls.Add(this.TypeLbl);
             this.Controls.Add(this.TypeCbBox);
             this.Name = "AddThingsToDoComponent";
-            this.Size = new System.Drawing.Size(1217, 567);
+            this.Size = new System.Drawing.Size(986, 565);
             this.ResumeLayout(false);
             this.PerformLayout();
 

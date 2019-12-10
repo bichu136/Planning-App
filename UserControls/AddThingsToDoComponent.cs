@@ -104,7 +104,6 @@ namespace Do_An
                     ProjectShow();
                     break;
             }
-            Reset();
         }
 
         #region Show
@@ -185,22 +184,8 @@ namespace Do_An
             input.id = data.Insert(input).ToString();
             StatData.Insert(input);
             MessageBox.Show("To Do Confirm!", "mesasge", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            foreach (long Key in Scores.Keys.ToList())
-            {
-                Scores[Key] = 0;
-            }
-            NameTxtBox.Text = ""; Ex1TxtBox.Text = ""; ; Ex2TxtBox.Text = "";
-            ScoreTxtBox.Text = "0";
-            
         }
-        private void Reset()
-        {
-            foreach (long Key in Scores.Keys.ToList())
-            {
-                Scores[Key] = 0;
-            }
-            NameTxtBox.Text = ""; Ex1TxtBox.Text = ""; ; Ex2TxtBox.Text = "";
-        }
+
 
         private void StatsChange(object sender, EventArgs e)
         {

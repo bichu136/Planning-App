@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.Onwaiting_Panel = new System.Windows.Forms.Panel();
+            this.Add_Button = new System.Windows.Forms.Button();
+            this.Cancel_Button = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.onToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.passedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,12 +41,31 @@
             // 
             // Onwaiting_Panel
             // 
-            this.Onwaiting_Panel.AutoScroll = true;
             this.Onwaiting_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Onwaiting_Panel.Location = new System.Drawing.Point(12, 43);
             this.Onwaiting_Panel.Name = "Onwaiting_Panel";
-            this.Onwaiting_Panel.Size = new System.Drawing.Size(776, 395);
+            this.Onwaiting_Panel.Size = new System.Drawing.Size(719, 207);
             this.Onwaiting_Panel.TabIndex = 2;
+            // 
+            // Add_Button
+            // 
+            this.Add_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Add_Button.Location = new System.Drawing.Point(12, 256);
+            this.Add_Button.Name = "Add_Button";
+            this.Add_Button.Size = new System.Drawing.Size(146, 75);
+            this.Add_Button.TabIndex = 6;
+            this.Add_Button.Text = "Add Event";
+            this.Add_Button.UseVisualStyleBackColor = true;
+            // 
+            // Cancel_Button
+            // 
+            this.Cancel_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cancel_Button.Location = new System.Drawing.Point(164, 256);
+            this.Cancel_Button.Name = "Cancel_Button";
+            this.Cancel_Button.Size = new System.Drawing.Size(142, 75);
+            this.Cancel_Button.TabIndex = 7;
+            this.Cancel_Button.Text = "Cancel";
+            this.Cancel_Button.UseVisualStyleBackColor = true;
             // 
             // menuStrip1
             // 
@@ -83,11 +104,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Cancel_Button);
+            this.Controls.Add(this.Add_Button);
             this.Controls.Add(this.Onwaiting_Panel);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "EventForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "EventForm";
             this.Load += new System.EventHandler(this.EventForm_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -99,6 +121,8 @@
 
         #endregion
         private System.Windows.Forms.Panel Onwaiting_Panel;
+        private System.Windows.Forms.Button Add_Button;
+        private System.Windows.Forms.Button Cancel_Button;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem onToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;

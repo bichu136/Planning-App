@@ -33,8 +33,6 @@
             // 
             // panelPaint
             // 
-            this.panelPaint.AutoSize = true;
-            this.panelPaint.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panelPaint.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelPaint.Location = new System.Drawing.Point(0, 0);
             this.panelPaint.Name = "panelPaint";
@@ -48,7 +46,6 @@
             this.Name = "StatsComponent";
             this.Size = new System.Drawing.Size(400, 400);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

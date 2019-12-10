@@ -12,7 +12,6 @@ namespace Do_An
 {
     public partial class CalendarComponent : UserControl
     {
-        
         private List<List<Button>> buttonManeger;
         private ToolTip Tips;
         public List<List<Button>> ButtonManeger
@@ -22,10 +21,8 @@ namespace Do_An
             get { return buttonManeger; }
             set { buttonManeger = value; }
         }
-        private List<string> dayOfWeek = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
 
-        private List<ThingsToDoComponent> EventInMonth;
-        public List<ThingsToDoComponent> eventInMonth { get => EventInMonth; set => EventInMonth = value; }
+        private List<string> dayOfWeek = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
         public CalendarComponent()
         {
             Tips = new ToolTip();
@@ -36,6 +33,7 @@ namespace Do_An
             SetWeeklyTask();
             LoadCanlenderMatrix();
         }
+
         private void WeekDayButtonSetup(Button weekdayButton)
         {
             DataTable info = (DataTable)weekdayButton.Tag;
@@ -108,7 +106,9 @@ namespace Do_An
 
         private void NewButton_DoubleClick(object sender, EventArgs e)
         {
-            
+            Button ThisBtn = (Button)sender;
+            DataTable info = (DataTable)ThisBtn.Tag;
+            //TODOS: mở form cho thấy các event trong ngày.
         }
 
         private void NewButton_Click(object sender, EventArgs e)
@@ -140,10 +140,6 @@ namespace Do_An
                 return;
             }
             //TODO: làm cái để nhấn button rồi load lại cái EventDgv
-            Button ThisBtn = (Button)sender;
-            DataTable info = (DataTable)ThisBtn.Tag;
-            //TODOS: mở form cho thấy các event trong ngày.
-            EventDgv.DataSource = info;
         }
         private void NewButton_Click1(object sender, EventArgs e)
         {
@@ -266,13 +262,6 @@ namespace Do_An
             //nếu cần lấy cái gì từ database thì hãy tạo 1 hàm ở trong SQLitemanageAndChild/ProjectData.cs
             //đọc thêm hướng dẫn ở mục project trên github để bk thêm thông tin về cách lấy dữ liệu. hoặc xem các hàm trc để hiểu rõ hơn.
             //
-            //DataTable dataTable = new DataTable();
-            //ProjectDgv.DataSource = 
-            //EventDgv
-
-            ProjectData projectData = new ProjectData();
-            DataTable dt = projectData.Read_OnGoingMonth(dateTimePickerMainForm.Value);
-            ProjectDgv.DataSource = dt;
         }
     }
     

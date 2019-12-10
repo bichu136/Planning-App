@@ -41,7 +41,7 @@
             // buttonConfirm
             // 
             this.buttonConfirm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonConfirm.Location = new System.Drawing.Point(1056, 477);
+            this.buttonConfirm.Location = new System.Drawing.Point(825, 475);
             this.buttonConfirm.Name = "buttonConfirm";
             this.buttonConfirm.Size = new System.Drawing.Size(129, 63);
             this.buttonConfirm.TabIndex = 6;
@@ -109,7 +109,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.buttonConfirm);
             this.Name = "SettingsComponent";
-            this.Size = new System.Drawing.Size(1217, 567);
+            this.Size = new System.Drawing.Size(986, 565);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
