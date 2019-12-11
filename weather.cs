@@ -16,6 +16,7 @@ namespace Do_An
         private List<DateTime> days;
         private List<String> tempF;
         private List<String> weathers;
+        private List<string> type_weather;
         private const string API_KEY = "0d10ac8477cafab5fb3e1ca0839f4032";
 
 
@@ -29,6 +30,7 @@ namespace Do_An
         public List<DateTime> Days { get => days; set => days = value; }
         public List<string> TempF { get => tempF; set => tempF = value; }
         public List<string> Weathers { get => weathers; set => weathers = value; }
+        public List<string> Type_weather { get => type_weather; set => type_weather = value; }
 
         public void getData(String City)
         {
@@ -51,7 +53,7 @@ namespace Do_An
                     //FileStream x = new FileStream(path,FileMode.OpenOrCreate);
                     //x.Write(Encoding.ASCII.GetBytes(cboTinh.Text),, cboTinh.Text.Length);
                 }
-                catch (Exception ex)
+                 catch (Exception ex)
                 {
 
                 }
@@ -76,6 +78,7 @@ namespace Do_An
             Days = new List<DateTime>();
             tempF = new List<String>();
             weathers = new List<string>();
+            type_weather = new List<String>();
             foreach (XmlNode time_node in xml_doc.SelectNodes("//time"))
             {
                 DateTime time =
@@ -85,6 +88,10 @@ namespace Do_An
                 string temp = temp_node.Attributes["value"].Value;
                 XmlNode symb_node = time_node.SelectSingleNode("symbol");
                 string symb = symb_node.Attributes["name"].Value;
+
+                XmlNode typeweather_node = time_node.SelectSingleNode("symbol");
+                string typeweather = typeweather_node.Attributes["number"].Value;
+                Type_weather.Add(typeweather);
                 days.Add(time);
                 tempF.Add(temp + degrees);
                 weathers.Add(symb);

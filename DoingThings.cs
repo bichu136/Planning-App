@@ -21,10 +21,8 @@ namespace Do_An
         TimeComponent timeComponent;
         ThingsToDoData cursor;
         DataTable Namedt;
-        RecordData rData;
         public DoingThings()
         {
-            rData = new RecordData();
             timeComponent = new TimeComponent() { Location= new Point(12,100)};
             typedata = new TypeData();
             ttdData = new ThingsToDoData();
@@ -36,9 +34,8 @@ namespace Do_An
             this.Controls.Add(timeComponent);
             CurrentTxtBox.KeyPress += Default.OnlyNumberPress;
             TypeCbBox.DataSource = typedata.ReadDataTable();
-            TypeCbBox.ValueMember = "ID";
             TypeCbBox.DisplayMember = "Name";
-            
+            TypeCbBox.ValueMember = "ID";
             TypeCbBox.SelectedIndex = 1;
         }
         private void NameCbBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -60,47 +57,9 @@ namespace Do_An
                      Max = 20;
                      break;
                 }
-            addChart(x.SelectedValue.ToString(), Max);
-            UpDateCurrentAndStatus();
-        }
+                addChart(x.SelectedValue.ToString(), Max);
 
-        private void UpDateCurrentAndStatus()
-        {
-            StatusLbl.Text = "";
-            try
-            {
-                long goal = 0;
-                switch ((long)TypeCbBox.SelectedValue)
-                {
-                    case 3:
-                    case 2:
-                        CurrentLbl.Text = "Times ";
-                        ValueCurrentLbl.Text = rData.CountOfCurrent(NameCbBox.SelectedValue.ToString()).ToString();
-                        break;
-                    case 1:
-                        goal = oData.getGoal(NameCbBox.SelectedValue.ToString());
-                        CurrentLbl.Text = "Current";
-                        ValueCurrentLbl.Text = oData.Unit(NameCbBox.SelectedValue.ToString());
-                        ValueCurrentLbl.Text = rData.SumOfCurrent(NameCbBox.SelectedValue.ToString()).ToString() +"/"+goal.ToString()+" "+ ValueCurrentLbl.Text;
-                        break;
-                    case 4:
-                        
-                        CurrentLbl.Text = "Current";
-                        ValueCurrentLbl.Text = rData.SumOfCurrent(NameCbBox.SelectedValue.ToString()).ToString() + "%";
-                        break;
-                }
-                String Status = ttdData.ReadStatusByID(NameCbBox.SelectedValue.ToString());
-                int t = Convert.ToInt32(Status);
-                StatusLbl.Text = ((ThingsToDo.statuses)t).ToString();
-            }
-            catch
-            {
-
-            }
-            
-
-            
-        }
+        }                       
 
         private void TypeCbBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -134,13 +93,14 @@ namespace Do_An
                 Namedt = cursor.ReadDataTableForDoing();
                 //NameCbBox.DataSource = null;
                 NameCbBox.DataSource = Namedt;
-                NameCbBox.ValueMember = "ID";
                 NameCbBox.DisplayMember = "Name";
+                NameCbBox.ValueMember = "ID";
+                NameCbBox.Text = "";
                 if(Namedt.Rows.Count == 0)
                 {
                     CurrentLbl.Hide();
-                    StatusLbl.Hide();
-                    StatusLbl1.Hide();
+                    ValueGoal_DeadlineLbl.Hide();
+                    Goal_DeadlineLbl.Hide();
                 }
             }
             catch(Exception ex)
@@ -182,7 +142,7 @@ namespace Do_An
                 switch ((long)TypeCbBox.SelectedValue)
                 {
                     default:
-                        Rdata.Insert(new Record() { TTD_ID = (long)NameCbBox.SelectedValue, Date = DateTime.Now.Date, Current = 0 });
+                        Rdata.Insert(new Record() { TTD_ID = (int)NameCbBox.SelectedValue, Date = DateTime.Now.Date, Current = 0 });
                         break;
                     case (long)ThingsToDo.types.Objective:
                     case (long)ThingsToDo.types.Project:
@@ -215,16 +175,6 @@ namespace Do_An
                 return false;
             }
             return true;
-        }
-
-        private void NamDS_Changed(object sender, EventArgs e)
-        {
-                       
-        }
-
-        private void InformPanel_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

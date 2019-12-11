@@ -76,14 +76,12 @@
             // 
             this.DailyDataGrid.AllowUserToAddRows = false;
             this.DailyDataGrid.AllowUserToDeleteRows = false;
-            this.DailyDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.DailyDataGrid.ColumnHeadersHeight = 29;
             this.DailyDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DailyDataGrid.Location = new System.Drawing.Point(9, 6);
             this.DailyDataGrid.MultiSelect = false;
             this.DailyDataGrid.Name = "DailyDataGrid";
             this.DailyDataGrid.RowHeadersWidth = 51;
-            this.DailyDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.DailyDataGrid.RowTemplate.Height = 24;
             this.DailyDataGrid.Size = new System.Drawing.Size(407, 231);
             this.DailyDataGrid.TabIndex = 0;
@@ -155,7 +153,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.recordBtn);
             this.Name = "ToDoManagerComponent";
-            this.Size = new System.Drawing.Size(1217, 567);
+            this.Size = new System.Drawing.Size(986, 565);
             this.Load += new System.EventHandler(this.ToDoManagerComponent_Load);
             this.ShowDailyPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DailyDataGrid)).EndInit();
