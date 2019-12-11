@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.StatisticButton = new System.Windows.Forms.Button();
-            this.btnPanel = new System.Windows.Forms.Panel();
-            this.SettingBtn = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.calendarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,40 +36,8 @@
             this.addJobsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UserControlsPanel = new System.Windows.Forms.Panel();
-            this.btnPanel.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // StatisticButton
-            // 
-            this.StatisticButton.BackColor = System.Drawing.SystemColors.Highlight;
-            this.StatisticButton.Location = new System.Drawing.Point(61, 3);
-            this.StatisticButton.Name = "StatisticButton";
-            this.StatisticButton.Size = new System.Drawing.Size(133, 47);
-            this.StatisticButton.TabIndex = 0;
-            this.StatisticButton.Text = "Show Your result";
-            this.StatisticButton.UseVisualStyleBackColor = false;
-            // 
-            // btnPanel
-            // 
-            this.btnPanel.Controls.Add(this.SettingBtn);
-            this.btnPanel.Controls.Add(this.StatisticButton);
-            this.btnPanel.Location = new System.Drawing.Point(114, 580);
-            this.btnPanel.Name = "btnPanel";
-            this.btnPanel.Size = new System.Drawing.Size(291, 47);
-            this.btnPanel.TabIndex = 1;
-            this.btnPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.btnPanel_Paint);
-            // 
-            // SettingBtn
-            // 
-            this.SettingBtn.BackColor = System.Drawing.SystemColors.Highlight;
-            this.SettingBtn.Location = new System.Drawing.Point(207, 1);
-            this.SettingBtn.Name = "SettingBtn";
-            this.SettingBtn.Size = new System.Drawing.Size(81, 46);
-            this.SettingBtn.TabIndex = 5;
-            this.SettingBtn.Text = "Setting.";
-            this.SettingBtn.UseVisualStyleBackColor = false;
-            this.SettingBtn.Click += new System.EventHandler(this.SettingBtn_Click);
             // 
             // menuStrip1
             // 
@@ -89,21 +54,21 @@
             this.settingToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(123, 627);
+            this.menuStrip1.Size = new System.Drawing.Size(85, 600);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // mainToolStripMenuItem
             // 
             this.mainToolStripMenuItem.Name = "mainToolStripMenuItem";
-            this.mainToolStripMenuItem.Size = new System.Drawing.Size(116, 19);
+            this.mainToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
             this.mainToolStripMenuItem.Text = "Main";
             this.mainToolStripMenuItem.Click += new System.EventHandler(this.mainToolStripMenuItem_Click);
             // 
             // calendarToolStripMenuItem
             // 
             this.calendarToolStripMenuItem.Name = "calendarToolStripMenuItem";
-            this.calendarToolStripMenuItem.Size = new System.Drawing.Size(116, 19);
+            this.calendarToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
             this.calendarToolStripMenuItem.Text = "Calendar";
             this.calendarToolStripMenuItem.Click += new System.EventHandler(this.calendarToolStripMenuItem_Click);
             // 
@@ -111,50 +76,48 @@
             // 
             this.weatherToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.weatherToolStripMenuItem.Name = "weatherToolStripMenuItem";
-            this.weatherToolStripMenuItem.Size = new System.Drawing.Size(116, 19);
+            this.weatherToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
             this.weatherToolStripMenuItem.Text = "Weather";
             this.weatherToolStripMenuItem.Click += new System.EventHandler(this.weatherToolStripMenuItem_Click);
             // 
             // chartToolStripMenuItem
             // 
             this.chartToolStripMenuItem.Name = "chartToolStripMenuItem";
-            this.chartToolStripMenuItem.Size = new System.Drawing.Size(116, 19);
+            this.chartToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
             this.chartToolStripMenuItem.Text = "Chart";
             this.chartToolStripMenuItem.Click += new System.EventHandler(this.chartToolStripMenuItem_Click);
             // 
             // addJobsToolStripMenuItem
             // 
             this.addJobsToolStripMenuItem.Name = "addJobsToolStripMenuItem";
-            this.addJobsToolStripMenuItem.Size = new System.Drawing.Size(116, 19);
+            this.addJobsToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
             this.addJobsToolStripMenuItem.Text = "AddJobs";
             this.addJobsToolStripMenuItem.Click += new System.EventHandler(this.addJobsToolStripMenuItem_Click);
             // 
             // settingToolStripMenuItem
             // 
             this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
-            this.settingToolStripMenuItem.Size = new System.Drawing.Size(116, 19);
+            this.settingToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
             this.settingToolStripMenuItem.Text = "Setting";
             this.settingToolStripMenuItem.Click += new System.EventHandler(this.settingToolStripMenuItem_Click);
             // 
             // UserControlsPanel
             // 
-            this.UserControlsPanel.Location = new System.Drawing.Point(175, 0);
+            this.UserControlsPanel.Location = new System.Drawing.Point(88, 12);
             this.UserControlsPanel.Name = "UserControlsPanel";
-            this.UserControlsPanel.Size = new System.Drawing.Size(925, 577);
+            this.UserControlsPanel.Size = new System.Drawing.Size(1315, 577);
             this.UserControlsPanel.TabIndex = 5;
             // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1110, 627);
+            this.ClientSize = new System.Drawing.Size(1502, 600);
             this.Controls.Add(this.UserControlsPanel);
-            this.Controls.Add(this.btnPanel);
             this.Controls.Add(this.menuStrip1);
             this.Name = "MainForm";
             this.Text = "Planning App";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.btnPanel.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -162,9 +125,6 @@
 
         }
         #endregion
-        private System.Windows.Forms.Button StatisticButton;
-        private System.Windows.Forms.Panel btnPanel;
-        private System.Windows.Forms.Button SettingBtn;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem mainToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem calendarToolStripMenuItem;

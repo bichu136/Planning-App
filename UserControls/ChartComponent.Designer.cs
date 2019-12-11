@@ -63,12 +63,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.chart1);
             this.Name = "ChartComponent";
-<<<<<<< HEAD
-            this.Size = new System.Drawing.Size(1217, 567);
+            this.Size = new System.Drawing.Size(1273, 555);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-=======
-            this.Size = new System.Drawing.Size(1076, 703);
->>>>>>> ocean2000
             this.ResumeLayout(false);
 
         }
