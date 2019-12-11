@@ -103,21 +103,13 @@
             // 
             this.UserControlsPanel.Location = new System.Drawing.Point(114, 12);
             this.UserControlsPanel.Name = "UserControlsPanel";
-<<<<<<< HEAD
             this.UserControlsPanel.Size = new System.Drawing.Size(1217, 567);
-=======
-            this.UserControlsPanel.Size = new System.Drawing.Size(1561, 565);
->>>>>>> master
             this.UserControlsPanel.TabIndex = 5;
             // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-<<<<<<< HEAD
             this.ClientSize = new System.Drawing.Size(1347, 590);
-=======
-            this.ClientSize = new System.Drawing.Size(1687, 627);
->>>>>>> master
             this.Controls.Add(this.UserControlsPanel);
             this.Controls.Add(this.menuStrip1);
             this.Name = "MainForm";
