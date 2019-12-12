@@ -101,7 +101,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "DeadlineForm";
-            this.Text = "Form2";
+            this.Text = "Deadline Form";
             this.Load += new System.EventHandler(this.DeadlineForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
