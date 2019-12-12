@@ -30,6 +30,12 @@
         {
             this.calendarPanel = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.ProjectDgv = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.EventDgv = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelMatrix = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.buttonLastMonth = new System.Windows.Forms.Button();
@@ -44,20 +50,14 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.buttonToday = new System.Windows.Forms.Button();
             this.dateTimePickerMainForm = new System.Windows.Forms.DateTimePicker();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.EventDgv = new System.Windows.Forms.DataGridView();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.ProjectDgv = new System.Windows.Forms.DataGridView();
             this.calendarPanel.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EventDgv)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProjectDgv)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EventDgv)).BeginInit();
+            this.panel5.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // calendarPanel
@@ -79,6 +79,64 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1175, 496);
             this.panel2.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.ProjectDgv);
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Location = new System.Drawing.Point(795, 63);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(377, 182);
+            this.panel3.TabIndex = 4;
+            // 
+            // ProjectDgv
+            // 
+            this.ProjectDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ProjectDgv.Location = new System.Drawing.Point(4, 20);
+            this.ProjectDgv.Name = "ProjectDgv";
+            this.ProjectDgv.RowHeadersWidth = 51;
+            this.ProjectDgv.RowTemplate.Height = 24;
+            this.ProjectDgv.Size = new System.Drawing.Size(366, 155);
+            this.ProjectDgv.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(118, 17);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Project On month";
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.EventDgv);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(795, 251);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(377, 242);
+            this.panel1.TabIndex = 3;
+            // 
+            // EventDgv
+            // 
+            this.EventDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.EventDgv.Location = new System.Drawing.Point(4, 21);
+            this.EventDgv.Name = "EventDgv";
+            this.EventDgv.RowHeadersWidth = 51;
+            this.EventDgv.RowTemplate.Height = 24;
+            this.EventDgv.Size = new System.Drawing.Size(366, 214);
+            this.EventDgv.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(156, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Event OnSelected Date";
             // 
             // panelMatrix
             // 
@@ -199,7 +257,7 @@
             // buttonToday
             // 
             this.buttonToday.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonToday.Location = new System.Drawing.Point(242, 0);
+            this.buttonToday.Location = new System.Drawing.Point(597, 1);
             this.buttonToday.Name = "buttonToday";
             this.buttonToday.Size = new System.Drawing.Size(75, 29);
             this.buttonToday.TabIndex = 1;
@@ -209,68 +267,11 @@
             // 
             // dateTimePickerMainForm
             // 
-            this.dateTimePickerMainForm.Location = new System.Drawing.Point(9, 2);
+            this.dateTimePickerMainForm.Location = new System.Drawing.Point(364, 3);
             this.dateTimePickerMainForm.Name = "dateTimePickerMainForm";
             this.dateTimePickerMainForm.Size = new System.Drawing.Size(227, 22);
             this.dateTimePickerMainForm.TabIndex = 0;
             this.dateTimePickerMainForm.ValueChanged += new System.EventHandler(this.dateTimePickerMainForm_ValueChanged);
-            // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.EventDgv);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(795, 251);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(377, 242);
-            this.panel1.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(156, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Event OnSelected Date";
-            // 
-            // EventDgv
-            // 
-            this.EventDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.EventDgv.Location = new System.Drawing.Point(4, 21);
-            this.EventDgv.Name = "EventDgv";
-            this.EventDgv.RowHeadersWidth = 51;
-            this.EventDgv.RowTemplate.Height = 24;
-            this.EventDgv.Size = new System.Drawing.Size(366, 214);
-            this.EventDgv.TabIndex = 1;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.ProjectDgv);
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Location = new System.Drawing.Point(800, 63);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(367, 182);
-            this.panel3.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(118, 17);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Project On month";
-            // 
-            // ProjectDgv
-            // 
-            this.ProjectDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ProjectDgv.Location = new System.Drawing.Point(0, 20);
-            this.ProjectDgv.Name = "ProjectDgv";
-            this.ProjectDgv.RowHeadersWidth = 51;
-            this.ProjectDgv.RowTemplate.Height = 24;
-            this.ProjectDgv.Size = new System.Drawing.Size(366, 159);
-            this.ProjectDgv.TabIndex = 1;
             // 
             // CalendarComponent
             // 
@@ -281,14 +282,14 @@
             this.Size = new System.Drawing.Size(1217, 567);
             this.calendarPanel.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EventDgv)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProjectDgv)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EventDgv)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

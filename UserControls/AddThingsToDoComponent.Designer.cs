@@ -46,6 +46,8 @@
             this.NameLbl = new System.Windows.Forms.Label();
             this.TypeLbl = new System.Windows.Forms.Label();
             this.TypeCbBox = new System.Windows.Forms.ComboBox();
+            this.panelGeneral = new System.Windows.Forms.Panel();
+            this.panelGeneral.SuspendLayout();
             this.SuspendLayout();
             // 
             // Ex1ChkBox
@@ -133,7 +135,7 @@
             // 
             this.AddBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.AddBtn.AutoSize = true;
-            this.AddBtn.Location = new System.Drawing.Point(838, 494);
+            this.AddBtn.Location = new System.Drawing.Point(1069, 496);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(133, 54);
             this.AddBtn.TabIndex = 22;
@@ -186,7 +188,7 @@
             // 
             this.TypeLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.TypeLbl.AutoSize = true;
-            this.TypeLbl.Location = new System.Drawing.Point(26, 513);
+            this.TypeLbl.Location = new System.Drawing.Point(26, 515);
             this.TypeLbl.Name = "TypeLbl";
             this.TypeLbl.Size = new System.Drawing.Size(40, 17);
             this.TypeLbl.TabIndex = 16;
@@ -196,37 +198,47 @@
             // 
             this.TypeCbBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.TypeCbBox.FormattingEnabled = true;
-            this.TypeCbBox.Location = new System.Drawing.Point(89, 510);
+            this.TypeCbBox.Location = new System.Drawing.Point(89, 512);
             this.TypeCbBox.Name = "TypeCbBox";
             this.TypeCbBox.Size = new System.Drawing.Size(241, 24);
             this.TypeCbBox.TabIndex = 15;
+            // 
+            // panelGeneral
+            // 
+            this.panelGeneral.Controls.Add(this.Ex1ChkBox);
+            this.panelGeneral.Controls.Add(this.Ex1CbBox);
+            this.panelGeneral.Controls.Add(this.Ex2DateTime);
+            this.panelGeneral.Controls.Add(this.Ex1DateTime);
+            this.panelGeneral.Controls.Add(this.Ex2TxtBox);
+            this.panelGeneral.Controls.Add(this.Ex1TxtBox);
+            this.panelGeneral.Controls.Add(this.Ex2Lbl);
+            this.panelGeneral.Controls.Add(this.Ex1Lbl);
+            this.panelGeneral.Controls.Add(this.label1);
+            this.panelGeneral.Controls.Add(this.ScoreTxtBox);
+            this.panelGeneral.Controls.Add(this.AddBtn);
+            this.panelGeneral.Controls.Add(this.NewStatBtn);
+            this.panelGeneral.Controls.Add(this.StatsCbBox);
+            this.panelGeneral.Controls.Add(this.NameTxtBox);
+            this.panelGeneral.Controls.Add(this.Stat);
+            this.panelGeneral.Controls.Add(this.NameLbl);
+            this.panelGeneral.Controls.Add(this.TypeLbl);
+            this.panelGeneral.Controls.Add(this.TypeCbBox);
+            this.panelGeneral.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelGeneral.Location = new System.Drawing.Point(0, 0);
+            this.panelGeneral.Name = "panelGeneral";
+            this.panelGeneral.Size = new System.Drawing.Size(1217, 567);
+            this.panelGeneral.TabIndex = 33;
             // 
             // AddThingsToDoComponent
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.Ex1ChkBox);
-            this.Controls.Add(this.Ex1CbBox);
-            this.Controls.Add(this.Ex2DateTime);
-            this.Controls.Add(this.Ex1DateTime);
-            this.Controls.Add(this.Ex2TxtBox);
-            this.Controls.Add(this.Ex1TxtBox);
-            this.Controls.Add(this.Ex2Lbl);
-            this.Controls.Add(this.Ex1Lbl);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.ScoreTxtBox);
-            this.Controls.Add(this.AddBtn);
-            this.Controls.Add(this.NewStatBtn);
-            this.Controls.Add(this.StatsCbBox);
-            this.Controls.Add(this.NameTxtBox);
-            this.Controls.Add(this.Stat);
-            this.Controls.Add(this.NameLbl);
-            this.Controls.Add(this.TypeLbl);
-            this.Controls.Add(this.TypeCbBox);
+            this.Controls.Add(this.panelGeneral);
             this.Name = "AddThingsToDoComponent";
-            this.Size = new System.Drawing.Size(986, 565);
+            this.Size = new System.Drawing.Size(1217, 567);
+            this.panelGeneral.ResumeLayout(false);
+            this.panelGeneral.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -250,5 +262,6 @@
         private System.Windows.Forms.Label NameLbl;
         private System.Windows.Forms.Label TypeLbl;
         private System.Windows.Forms.ComboBox TypeCbBox;
+        private System.Windows.Forms.Panel panelGeneral;
     }
 }
