@@ -93,11 +93,16 @@
             // 
             // ProjectDgv
             // 
+            this.ProjectDgv.AllowUserToAddRows = false;
+            this.ProjectDgv.AllowUserToDeleteRows = false;
+            this.ProjectDgv.AllowUserToResizeColumns = false;
+            this.ProjectDgv.AllowUserToResizeRows = false;
             this.ProjectDgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ProjectDgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.ProjectDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ProjectDgv.Location = new System.Drawing.Point(4, 20);
             this.ProjectDgv.Name = "ProjectDgv";
+            this.ProjectDgv.ReadOnly = true;
             this.ProjectDgv.RowHeadersWidth = 51;
             this.ProjectDgv.RowTemplate.Height = 24;
             this.ProjectDgv.Size = new System.Drawing.Size(366, 155);
@@ -125,6 +130,8 @@
             // 
             // EventDgv
             // 
+            this.EventDgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.EventDgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.EventDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.EventDgv.Location = new System.Drawing.Point(4, 21);
             this.EventDgv.Name = "EventDgv";

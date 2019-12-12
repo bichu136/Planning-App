@@ -37,7 +37,6 @@
             this.ShowDeadlinesBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.DeadlineLabel = new System.Windows.Forms.Label();
-            this.recordBtn = new System.Windows.Forms.Button();
             this.ShowDailyPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DailyDataGrid)).BeginInit();
             this.panel1.SuspendLayout();
@@ -48,7 +47,7 @@
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button4.AutoSize = true;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(963, 42);
+            this.button4.Location = new System.Drawing.Point(955, 71);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(229, 48);
             this.button4.TabIndex = 9;
@@ -83,6 +82,10 @@
             // 
             this.DailyDataGrid.AllowUserToAddRows = false;
             this.DailyDataGrid.AllowUserToDeleteRows = false;
+            this.DailyDataGrid.AllowUserToResizeColumns = false;
+            this.DailyDataGrid.AllowUserToResizeRows = false;
+            this.DailyDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DailyDataGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.DailyDataGrid.ColumnHeadersHeight = 29;
             this.DailyDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DailyDataGrid.Location = new System.Drawing.Point(9, 6);
@@ -151,18 +154,6 @@
             this.DeadlineLabel.TabIndex = 0;
             this.DeadlineLabel.Text = "Nearest Deadline";
             // 
-            // recordBtn
-            // 
-            this.recordBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.recordBtn.AutoSize = true;
-            this.recordBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.recordBtn.Location = new System.Drawing.Point(963, 136);
-            this.recordBtn.Name = "recordBtn";
-            this.recordBtn.Size = new System.Drawing.Size(229, 39);
-            this.recordBtn.TabIndex = 6;
-            this.recordBtn.Text = "Record Jobs";
-            this.recordBtn.UseVisualStyleBackColor = true;
-            // 
             // ToDoManagerComponent
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -170,7 +161,6 @@
             this.Controls.Add(this.button4);
             this.Controls.Add(this.ShowDailyPanel);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.recordBtn);
             this.MinimumSize = new System.Drawing.Size(1185, 549);
             this.Name = "ToDoManagerComponent";
             this.Size = new System.Drawing.Size(1217, 567);
@@ -196,6 +186,5 @@
         private System.Windows.Forms.Button ShowDeadlinesBtn;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label DeadlineLabel;
-        private System.Windows.Forms.Button recordBtn;
     }
 }
