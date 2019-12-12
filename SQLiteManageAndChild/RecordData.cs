@@ -79,21 +79,29 @@ namespace Do_An
         }
         public DataTable GetDailyScores()
         {
-            cmd.CommandText = "select Stats.Name,temp2.x from Stats left join(select TTD_Stats.StatsID,sum(TTD_Stats.Score * (temp.result1)) x from TTD_Stats,(select count(Record.Current) result1,Record.TTDID from Record,ThingToDo where ThingToDo.ID = Record.TTDID and ThingToDo.Type = 2 group by TTDID) temp where temp.TTDID = TTD_Stats.TTDID group by TTD_Stats.StatsID) temp2 on Stats.ID = temp2.StatsID";
+            cmd.CommandText = "select Stats.Name,temp2.x,Stats.ID from Stats left join(select TTD_Stats.StatsID,sum(TTD_Stats.Score * (temp.result1)*1.0) x from TTD_Stats,(select count(Record.Current) result1,Record.TTDID from Record,ThingToDo where ThingToDo.ID = Record.TTDID and ThingToDo.Type = 2 group by TTDID) temp where temp.TTDID = TTD_Stats.TTDID group by TTD_Stats.StatsID) temp2 on Stats.ID = temp2.StatsID";
             DataTable res = new DataTable();
             Open();
             DB.SelectCommand = cmd;
             DB.Fill(res);
+            for (int i = 0; i < res.Rows.Count; i++)
+            {
+                res.Rows[i]["x"] = (res.Rows[i]["x"].ToString() == "") ? 0.0 : res.Rows[i]["x"];
+            }
             cnn.Close();
             return res;
         }
         public DataTable GetEventScores()
         {
-            cmd.CommandText = "select Stats.Name,temp2.x from Stats left join(select TTD_Stats.StatsID,sum(TTD_Stats.Score * (temp.result1)) x from TTD_Stats,(select count(Record.Current) result1,Record.TTDID from Record,ThingToDo where ThingToDo.ID = Record.TTDID and ThingToDo.Type = 3 group by TTDID) temp where temp.TTDID = TTD_Stats.TTDID group by TTD_Stats.StatsID) temp2 on Stats.ID = temp2.StatsID";
+            cmd.CommandText = "select Stats.Name,temp2.x,Stats.ID from Stats left join(select TTD_Stats.StatsID,sum(TTD_Stats.Score * (temp.result1)) x from TTD_Stats,(select count(Record.Current) result1,Record.TTDID from Record,ThingToDo where ThingToDo.ID = Record.TTDID and ThingToDo.Type = 3 group by TTDID) temp where temp.TTDID = TTD_Stats.TTDID group by TTD_Stats.StatsID) temp2 on Stats.ID = temp2.StatsID";
             DataTable res = new DataTable();
             Open();
             DB.SelectCommand = cmd;
             DB.Fill(res);
+            for (int i = 0; i < res.Rows.Count; i++)
+            {
+                res.Rows[i]["x"] = (res.Rows[i]["x"].ToString() == "") ? 0.0 : res.Rows[i]["x"];
+            }
             cnn.Close();
             return res;
         }
@@ -104,18 +112,43 @@ namespace Do_An
             Open();
             DB.SelectCommand = cmd;
             DB.Fill(res);
+            for (int i = 0; i < res.Rows.Count; i++)
+            {
+                res.Rows[i]["x"] = (res.Rows[i]["x"].ToString() == "") ? 0.0 : res.Rows[i]["x"];
+            }
             cnn.Close();
             return res;
         }
         public DataTable GetProjectScores()
         {
-            cmd.CommandText = " select Stats.Name,temp2.x from Stats left join ( select TTD_Stats.StatsID,sum(TTD_Stats.Score * (temp.result1 / 100.0)) x from TTD_Stats,(select sum(Record.Current) result1,Record.TTDID from Record,ThingToDo where ThingToDo.ID = Record.TTDID and ThingToDo.Type = 4 group by TTDID) temp where temp.TTDID = TTD_Stats.TTDID group by TTD_Stats.StatsID) temp2 on Stats.ID = temp2.StatsID ";
+            cmd.CommandText = " select Stats.Name,temp2.x,Stats.ID from Stats left join ( select TTD_Stats.StatsID,sum(TTD_Stats.Score * (temp.result1 / 100.0)) x from TTD_Stats,(select sum(Record.Current) result1,Record.TTDID from Record,ThingToDo where ThingToDo.ID = Record.TTDID and ThingToDo.Type = 4 group by TTDID) temp where temp.TTDID = TTD_Stats.TTDID group by TTD_Stats.StatsID) temp2 on Stats.ID = temp2.StatsID ";
             DataTable res = new DataTable();
             Open();
             DB.SelectCommand = cmd;
             DB.Fill(res);
+            for (int i= 0;i < res.Rows.Count;i++)
+            {
+                res.Rows[i]["x"] = (res.Rows[i]["x"].ToString() == "") ? 0.0 : res.Rows[i]["x"];
+            }
             cnn.Close();
             return res;
+        }
+        public DataTable GetAllScores()
+        {
+            DataTable Sum = GetDailyScores();
+            DataTable Obj = GetObjectScores();
+            DataTable Prj = GetProjectScores();
+            DataTable Evn = GetEventScores();
+            for (int i = 0; i<Sum.Rows.Count;i++)
+            {
+                double D,O, P, E;
+                O = Obj.Rows[i].Field<double>("x");
+                P = Prj.Rows[i].Field<double>("x");
+                E = Evn.Rows[i].Field<double>("x");
+                D = Sum.Rows[i].Field<double>("x");
+                Sum.Rows[i]["x"] =D + O + P + E;
+            }
+            return Sum;
         }
     }
 }
