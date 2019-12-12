@@ -103,9 +103,10 @@
             // 
             // UserControlsPanel
             // 
-            this.UserControlsPanel.Location = new System.Drawing.Point(101, 0);
+            this.UserControlsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UserControlsPanel.Location = new System.Drawing.Point(85, 0);
             this.UserControlsPanel.Name = "UserControlsPanel";
-            this.UserControlsPanel.Size = new System.Drawing.Size(1217, 567);
+            this.UserControlsPanel.Size = new System.Drawing.Size(1254, 587);
             this.UserControlsPanel.TabIndex = 5;
             // 
             // MainForm
@@ -118,6 +119,8 @@
             this.Name = "MainForm";
             this.Text = "Planning App";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.ResizeBegin += new System.EventHandler(this.MainForm_ResizeBegin);
+            this.ResizeEnd += new System.EventHandler(this.MainForm_ResizeEnd);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

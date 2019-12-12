@@ -33,15 +33,18 @@ namespace Do_An
             set { buttonManeger = value; }
         }
 
+
         private List<string> dayOfWeek = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
         #endregion
+        private ToDoManagerComponent ToDoManager;
+        public ToDoManagerComponent toDoManager { get => ToDoManager; set => ToDoManager = value; }
 
         public MainForm()
         {
             InitializeComponent();
             weather = new Weather();
-            DataGridViewCheckBoxColumn checkboxes = new DataGridViewCheckBoxColumn() { Name = "DONE", HeaderText = "Check", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells };           
-            
+            DataGridViewCheckBoxColumn checkboxes = new DataGridViewCheckBoxColumn() { Name = "DONE", HeaderText = "Check", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells };
+            CalendarComponent calendarComponent = new CalendarComponent();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -122,21 +125,26 @@ namespace Do_An
 
         private void mainToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ToDoManagerComponent toDoManager = new ToDoManagerComponent();
+            toDoManager = new ToDoManagerComponent();
+            toDoManager.Size = UserControlsPanel.Size;
             UserControlsPanel.Controls.Clear();
             UserControlsPanel.Controls.Add(toDoManager);
         }
 
         private void calendarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CalendarComponent calendarComponent = new CalendarComponent();
+            calendarComponent.Size = UserControlsPanel.Size;
             UserControlsPanel.Controls.Clear();
-            UserControlsPanel.Controls.Add(new CalendarComponent());
+            UserControlsPanel.Controls.Add(calendarComponent);
         }
 
         private void weatherToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            WeatherForecast weatherForecast = new WeatherForecast();
+            weatherForecast.Size = UserControlsPanel.Size;
             UserControlsPanel.Controls.Clear();
-            UserControlsPanel.Controls.Add(new WeatherForecast());
+            UserControlsPanel.Controls.Add(weatherForecast);
         }
 
         private void AddJobsBtn_Click(object sender, EventArgs e)
@@ -146,12 +154,15 @@ namespace Do_An
         }
         private void chartToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ChartComponent chartComponent = new ChartComponent();
+            chartComponent.Size = UserControlsPanel.Size;
             UserControlsPanel.Controls.Clear();
-            UserControlsPanel.Controls.Add(new ChartComponent());
+            UserControlsPanel.Controls.Add(chartComponent);
         }
         private void addJobsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddThingsToDoComponent addThingToDo= new AddThingsToDoComponent();
+            addThingToDo.Size = UserControlsPanel.Size;
             UserControlsPanel.Controls.Clear();
             UserControlsPanel.Controls.Add(addThingToDo);
         }
@@ -159,8 +170,26 @@ namespace Do_An
         private void settingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SettingsComponent Setting = new SettingsComponent();
+            Setting.Size = UserControlsPanel.Size;
             UserControlsPanel.Controls.Clear();
             UserControlsPanel.Controls.Add(Setting);
+        }
+
+        private void MainForm_ResizeEnd(object sender, EventArgs e)
+        {
+            if (UserControlsPanel.Controls.Contains(toDoManager))
+            {
+                mainToolStripMenuItem_Click(sender, e);
+            }
+        }
+
+        private void MainForm_ResizeBegin(object sender, EventArgs e)
+        {
+            Form form = (Form)sender; 
+            if (UserControlsPanel.Controls.Contains(toDoManager))
+            {
+                toDoManager.Size = new Size(form.Size.Width, form.Size.Height);
+            }
         }
     }
 }

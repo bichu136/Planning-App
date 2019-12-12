@@ -36,7 +36,6 @@ namespace Do_An
             MainForm mainForm = new MainForm();
             mainForm.StartPosition = FormStartPosition.CenterScreen;
             Application.Run(mainForm);
-            
         }
 
     }

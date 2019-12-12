@@ -45,6 +45,8 @@
             // 
             // button4
             // 
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button4.AutoSize = true;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Location = new System.Drawing.Point(963, 42);
             this.button4.Name = "button4";
@@ -56,6 +58,7 @@
             // 
             // ShowDailyPanel
             // 
+            this.ShowDailyPanel.AutoSize = true;
             this.ShowDailyPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.ShowDailyPanel.Controls.Add(this.UpdateDailyBtn);
             this.ShowDailyPanel.Controls.Add(this.DailyDataGrid);
@@ -66,6 +69,7 @@
             // 
             // UpdateDailyBtn
             // 
+            this.UpdateDailyBtn.AutoSize = true;
             this.UpdateDailyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdateDailyBtn.Location = new System.Drawing.Point(727, 253);
             this.UpdateDailyBtn.Name = "UpdateDailyBtn";
@@ -91,6 +95,8 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.panel1.AutoSize = true;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.ShowEventsBtn);
             this.panel1.Controls.Add(this.ShowDeadlinesBtn);
@@ -103,6 +109,7 @@
             // 
             // ShowEventsBtn
             // 
+            this.ShowEventsBtn.AutoSize = true;
             this.ShowEventsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ShowEventsBtn.Location = new System.Drawing.Point(773, 100);
             this.ShowEventsBtn.Name = "ShowEventsBtn";
@@ -114,6 +121,7 @@
             // 
             // ShowDeadlinesBtn
             // 
+            this.ShowDeadlinesBtn.AutoSize = true;
             this.ShowDeadlinesBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ShowDeadlinesBtn.Location = new System.Drawing.Point(773, 9);
             this.ShowDeadlinesBtn.Name = "ShowDeadlinesBtn";
@@ -145,10 +153,12 @@
             // 
             // recordBtn
             // 
+            this.recordBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.recordBtn.AutoSize = true;
             this.recordBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.recordBtn.Location = new System.Drawing.Point(963, 136);
             this.recordBtn.Name = "recordBtn";
-            this.recordBtn.Size = new System.Drawing.Size(229, 38);
+            this.recordBtn.Size = new System.Drawing.Size(229, 39);
             this.recordBtn.TabIndex = 6;
             this.recordBtn.Text = "Record Jobs";
             this.recordBtn.UseVisualStyleBackColor = true;
@@ -161,14 +171,17 @@
             this.Controls.Add(this.ShowDailyPanel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.recordBtn);
+            this.MinimumSize = new System.Drawing.Size(1185, 549);
             this.Name = "ToDoManagerComponent";
             this.Size = new System.Drawing.Size(1217, 567);
             this.Load += new System.EventHandler(this.ToDoManagerComponent_Load);
             this.ShowDailyPanel.ResumeLayout(false);
+            this.ShowDailyPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DailyDataGrid)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
     }
 
