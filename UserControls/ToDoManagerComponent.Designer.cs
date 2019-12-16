@@ -28,7 +28,6 @@
     /// </summary>
     private void InitializeComponent()
     {
-            this.button4 = new System.Windows.Forms.Button();
             this.ShowDailyPanel = new System.Windows.Forms.Panel();
             this.UpdateDailyBtn = new System.Windows.Forms.Button();
             this.DailyDataGrid = new System.Windows.Forms.DataGridView();
@@ -37,21 +36,11 @@
             this.ShowDeadlinesBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.DeadlineLabel = new System.Windows.Forms.Label();
-            this.recordBtn = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.ShowDailyPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DailyDataGrid)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(425, 9);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(128, 48);
-            this.button4.TabIndex = 9;
-            this.button4.Text = "Add Done Jobs";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // ShowDailyPanel
             // 
@@ -135,14 +124,15 @@
             this.DeadlineLabel.TabIndex = 0;
             this.DeadlineLabel.Text = "Nearest Deadline";
             // 
-            // recordBtn
+            // button4
             // 
-            this.recordBtn.Location = new System.Drawing.Point(425, 67);
-            this.recordBtn.Name = "recordBtn";
-            this.recordBtn.Size = new System.Drawing.Size(128, 38);
-            this.recordBtn.TabIndex = 6;
-            this.recordBtn.Text = "Record Jobs";
-            this.recordBtn.UseVisualStyleBackColor = true;
+            this.button4.Location = new System.Drawing.Point(425, 9);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(128, 48);
+            this.button4.TabIndex = 9;
+            this.button4.Text = "Add Done Jobs";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // ToDoManagerComponent
             // 
@@ -151,7 +141,6 @@
             this.Controls.Add(this.button4);
             this.Controls.Add(this.ShowDailyPanel);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.recordBtn);
             this.Name = "ToDoManagerComponent";
             this.Size = new System.Drawing.Size(986, 565);
             this.Load += new System.EventHandler(this.ToDoManagerComponent_Load);
@@ -164,8 +153,6 @@
     }
 
     #endregion
-
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Panel ShowDailyPanel;
         private System.Windows.Forms.Button UpdateDailyBtn;
         private System.Windows.Forms.DataGridView DailyDataGrid;
@@ -174,6 +161,6 @@
         private System.Windows.Forms.Button ShowDeadlinesBtn;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label DeadlineLabel;
-        private System.Windows.Forms.Button recordBtn;
+        private System.Windows.Forms.Button button4;
     }
 }

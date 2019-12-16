@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.calendarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,10 +42,11 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.AutoSize = false;
             this.menuStrip1.BackColor = System.Drawing.SystemColors.Highlight;
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Left;
             this.menuStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(40, 40);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mainToolStripMenuItem,
             this.calendarToolStripMenuItem,
@@ -54,56 +56,73 @@
             this.settingToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(85, 600);
+            this.menuStrip1.Size = new System.Drawing.Size(154, 600);
             this.menuStrip1.TabIndex = 4;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // mainToolStripMenuItem
             // 
+            this.mainToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("mainToolStripMenuItem.Image")));
+            this.mainToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.mainToolStripMenuItem.Name = "mainToolStripMenuItem";
-            this.mainToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
+            this.mainToolStripMenuItem.Size = new System.Drawing.Size(149, 64);
             this.mainToolStripMenuItem.Text = "Main";
+            this.mainToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.mainToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.mainToolStripMenuItem.Click += new System.EventHandler(this.mainToolStripMenuItem_Click);
             // 
             // calendarToolStripMenuItem
             // 
+            this.calendarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("calendarToolStripMenuItem.Image")));
             this.calendarToolStripMenuItem.Name = "calendarToolStripMenuItem";
-            this.calendarToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
+            this.calendarToolStripMenuItem.Size = new System.Drawing.Size(150, 104);
             this.calendarToolStripMenuItem.Text = "Calendar";
+            this.calendarToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.calendarToolStripMenuItem.Click += new System.EventHandler(this.calendarToolStripMenuItem_Click);
             // 
             // weatherToolStripMenuItem
             // 
             this.weatherToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.weatherToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("weatherToolStripMenuItem.Image")));
+            this.weatherToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.weatherToolStripMenuItem.Name = "weatherToolStripMenuItem";
-            this.weatherToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
+            this.weatherToolStripMenuItem.Size = new System.Drawing.Size(150, 104);
             this.weatherToolStripMenuItem.Text = "Weather";
+            this.weatherToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.weatherToolStripMenuItem.Click += new System.EventHandler(this.weatherToolStripMenuItem_Click);
             // 
             // chartToolStripMenuItem
             // 
+            this.chartToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("chartToolStripMenuItem.Image")));
+            this.chartToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.chartToolStripMenuItem.Name = "chartToolStripMenuItem";
-            this.chartToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
+            this.chartToolStripMenuItem.Size = new System.Drawing.Size(149, 64);
             this.chartToolStripMenuItem.Text = "Chart";
+            this.chartToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.chartToolStripMenuItem.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            this.chartToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.chartToolStripMenuItem.Click += new System.EventHandler(this.chartToolStripMenuItem_Click);
             // 
             // addJobsToolStripMenuItem
             // 
+            this.addJobsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("addJobsToolStripMenuItem.Image")));
             this.addJobsToolStripMenuItem.Name = "addJobsToolStripMenuItem";
-            this.addJobsToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
+            this.addJobsToolStripMenuItem.Size = new System.Drawing.Size(150, 104);
             this.addJobsToolStripMenuItem.Text = "AddJobs";
+            this.addJobsToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.addJobsToolStripMenuItem.Click += new System.EventHandler(this.addJobsToolStripMenuItem_Click);
             // 
             // settingToolStripMenuItem
             // 
+            this.settingToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
-            this.settingToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
+            this.settingToolStripMenuItem.Size = new System.Drawing.Size(150, 24);
             this.settingToolStripMenuItem.Text = "Setting";
             this.settingToolStripMenuItem.Click += new System.EventHandler(this.settingToolStripMenuItem_Click);
             // 
             // UserControlsPanel
             // 
-            this.UserControlsPanel.Location = new System.Drawing.Point(88, 12);
+            this.UserControlsPanel.Location = new System.Drawing.Point(175, 11);
             this.UserControlsPanel.Name = "UserControlsPanel";
             this.UserControlsPanel.Size = new System.Drawing.Size(1315, 577);
             this.UserControlsPanel.TabIndex = 5;
@@ -121,7 +140,6 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
         #endregion

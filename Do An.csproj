@@ -322,12 +322,19 @@
     <Analyzer Include="packages\Microsoft.NetFramework.Analyzers.2.9.6\analyzers\dotnet\cs\Microsoft.NetFramework.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="resources\004-calendar.png" />
+    <Content Include="resources\006-camping.png" />
+    <Content Include="resources\012-verified.png" />
+    <Content Include="resources\013-image.png" />
+    <Content Include="resources\015-poll.png" />
     <Content Include="resources\01d.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="resources\023-home.png" />
     <Content Include="resources\04d.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="resources\070-list.png" />
     <Content Include="resources\09d.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

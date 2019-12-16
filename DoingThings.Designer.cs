@@ -115,7 +115,7 @@
             // Goal_DeadlineLbl
             // 
             this.Goal_DeadlineLbl.AutoSize = true;
-            this.Goal_DeadlineLbl.Location = new System.Drawing.Point(407, 313);
+            this.Goal_DeadlineLbl.Location = new System.Drawing.Point(426, 95);
             this.Goal_DeadlineLbl.Name = "Goal_DeadlineLbl";
             this.Goal_DeadlineLbl.Size = new System.Drawing.Size(46, 17);
             this.Goal_DeadlineLbl.TabIndex = 4;
@@ -124,7 +124,7 @@
             // ValueGoal_DeadlineLbl
             // 
             this.ValueGoal_DeadlineLbl.AutoSize = true;
-            this.ValueGoal_DeadlineLbl.Location = new System.Drawing.Point(498, 313);
+            this.ValueGoal_DeadlineLbl.Location = new System.Drawing.Point(478, 95);
             this.ValueGoal_DeadlineLbl.Name = "ValueGoal_DeadlineLbl";
             this.ValueGoal_DeadlineLbl.Size = new System.Drawing.Size(46, 17);
             this.ValueGoal_DeadlineLbl.TabIndex = 4;
@@ -133,7 +133,7 @@
             // ValueCurrentBtn
             // 
             this.ValueCurrentBtn.AutoSize = true;
-            this.ValueCurrentBtn.Location = new System.Drawing.Point(498, 258);
+            this.ValueCurrentBtn.Location = new System.Drawing.Point(478, 68);
             this.ValueCurrentBtn.Name = "ValueCurrentBtn";
             this.ValueCurrentBtn.Size = new System.Drawing.Size(46, 17);
             this.ValueCurrentBtn.TabIndex = 4;
@@ -142,7 +142,7 @@
             // CurrentLbl
             // 
             this.CurrentLbl.AutoSize = true;
-            this.CurrentLbl.Location = new System.Drawing.Point(407, 258);
+            this.CurrentLbl.Location = new System.Drawing.Point(426, 69);
             this.CurrentLbl.Name = "CurrentLbl";
             this.CurrentLbl.Size = new System.Drawing.Size(46, 17);
             this.CurrentLbl.TabIndex = 4;
@@ -197,7 +197,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label2.Location = new System.Drawing.Point(27, 82);
+            this.label2.Location = new System.Drawing.Point(12, 108);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 20);
             this.label2.TabIndex = 5;

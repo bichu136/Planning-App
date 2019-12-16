@@ -162,5 +162,10 @@ namespace Do_An
             UserControlsPanel.Controls.Clear();
             UserControlsPanel.Controls.Add(Setting);
         }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }

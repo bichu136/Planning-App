@@ -37,5 +37,26 @@ namespace Do_An.UserControls
 
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DataTable x = rData.GetAllScoresMonthly();
+
+            chart1.DataSource = x;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DataTable x = rData.GetAllScoresWeekly();
+
+            chart1.DataSource = x;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            DataTable x = rData.GetAllScores();
+
+            chart1.DataSource = x;
+        }
     }
 }
