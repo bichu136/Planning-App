@@ -11,7 +11,7 @@ using System.IO;
 using System.Globalization;
 namespace Do_An
 {
-    class Weather
+    public class Weather
     {
         private List<DateTime> days;
         private List<String> tempF;

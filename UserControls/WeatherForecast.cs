@@ -39,11 +39,11 @@ namespace Do_An
                 try
                 {
                     weather.getData(Program.ThoiTiet);
-                    WTimeLabel.Text = weather.Days[0].ToString();
-                    WTenpfLbl.Text = weather.TempF[0];
-                    WsymbLbl.Text = weather.Weathers[0];
-                    WAreaLbl.Text = File.ReadAllText("ThoiTiet.txt");
-                    pictureBox1_Click(sender, e);
+                    //TODO: sửa các locations, xoá hết mấy cái kia đi
+                    for (int i=0;i< weather.Days.Count;i++)
+                    {
+                        this.Controls.Add(new WeatherNode(weather, i) { Location = new Point(0,0)});
+                    }
                 }
                 catch (Exception ex)
                 {
