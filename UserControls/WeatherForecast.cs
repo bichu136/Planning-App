@@ -49,7 +49,7 @@ namespace Do_An
                 {
 
                 }
-            }
+            }   
 
         }
 
@@ -138,6 +138,21 @@ namespace Do_An
                     break;
             }
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
+
+        private void labelDay_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label64_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void WeatherForecast_Load_2(object sender, EventArgs e)
+        {
+
         }
     }
 }
