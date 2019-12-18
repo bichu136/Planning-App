@@ -251,6 +251,12 @@
     <Compile Include="UserControls\AddThingsToDoComponent.Designer.cs">
       <DependentUpon>AddThingsToDoComponent.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\WeatherNode.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\WeatherNode.Designer.cs">
+      <DependentUpon>WeatherNode.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -316,6 +322,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ToDoManagerComponent.resx">
       <DependentUpon>ToDoManagerComponent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\WeatherNode.resx">
+      <DependentUpon>WeatherNode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>

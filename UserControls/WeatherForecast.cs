@@ -40,29 +40,35 @@ namespace Do_An
                 {
                     weather.getData(Program.ThoiTiet);
                     //TODO: sửa các locations, xoá hết mấy cái kia đi
-                    for (int i=0;i< weather.Days.Count;i++)
+                    for (int i=0;i< weather.Days.Count ;i++)
                     {
-                        this.Controls.Add(new WeatherNode(weather, i) { Location = new Point(0,0)});
-                    }
+                      
+                            WeatherNode t = new WeatherNode(weather, i) { Location = new Point(0, i*640) };
+                            this.Controls.Add(t);
+                            t.Visible = true;
+                        }
+
+                       
+
+                    
                 }
                 catch (Exception ex)
                 {
 
                 }
-            }   
-
+            }
         }
 
-        private void WeatherForecast_Load_1(object sender, EventArgs e)
+        private void T_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("CÓ node");
         }
 
-        private void panelWeatherIcon_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
 
+
+
+        /*
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             switch (Convert.ToInt32(weather.Type_weather[0]))
@@ -136,26 +142,26 @@ namespace Do_An
                 case 804:
                     pictureBox1.Image = Image.FromFile(@"resources//04d.png"); ;
                     break;
-            }
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-        }
-
-        private void labelDay_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label64_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void WeatherForecast_Load_2(object sender, EventArgs e)
-        {
-
-        }
+            }*/
+        // pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
     }
-}
+
+       // private void labelDay_Click(object sender, EventArgs e)
+       // {
+
+        //}
+
+       // private void label64_Click(object sender, EventArgs e)
+       // {
+
+       // }
+
+       // private void WeatherForecast_Load_2(object sender, EventArgs e)
+        //{
+
+        }
+    //}
+//}
 
 
 
