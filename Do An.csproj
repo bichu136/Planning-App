@@ -142,12 +142,6 @@
       <DependentUpon>DeadlineForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Default.cs" />
-    <Compile Include="SkinForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SkinForm.Designer.cs">
-      <DependentUpon>SkinForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="SQLiteManageAndChild\EventData.cs" />
     <Compile Include="SQLiteManageAndChild\ObjectiveData.cs" />
     <Compile Include="SQLiteManageAndChild\ProjectData.cs" />
@@ -234,24 +228,12 @@
     <Compile Include="UserControls\AddThingsToDoComponent.Designer.cs">
       <DependentUpon>AddThingsToDoComponent.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UserForm.Designer.cs">
-      <DependentUpon>UserForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="weather.cs" />
     <Compile Include="UserControls\WeatherForecast.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\WeatherForecast.Designer.cs">
       <DependentUpon>WeatherForecast.cs</DependentUpon>
-    </Compile>
-    <Compile Include="XtraUserControl1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="XtraUserControl1.Designer.cs">
-      <DependentUpon>XtraUserControl1.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="DoingThings.resx">
       <DependentUpon>DoingThings.cs</DependentUpon>
@@ -276,9 +258,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SkinForm.resx">
-      <DependentUpon>SkinForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\AddThingsToDoComponent.resx">
       <DependentUpon>AddThingsToDoComponent.cs</DependentUpon>
     </EmbeddedResource>
@@ -307,14 +286,8 @@
     <EmbeddedResource Include="UserControls\ToDoManagerComponent.resx">
       <DependentUpon>ToDoManagerComponent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForm.resx">
-      <DependentUpon>UserForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\WeatherForecast.resx">
       <DependentUpon>WeatherForecast.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="XtraUserControl1.resx">
-      <DependentUpon>XtraUserControl1.cs</DependentUpon>
     </EmbeddedResource>
     <Resource Include="database.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
