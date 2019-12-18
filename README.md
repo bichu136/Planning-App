@@ -54,6 +54,10 @@
 > MSSV: 18521168.
 > Khoa: Khoa học máy tính.
 > Email:
+- Lê Đại Dương 
+> MSSV: 18520028
+> Khoa : công nghệ phần mềm
+> Email: 
 =======
 - Tăng điểm khi hoàn thành công việc, trừ điểm khi không hoàn thành
 - Các việc đã hoàn thành sẽ được tích điểm vào các hạng mục thành tựu khác nhau
