@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Do_An
 {
-    public partial class ToDoManagerComponent : UserControl
+    public partial class ToDoManagerComponent : DevExpress.XtraEditors.XtraUserControl
     {
         DailyData Ddata = new DailyData();
         ProjectData Pdata = new ProjectData();
@@ -52,7 +52,7 @@ namespace Do_An
             //DeadlineLabel Update.
             DeadlineLabel.Text = Pdata.getNearestDeadline();
             //EventLabel Update.
-            label2.Text = Edata.getNextEvent();
+            EventLabel.Text = Edata.getNextEvent();
             //DailyDatGrid Update.
             DailyDataGrid.DataSource = Ddata.ReadDataTable();
             DailyDataGrid.Columns["ID"].Visible = false;

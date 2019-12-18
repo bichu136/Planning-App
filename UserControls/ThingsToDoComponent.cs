@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Do_An
 {
-    public partial class ThingsToDoComponent : UserControl
+    public partial class ThingsToDoComponent : DevExpress.XtraEditors.XtraUserControl
     {
         ThingsToDoData data;
         Timer UpdateTimeConditionsTimer;

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Do_An
 {
-    public partial class AddThingsToDoComponent : UserControl
+    public partial class AddThingsToDoComponent : DevExpress.XtraEditors.XtraUserControl
     {
         bool flag;
         private Dictionary<long, int> Scores;
@@ -39,14 +39,9 @@ namespace Do_An
             TypeCbBox.SelectedIndex = 1;
             AddBtn.Click += AddThingsToDo;
             //in load event
-
             StatsCbBox.SelectedValueChanged += StatsChange;
 
-            foreach (var item in StatsCbBox.Items)
-            {
-
-                Scores.Add((int)item, 0);
-            }
+            
             Ex1CbBox.Items.AddRange(Enum.GetNames(typeof(DayOfWeek)));
             Ex1CbBox.Items.Add("Alldays");
         }
@@ -239,19 +234,20 @@ namespace Do_An
         }
         private bool checkReqirement()
         {
-            if (NameTxtBox.TextLength == 0)
+            
+            if (NameTxtBox.EditValue.ToString().Length == 0)
             {
                 return false;
             }
-            if (ScoreTxtBox.TextLength == 0)
+            if (ScoreTxtBox.EditValue.ToString().Length == 0)
             {
                 return false;
             }
             if (Ex1TxtBox.Visible == true)
-                if (Ex1TxtBox.TextLength == 0)
+                if (Ex1TxtBox.EditValue.ToString().Length == 0)
                     return false;
             if (Ex2TxtBox.Visible == true)
-                if (Ex2TxtBox.TextLength == 0)
+                if (Ex2TxtBox.EditValue.ToString().Length == 0)
                     return false;
             if (Ex1CbBox.Visible == true)
                 if (Ex1CbBox.Text.Length == 0)

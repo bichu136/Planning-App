@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 namespace Do_An
 {
-    public partial class SettingsComponent : UserControl
+    public partial class SettingsComponent : DevExpress.XtraEditors.XtraUserControl
     {
         public SettingsComponent()
         {

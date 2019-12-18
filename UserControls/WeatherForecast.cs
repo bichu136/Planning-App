@@ -11,7 +11,7 @@ using System.IO;
 
 namespace Do_An
 {
-    public partial class WeatherForecast : UserControl
+    public partial class WeatherForecast : DevExpress.XtraEditors.XtraUserControl
     {
         Weather weather;
         private static WeatherForecast weatherforecast;

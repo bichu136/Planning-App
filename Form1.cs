@@ -9,15 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Do_An.UserControls;
+using DevExpress.XtraEditors;
+using DevExpress.XtraBars.Helpers;
+using DevExpress.LookAndFeel;
 
 namespace Do_An
 {
     
-    public partial class MainForm : Form
+    public partial class MainForm : DevExpress.XtraEditors.XtraForm
     {
         #region Properties Of Class
-        
-        private AddThingToDoForm addThingToDoForm;
         
         Weather weather;
         WeatherForecast forecast = new WeatherForecast();
@@ -33,125 +34,61 @@ namespace Do_An
             set { buttonManeger = value; }
         }
 
+
         private List<string> dayOfWeek = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
         #endregion
+        private ToDoManagerComponent ToDoManager;
+        public ToDoManagerComponent toDoManager { get => ToDoManager; set => ToDoManager = value; }
+
+        private DefaultLookAndFeel lookAndFeel;
 
         public MainForm()
         {
             InitializeComponent();
             weather = new Weather();
-            DataGridViewCheckBoxColumn checkboxes = new DataGridViewCheckBoxColumn() { Name = "DONE", HeaderText = "Check", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells };           
-            
+            DataGridViewCheckBoxColumn checkboxes = new DataGridViewCheckBoxColumn() { Name = "DONE", HeaderText = "Check", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells };
+            CalendarComponent calendarComponent = new CalendarComponent();
+            DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle("Sharp");
         }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            ////Weather Update.
-            //if (Program.ThoiTiet != "")
-            //{
-            //    try 
-            //    {
-            //        weather.getData(Program.ThoiTiet);
-            //        WTimeLabel.Text = weather.Days[0].ToString();
-            //        WTenpfLbl.Text = weather.TempF[0];
-            //        WsymbLbl.Text = weather.Weathers[0];
-            //    }
-                
-            //    catch (Exception ex)
-            //    {
-
-            //    }
-                
-            //}
-        }
-        private void CalendarPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void RecordBtn_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            DailyForm dailyForm = new DailyForm();
-            dailyForm.ShowDialog();   
-        }
-
-        private void btnPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void makePlanBtn_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void Events__Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void Deadline_Click(object sender, EventArgs e)
-        {
-            DeadlineForm dlForm = new DeadlineForm();
-            dlForm.ShowDialog();
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SettingBtn_Click(object sender, EventArgs e)
-        {
-            UserForm user = new UserForm();
-            user.ShowDialog();
-            this.Form1_Load(sender, e);
-        }
-
-        private void UpdateDailyBtn_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void mainToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ToDoManagerComponent toDoManager = new ToDoManagerComponent();
+            toDoManager = new ToDoManagerComponent();
+            toDoManager.Size = UserControlsPanel.Size;
+            toDoManager.Appearance.BackColor = Default.color;
             UserControlsPanel.Controls.Clear();
             UserControlsPanel.Controls.Add(toDoManager);
         }
 
         private void calendarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CalendarComponent calendarComponent = new CalendarComponent();
+            calendarComponent.Size = UserControlsPanel.Size;
+            calendarComponent.Appearance.BackColor = Default.color;
             UserControlsPanel.Controls.Clear();
-            UserControlsPanel.Controls.Add(new CalendarComponent());
+            UserControlsPanel.Controls.Add(calendarComponent);
         }
 
         private void weatherToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            WeatherForecast weatherForecast = new WeatherForecast();
+            weatherForecast.Size = UserControlsPanel.Size;
+            weatherForecast.Appearance.BackColor = Default.color;
             UserControlsPanel.Controls.Clear();
-            UserControlsPanel.Controls.Add(new WeatherForecast());
-        }
-
-        private void AddJobsBtn_Click(object sender, EventArgs e)
-        {
-            AddThingToDoForm addThingToDo = new AddThingToDoForm();
-            addThingToDo.ShowDialog();
+            UserControlsPanel.Controls.Add(weatherForecast);
         }
         private void chartToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ChartComponent chartComponent = new ChartComponent();
+            chartComponent.Size = UserControlsPanel.Size;
+            chartComponent.Appearance.BackColor = Default.color;
             UserControlsPanel.Controls.Clear();
-            UserControlsPanel.Controls.Add(new ChartComponent());
+            UserControlsPanel.Controls.Add(chartComponent);
         }
         private void addJobsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddThingsToDoComponent addThingToDo= new AddThingsToDoComponent();
+            addThingToDo.Size = UserControlsPanel.Size;
+            addThingToDo.Appearance.BackColor = Default.color;
             UserControlsPanel.Controls.Clear();
             UserControlsPanel.Controls.Add(addThingToDo);
         }
@@ -159,13 +96,33 @@ namespace Do_An
         private void settingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SettingsComponent Setting = new SettingsComponent();
+            Setting.Size = UserControlsPanel.Size;
             UserControlsPanel.Controls.Clear();
             UserControlsPanel.Controls.Add(Setting);
         }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void MainForm_ResizeEnd(object sender, EventArgs e)
         {
+            if (UserControlsPanel.Controls.Contains(toDoManager))
+            {
+                mainToolStripMenuItem_Click(sender, e);
+            }
+        }
 
+        private void MainForm_ResizeBegin(object sender, EventArgs e)
+        {
+            Form form = (Form)sender; 
+            if (UserControlsPanel.Controls.Contains(toDoManager))
+            {
+                toDoManager.Size = new Size(form.Size.Width, form.Size.Height);
+            }
+        }
+
+        private void skinToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SkinComponent skinComponent = new SkinComponent();
+            skinComponent.Size = UserControlsPanel.Size;
+            UserControlsPanel.Controls.Clear();
+            UserControlsPanel.Controls.Add(skinComponent);
         }
     }
 }

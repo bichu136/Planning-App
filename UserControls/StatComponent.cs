@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Do_An.UserControls
 {
-    public partial class StatsComponent : UserControl
+    public partial class StatsComponent : DevExpress.XtraEditors.XtraUserControl
     {
         public Graphics g;
         public Pen pen;

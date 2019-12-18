@@ -252,20 +252,21 @@ namespace Do_An
         }
         public DataTable GetAllScores()
         {
-            DataTable Sum = GetDailyScores();
-            DataTable Obj = GetObjectScores();
-            DataTable Prj = GetProjectScores();
-            DataTable Evn = GetEventScores();
-            for (int i = 0; i<Sum.Rows.Count;i++)
-            {
-                double D,O, P, E;
-                O = Obj.Rows[i].Field<double>("x");
-                P = Prj.Rows[i].Field<double>("x");
-                E = Evn.Rows[i].Field<double>("x");
-                D = Sum.Rows[i].Field<double>("x");
-                Sum.Rows[i]["x"] =D + O + P + E;
-            }
-            return Sum;
+            
+                DataTable Sum = GetDailyScores();
+                DataTable Obj = GetObjectScores();
+                DataTable Prj = GetProjectScores();
+                DataTable Evn = GetEventScores();
+                for (int i = 0; i < Sum.Rows.Count; i++)
+                {
+                    double D, O, P, E;
+                    O = Obj.Rows[i].Field<double>("x");
+                    P = Prj.Rows[i].Field<double>("x");
+                    E = Evn.Rows[i].Field<double>("x");
+                    D = Sum.Rows[i].Field<double>("x");
+                    Sum.Rows[i]["x"] = D + O + P + E;
+                }
+                return Sum;
         }
         public DataTable GetAllScoresWeekly()
         {

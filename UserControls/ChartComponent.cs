@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Do_An.UserControls
 {
-    public partial class ChartComponent : UserControl
+    public partial class ChartComponent : DevExpress.XtraEditors.XtraUserControl
     {
         RecordData rData = new RecordData();
         public ChartComponent()

@@ -82,6 +82,19 @@
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Dapper.2.0.4\lib\netstandard2.0\Dapper.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.BonusSkins.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeParser.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -122,12 +135,6 @@
     <Compile Include="DoingThings.Designer.cs">
       <DependentUpon>DoingThings.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddThingToDoForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddThingToDoForm.Designer.cs">
-      <DependentUpon>AddThingToDoForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="DeadlineForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,16 +142,16 @@
       <DependentUpon>DeadlineForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Default.cs" />
+    <Compile Include="SkinForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SkinForm.Designer.cs">
+      <DependentUpon>SkinForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SQLiteManageAndChild\EventData.cs" />
     <Compile Include="SQLiteManageAndChild\ObjectiveData.cs" />
     <Compile Include="SQLiteManageAndChild\ProjectData.cs" />
     <Compile Include="SQLiteManageAndChild\DailyData.cs" />
-    <Compile Include="DailyForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DailyForm.Designer.cs">
-      <DependentUpon>DailyForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="EventForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +191,12 @@
     </Compile>
     <Compile Include="UserControls\ChartComponent.Designer.cs">
       <DependentUpon>ChartComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SkinComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SkinComponent.Designer.cs">
+      <DependentUpon>SkinComponent.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\StatComponent.cs">
       <SubType>UserControl</SubType>
@@ -234,14 +247,14 @@
     <Compile Include="UserControls\WeatherForecast.Designer.cs">
       <DependentUpon>WeatherForecast.cs</DependentUpon>
     </Compile>
+    <Compile Include="XtraUserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="XtraUserControl1.Designer.cs">
+      <DependentUpon>XtraUserControl1.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DoingThings.resx">
       <DependentUpon>DoingThings.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AddThingToDoForm.resx">
-      <DependentUpon>AddThingToDoForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DailyForm.resx">
-      <DependentUpon>DailyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EventForm.resx">
       <DependentUpon>EventForm.cs</DependentUpon>
@@ -252,6 +265,7 @@
     <EmbeddedResource Include="DeadlineForm.resx">
       <DependentUpon>DeadlineForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -262,6 +276,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SkinForm.resx">
+      <DependentUpon>SkinForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\AddThingsToDoComponent.resx">
       <DependentUpon>AddThingsToDoComponent.cs</DependentUpon>
     </EmbeddedResource>
@@ -270,6 +287,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ChartComponent.resx">
       <DependentUpon>ChartComponent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SkinComponent.resx">
+      <DependentUpon>SkinComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\StatComponent.resx">
       <DependentUpon>StatComponent.cs</DependentUpon>
@@ -292,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\WeatherForecast.resx">
       <DependentUpon>WeatherForecast.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XtraUserControl1.resx">
+      <DependentUpon>XtraUserControl1.cs</DependentUpon>
     </EmbeddedResource>
     <Resource Include="database.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

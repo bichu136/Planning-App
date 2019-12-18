@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Do_An
 {
-    public partial class CalendarComponent : UserControl
+    public partial class CalendarComponent : DevExpress.XtraEditors.XtraUserControl
     {
         private List<List<Button>> buttonManeger;
         private ToolTip Tips;
@@ -97,6 +97,7 @@ namespace Do_An
                     OldButton = NewButton;
                     NewButton.Click += NewButton_Click;
                     NewButton.DoubleClick += NewButton_DoubleClick;
+                    NewButton.BackColor = Default.DayOfMonthColor;
                     ButtonManeger[i].Add(NewButton);
                 }
                 OldButton = new Button() { Width = 0, Height = 0, Location = new Point(-Default.Margin, OldButton.Location.Y + Default.Height + Default.Margin + Default.IndexTab) };
@@ -140,6 +141,9 @@ namespace Do_An
                 return;
             }
             //TODO: làm cái để nhấn button rồi load lại cái EventDgv
+            Button ThisBtn = (Button)sender;
+            DataTable info = (DataTable)ThisBtn.Tag;
+            EventDgv.DataSource = info;
         }
         private void NewButton_Click1(object sender, EventArgs e)
         {
@@ -177,7 +181,7 @@ namespace Do_An
                 {
                     Button button = ButtonManeger[i][j];
                     button.Text = "";
-                    button.BackColor = Color.White;
+                    button.BackColor = Color.FromArgb(104,151,155);
                 }
             }
         }
@@ -203,12 +207,12 @@ namespace Do_An
 
                 if (CompareDay(Target, DateTime.Now))
                 {
-                    button.BackColor = Color.Aqua;
+                    button.BackColor = Color.Orange;
                 }
 
                 if (CompareDay(Target, dateTime))
                 {
-                    button.BackColor = Color.Orange;
+                    button.BackColor = Color.FromArgb(248, 166, 172);
                 }
 
                 if (Column > 6)
@@ -262,6 +266,9 @@ namespace Do_An
             //nếu cần lấy cái gì từ database thì hãy tạo 1 hàm ở trong SQLitemanageAndChild/ProjectData.cs
             //đọc thêm hướng dẫn ở mục project trên github để bk thêm thông tin về cách lấy dữ liệu. hoặc xem các hàm trc để hiểu rõ hơn.
             //
+            ProjectData projectData = new ProjectData();
+            DataTable dt = projectData.Read_OnGoingMonth(dateTimePickerMainForm.Value);
+            ProjectDgv.DataSource = dt;
         }
     }
     

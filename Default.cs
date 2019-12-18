@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -21,7 +22,13 @@ namespace Do_An
         public static int UCHeight = 565;
         static public double Distance = 50;
         static public double Number = 10;
-        static public string[] TextList = { "Cooking", "Study", "Sport", "Game", "Travel", "Movie", "HouseHold", "Diplomacy", "Goal", "SelfImprove" };
+        //static public string[] TextList = { "Cooking", "Study", "Sport", "Game", "Travel", "Movie", "HouseHold", "Diplomacy", "Goal", "SelfImprove" };
+        static public Color color = Color.FromArgb(0,0,0,0);
+        static public Color DataGridColor = Color.FromArgb(68,119,132);
+        static public Color DayOfWeekButtonColor = Color.FromArgb(13, 79, 72);
+        static public Color DayOfWeekButtonTextColor = Color.White;
+        static public Color DayOfMonthColor = Color.FromArgb(65, 124, 129);
+
         public static void SkipKeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
@@ -35,7 +42,7 @@ namespace Do_An
             }
         }
 
-        public static void RemoveKeyPressEvent(TextBox b)
+        public static void RemoveKeyPressEvent(DevExpress.XtraEditors.TextEdit b)
         {
             FieldInfo f1 = typeof(Control).GetField("KeyPress",
                 BindingFlags.Static | BindingFlags.NonPublic);

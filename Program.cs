@@ -19,6 +19,8 @@ namespace Do_An
         [STAThread]
         static void Main()
         {
+            DevExpress.UserSkins.BonusSkins.Register();
+            DevExpress.Skins.SkinManager.EnableFormSkins();
             
             FileStream ThoiTietFile = new FileStream("ThoiTiet.txt",FileMode.OpenOrCreate,FileAccess.Write);
             ThoiTietFile.Close();
@@ -36,7 +38,7 @@ namespace Do_An
             MainForm mainForm = new MainForm();
             mainForm.StartPosition = FormStartPosition.CenterScreen;
             Application.Run(mainForm);
-            
+            //Application.Run(new SkinForm());
         }
 
     }

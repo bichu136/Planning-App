@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Do_An
 {
-    public partial class TimeComponent : UserControl
+    public partial class TimeComponent : DevExpress.XtraEditors.XtraUserControl
     {
         Timer timer;
         public int result;
