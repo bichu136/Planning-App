@@ -13,6 +13,7 @@ namespace Do_An
 {
     public class Weather
     {
+        //http://home.openweathermap.org/users/sign_in -- link đăng ký lấy API
         private List<DateTime> days;
         private List<String> tempF;
         private List<String> weathers;
@@ -26,14 +27,16 @@ namespace Do_An
         private const string ForecastUrl =
             "http://api.openweathermap.org/data/2.5/forecast?" +
             "@QUERY@=@LOC@&mode=xml&units=imperial&APPID=" + API_KEY;
-
+        // ví dụ khi setting địa điểm vũng tàu sẽ đến link http://api.openweathermap.org/data/2.5/forecast?q=v%C5%A9ng%20t%C3%A0u&mode=xml&units=imperial&APPID=0d10ac8477cafab5fb3e1ca0839f4032
         public List<DateTime> Days { get => days; set => days = value; }
         public List<string> TempF { get => tempF; set => tempF = value; }
         public List<string> Weathers { get => weathers; set => weathers = value; }
         public List<string> Type_weather { get => type_weather; set => type_weather = value; }
 
         public void getData(String City)
-        {
+        { 
+
+            //Link đăng ký Api openweathermap để ấy thông tin điền vào phần key của đoạn code API: http://home.openweathermap.org/users/sign_in 
             // t.Start();
             string url = ForecastUrl.Replace("@LOC@", City);
             url = url.Replace("@QUERY@", "q");
@@ -65,15 +68,6 @@ namespace Do_An
 
             XmlDocument xml_doc = new XmlDocument();
             xml_doc.LoadXml(xml);
-
-
-            // XmlNode loc_node = xml_doc.SelectSingleNode("weatherdata/location");
-            // txtCity.Text = loc_node.SelectSingleNode("name").InnerText;
-            //txtCountry.Text = loc_node.SelectSingleNode("country").InnerText;
-            //XmlNode geo_node = loc_node.SelectSingleNode("location");
-            //txtLat.Text = geo_node.Attributes["latitude"].Value;
-            //txtLong.Text = geo_node.Attributes["longitude"].Value;
-            //  txtId.Text = geo_node.Attributes["geobaseid"].Value;
             char degrees = (char)176;
             Days = new List<DateTime>();
             tempF = new List<String>();
@@ -95,24 +89,27 @@ namespace Do_An
                 days.Add(time);
                 tempF.Add(temp + degrees);
                 weathers.Add(symb);
+
             }
         }
-
-
         private void DisplayError(WebException exception)
         {
             try
             {
+
                 StreamReader reader = new StreamReader(exception.Response.GetResponseStream());
                 XmlDocument response_doc = new XmlDocument();
                 response_doc.LoadXml(reader.ReadToEnd());
                 XmlNode message_node = response_doc.SelectSingleNode("//message");
                 throw new Exception(message_node.InnerText);
             }
+
             catch (Exception ex)
             {
+
                 throw new Exception("Unknown error\n" + ex.Message);
             }
+
         }
     }
 }

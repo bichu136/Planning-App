@@ -258,8 +258,8 @@ namespace Do_An
                     return false;
             if (StatsCbBox.Text.Length == 0)
                 return false;
-            return true;
-        }
+            return true;     
+        }                        
     }
 }
 
