@@ -232,10 +232,6 @@
     <Compile Include="UserControls\WeatherNode.Designer.cs">
       <DependentUpon>WeatherNode.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForm.cs" />
-    <Compile Include="UserForm.Designer.cs">
-      <DependentUpon>UserForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="weather.cs" />
     <Compile Include="UserControls\WeatherForecast.cs">
       <SubType>UserControl</SubType>
@@ -296,9 +292,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\WeatherNode.resx">
       <DependentUpon>WeatherNode.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserForm.resx">
-      <DependentUpon>UserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\WeatherForecast.resx">
       <DependentUpon>WeatherForecast.cs</DependentUpon>
