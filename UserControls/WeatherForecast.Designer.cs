@@ -38,7 +38,7 @@
             this.Name = "WeatherForecast";
             this.Size = new System.Drawing.Size(933, 640);
             this.ResumeLayout(false);
-        }
         #endregion
-    }
+        }
+}
 }
