@@ -41,6 +41,8 @@ namespace Do_An
                     for (int i=0;i< weather.Days.Count ;i++)
                     {                      
                             WeatherNode t = new WeatherNode(weather, i) { Location = new Point(0, i*640) };
+                            t.Size = this.Size;
+                            t.Width = this.Width - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
                             this.Controls.Add(t);
                             t.Visible = true;
                     }

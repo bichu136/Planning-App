@@ -43,6 +43,16 @@ namespace Do_An.UserControls
             DataTable x = rData.GetAllScoresMonthly();
 
             chart1.DataSource = x;
+            chart1.DataSource = x;
+            //chart1.Series.Clear();
+            chart1.Series["Series1"].YValueMembers = "x";
+            chart1.Series["Series1"].IsXValueIndexed = true;
+            chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
+            chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
+            chart1.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+            chart1.Series["Series1"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
+            chart1.Series["Series1"].XValueMember = "Name";
+            chart1.Legends.Clear();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -50,6 +60,16 @@ namespace Do_An.UserControls
             DataTable x = rData.GetAllScoresWeekly();
 
             chart1.DataSource = x;
+            chart1.DataSource = x;
+            //chart1.Series.Clear();
+            chart1.Series["Series1"].YValueMembers = "x";
+            chart1.Series["Series1"].IsXValueIndexed = true;
+            chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
+            chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
+            chart1.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+            chart1.Series["Series1"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
+            chart1.Series["Series1"].XValueMember = "Name";
+            chart1.Legends.Clear();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -57,6 +77,17 @@ namespace Do_An.UserControls
             DataTable x = rData.GetAllScores();
 
             chart1.DataSource = x;
+            chart1.DataSource = x;
+            //chart1.Series.Clear();
+            chart1.Series["Series1"].YValueMembers = "x";
+            chart1.Series["Series1"].IsXValueIndexed = true;
+            chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
+            chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
+            chart1.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+            chart1.Series["Series1"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
+            chart1.Series["Series1"].XValueMember = "Name";
+            chart1.Legends.Clear();
         }
+
     }
 }

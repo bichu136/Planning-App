@@ -42,7 +42,7 @@ namespace Do_An
             }
         }
 
-        public static void RemoveKeyPressEvent(DevExpress.XtraEditors.TextEdit b)
+        public static void RemoveKeyPressEvent(System.Windows.Forms.TextBox b)
         {
             FieldInfo f1 = typeof(Control).GetField("KeyPress",
                 BindingFlags.Static | BindingFlags.NonPublic);
