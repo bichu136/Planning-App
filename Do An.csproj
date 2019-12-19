@@ -228,15 +228,11 @@
     <Compile Include="UserControls\AddThingsToDoComponent.Designer.cs">
       <DependentUpon>AddThingsToDoComponent.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\WeatherNode.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="UserControls\WeatherNode.cs" />
     <Compile Include="UserControls\WeatherNode.Designer.cs">
       <DependentUpon>WeatherNode.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="UserForm.cs" />
     <Compile Include="UserForm.Designer.cs">
       <DependentUpon>UserForm.cs</DependentUpon>
     </Compile>
