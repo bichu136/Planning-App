@@ -779,7 +779,7 @@
             //((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             //((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.ResumeLayout(false);
-        }
         #endregion
-    }
+        }
+}
 }
