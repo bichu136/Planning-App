@@ -235,19 +235,19 @@ namespace Do_An
         private bool checkReqirement()
         {
             
-            if (NameTxtBox.EditValue.ToString().Length == 0)
+            if (NameTxtBox.Text.Length == 0)
             {
                 return false;
             }
-            if (ScoreTxtBox.EditValue.ToString().Length == 0)
+            if (ScoreTxtBox.Text.Length == 0)
             {
                 return false;
             }
             if (Ex1TxtBox.Visible == true)
-                if (Ex1TxtBox.EditValue.ToString().Length == 0)
+                if (Ex1TxtBox.Text.Length == 0)
                     return false;
             if (Ex2TxtBox.Visible == true)
-                if (Ex2TxtBox.EditValue.ToString().Length == 0)
+                if (Ex2TxtBox.Text.Length == 0)
                     return false;
             if (Ex1CbBox.Visible == true)
                 if (Ex1CbBox.Text.Length == 0)
