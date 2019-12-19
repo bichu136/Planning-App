@@ -786,7 +786,7 @@
             this.Size = new System.Drawing.Size(933, 640);
 >>>>>>> 33e374516d39e427c450dd0c3b3fe63fb4546337
             this.ResumeLayout(false);
-        }
         #endregion
-    }
+        }
+}
 }
