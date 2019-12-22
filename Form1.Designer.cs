@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.UserControlsPanel = new DevExpress.XtraEditors.PanelControl();
+            this.labelNote = new System.Windows.Forms.Label();
+            this.labelWelcome = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.calendarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,6 +41,7 @@
             this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.skinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.UserControlsPanel)).BeginInit();
+            this.UserControlsPanel.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,11 +49,34 @@
             // 
             this.UserControlsPanel.Appearance.BackColor = System.Drawing.Color.White;
             this.UserControlsPanel.Appearance.Options.UseBackColor = true;
+            this.UserControlsPanel.Controls.Add(this.labelNote);
+            this.UserControlsPanel.Controls.Add(this.labelWelcome);
             this.UserControlsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UserControlsPanel.Location = new System.Drawing.Point(154, 0);
             this.UserControlsPanel.Name = "UserControlsPanel";
             this.UserControlsPanel.Size = new System.Drawing.Size(1185, 587);
             this.UserControlsPanel.TabIndex = 5;
+            // 
+            // labelNote
+            // 
+            this.labelNote.Font = new System.Drawing.Font("Yellowtail", 10F);
+            this.labelNote.Location = new System.Drawing.Point(0, 565);
+            this.labelNote.Name = "labelNote";
+            this.labelNote.Size = new System.Drawing.Size(1185, 22);
+            this.labelNote.TabIndex = 1;
+            this.labelNote.Text = "This project is made by NKD Team";
+            this.labelNote.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelWelcome
+            // 
+            this.labelWelcome.Font = new System.Drawing.Font("Playball", 50F);
+            this.labelWelcome.ForeColor = System.Drawing.Color.Green;
+            this.labelWelcome.Location = new System.Drawing.Point(-10, 107);
+            this.labelWelcome.Name = "labelWelcome";
+            this.labelWelcome.Size = new System.Drawing.Size(1195, 105);
+            this.labelWelcome.TabIndex = 0;
+            this.labelWelcome.Text = "Welcome to Planning App";
+            this.labelWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // menuStrip1
             // 
@@ -144,6 +170,7 @@
             this.skinToolStripMenuItem.Size = new System.Drawing.Size(150, 64);
             this.skinToolStripMenuItem.Text = "Skin";
             this.skinToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.skinToolStripMenuItem.Visible = false;
             this.skinToolStripMenuItem.Click += new System.EventHandler(this.skinToolStripMenuItem_Click);
             // 
             // MainForm
@@ -163,6 +190,7 @@
             this.ResizeBegin += new System.EventHandler(this.MainForm_ResizeBegin);
             this.ResizeEnd += new System.EventHandler(this.MainForm_ResizeEnd);
             ((System.ComponentModel.ISupportInitialize)(this.UserControlsPanel)).EndInit();
+            this.UserControlsPanel.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -178,6 +206,8 @@
         private System.Windows.Forms.ToolStripMenuItem addJobsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem skinToolStripMenuItem;
+        private System.Windows.Forms.Label labelNote;
+        private System.Windows.Forms.Label labelWelcome;
     }
 }
 

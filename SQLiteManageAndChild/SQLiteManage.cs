@@ -8,7 +8,7 @@ using System.Data;
 
 namespace Do_An 
 {
-    class SQLiteManage 
+    public class SQLiteManage 
     {
         protected SQLiteConnection cnn;
         protected SQLiteCommand cmd;

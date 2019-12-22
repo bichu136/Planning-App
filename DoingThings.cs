@@ -56,8 +56,9 @@ namespace Do_An
                  default:
                      Max = 20;
                      break;
-                }
-                addChart(x.SelectedValue.ToString(), Max);
+            }
+            
+            addChart(x.SelectedValue.ToString(), Max);
 
         }                       
 
@@ -138,18 +139,22 @@ namespace Do_An
             if (CheckRequirement())
             {
                 RecordData Rdata = new RecordData();
-                cursor.UpdateByDoing(NameCbBox.SelectedValue.ToString(), (long)ThingsToDo.statuses.Done);
+               
                 switch ((long)TypeCbBox.SelectedValue)
                 {
                     default:
                         Rdata.Insert(new Record() { TTD_ID = (int)NameCbBox.SelectedValue, Date = DateTime.Now.Date, Current = 0 });
                         break;
-                    case (long)ThingsToDo.types.Objective:
                     case (long)ThingsToDo.types.Project:
+                        pData.HasPlanChecked((long)NameCbBox.SelectedValue,HasPlanChkBox.Checked);
+                        Rdata.Insert(new Record() { TTD_ID = (long)NameCbBox.SelectedValue, Date = DateTime.Now.Date, Current = Convert.ToInt32(CurrentTxtBox.Text) });
+                        break;
+                    case (long)ThingsToDo.types.Objective:
                         Rdata.Insert(new Record() { TTD_ID = (long)NameCbBox.SelectedValue, Date = DateTime.Now.Date, Current = Convert.ToInt32(CurrentTxtBox.Text) });
                         break;
                 }
                 this.Close();
+                cursor.UpdateByDoing(NameCbBox.SelectedValue.ToString(), (long)ThingsToDo.statuses.Done);
                 return;
             }
             MessageBox.Show("bạn chưa điền đủ thông tin.");

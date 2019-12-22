@@ -45,6 +45,8 @@ namespace Do_An
         public MainForm()
         {
             InitializeComponent();
+            labelWelcome.BackColor = Color.FromArgb(0, 0, 0, 0);
+            labelNote.BackColor = Color.FromArgb(0, 0, 0, 0);
             weather = new Weather();
             DataGridViewCheckBoxColumn checkboxes = new DataGridViewCheckBoxColumn() { Name = "DONE", HeaderText = "Check", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells };
             CalendarComponent calendarComponent = new CalendarComponent();

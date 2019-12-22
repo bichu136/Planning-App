@@ -39,10 +39,11 @@
             // 
             // Onwaiting_Panel
             // 
+            this.Onwaiting_Panel.AutoScroll = true;
             this.Onwaiting_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Onwaiting_Panel.Location = new System.Drawing.Point(12, 43);
+            this.Onwaiting_Panel.Location = new System.Drawing.Point(10, 43);
             this.Onwaiting_Panel.Name = "Onwaiting_Panel";
-            this.Onwaiting_Panel.Size = new System.Drawing.Size(719, 207);
+            this.Onwaiting_Panel.Size = new System.Drawing.Size(678, 207);
             this.Onwaiting_Panel.TabIndex = 2;
             // 
             // menuStrip1
@@ -53,7 +54,8 @@
             this.passedToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(700, 28);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -79,9 +81,9 @@
             // 
             // EventForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(700, 450);
             this.Controls.Add(this.Onwaiting_Panel);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;

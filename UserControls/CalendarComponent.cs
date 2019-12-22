@@ -25,6 +25,7 @@ namespace Do_An
         private List<string> dayOfWeek = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
         public CalendarComponent()
         {
+            //CMS = new ContextMenuStrip();
             Tips = new ToolTip();
             Tips.InitialDelay = 1000;
             Tips.ReshowDelay = 1000;
@@ -39,13 +40,12 @@ namespace Do_An
             DataTable info = (DataTable)weekdayButton.Tag;
             String x ="You have " + info.Rows.Count.ToString() +" thing to do on this weekday.";
             Tips.SetToolTip(weekdayButton,x);
-            
         }
         private void DayButtonSetup(Button dayButton)
         {
             dayButton.Image = null;
             DataTable info = (DataTable)dayButton.Tag;
-            String x = "You have " + info.Rows.Count.ToString() + " Event on this weekday.";
+            String x = "You have " + info.Rows.Count.ToString() + " Event on this day.";
             Tips.SetToolTip(dayButton, x);
             dayButton.ImageAlign = ContentAlignment.BottomRight;
             if (info.Rows.Count > 0)
@@ -91,6 +91,7 @@ namespace Do_An
                 ButtonManeger.Add(new List<Button>());
                 for (int j = 0; j < Default.DayofWeek; j++)
                 {
+                    
                     Button NewButton = new Button() { Width = Default.Width, Height = Default.Height };
                     NewButton.Location = new Point(OldButton.Location.X + OldButton.Width + Default.Margin, OldButton.Location.Y);
                     panelMatrix.Controls.Add(NewButton);

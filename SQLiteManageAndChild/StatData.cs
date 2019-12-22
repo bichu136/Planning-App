@@ -3,7 +3,7 @@ using System.Data;
 
 namespace Do_An
 {
-    class StatData : SQLiteManage
+    public class StatData : SQLiteManage
     {
         public StatData()
         {

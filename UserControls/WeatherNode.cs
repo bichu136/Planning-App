@@ -26,12 +26,12 @@ namespace Do_An
             WTenpfLbl.Text = weather.TempF[index];
             WsymbLbl.Text = weather.Weathers[index];
             WAreaLbl.Text = File.ReadAllText("ThoiTiet.txt");
-            LoadImage(weather);      
+            LoadImage(weather,index);      
         }
         // dựa vào mã nhận về từ chuỗi xml để xác định icon thời tiết phù hợp 
-        private void LoadImage(Weather weather)
+        private void LoadImage(Weather weather,int i)
         {
-            switch (Convert.ToInt32(weather.Type_weather[0]))
+            switch (Convert.ToInt32(weather.Type_weather[i]))
             {
                 case 200:
                 case 201:
@@ -43,7 +43,7 @@ namespace Do_An
                 case 230:
                 case 231:
                 case 232:
-                    pictureBox1.Image = Image.FromFile(@"resources//11d.png");
+                    pictureBox1.Image = Properties.Resources._11d;
                     break;
                 case 300:
                 case 301:
@@ -54,7 +54,7 @@ namespace Do_An
                 case 313:
                 case 314:
                 case 321:
-                    pictureBox1.Image = Image.FromFile(@"resources//09d.png");
+                    pictureBox1.Image = Properties.Resources._09d;
                     break;
                 case 500:
                 case 501:
@@ -66,7 +66,7 @@ namespace Do_An
                 case 521:
                 case 522:
                 case 531:
-                    pictureBox1.Image = Image.FromFile(@"resource//10d.png");
+                    pictureBox1.Image = Properties.Resources._10d;
                     break;
                 case 600:
                 case 601:
@@ -79,7 +79,7 @@ namespace Do_An
                 case 620:
                 case 621:
                 case 622:
-                    pictureBox1.Image = Image.FromFile(@"resources//13d.png");
+                    pictureBox1.Image = Properties.Resources._13d;
                     break;
                 case 701:
                 case 711:
@@ -91,16 +91,16 @@ namespace Do_An
                 case 762:
                 case 771:
                 case 781:
-                    pictureBox1.Image = Image.FromFile(@"resources//50d.png");
+                    pictureBox1.Image = Properties.Resources._50d;
                     break;
                 case 800:
-                    pictureBox1.Image = Image.FromFile(@"resources//01d.png");
+                    pictureBox1.Image = Properties.Resources._01d;
                     break;
                 case 801:
                 case 802:
                 case 803:
                 case 804:
-                    pictureBox1.Image = Image.FromFile(@"resources//04d.png"); ;
+                    pictureBox1.Image = Properties.Resources._04d;
                     break;
             }
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -109,5 +109,14 @@ namespace Do_An
         {
 
         }
+
+        private void ShowFlyingPanel(object sender, EventArgs e)
+        {
+        }
+
+        private void HideFlyingPanel(object sender, EventArgs e)
+        { 
+        }
+
     }
 }

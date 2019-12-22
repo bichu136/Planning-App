@@ -20,7 +20,7 @@ namespace Do_An
             get
             {
                 if (weatherforecast == null) weatherforecast = new WeatherForecast();
-                        return weatherforecast;
+                return weatherforecast;
             }
         }
         public WeatherForecast()
@@ -28,6 +28,7 @@ namespace Do_An
             InitializeComponent();
             weather = new Weather();
             this.Load += WeatherForecast_Load;
+            DoubleBuffered = true;
         }
 
         public void WeatherForecast_Load(object sender,EventArgs e)
@@ -42,7 +43,7 @@ namespace Do_An
                     {                      
                             WeatherNode t = new WeatherNode(weather, i) { Location = new Point(0, i*640) };
                             t.Size = this.Size;
-                            t.Width = this.Width - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
+                            //t.Width = this.Width - System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
                             this.Controls.Add(t);
                             t.Visible = true;
                     }

@@ -11,6 +11,7 @@ namespace Do_An
             cmd.Parameters.Add("$Type",DbType.Int32);
             cmd.Parameters.Add("$TxtRow1",DbType.String);
             cmd.Parameters.Add("$IntRow1",DbType.Int32);
+            cmd.Parameters.Add("$ID", DbType.Int64);
         }
 
         public override void Close()
@@ -143,6 +144,17 @@ namespace Do_An
             DB.Fill(dt);
             cnn.Close();
             return dt;
+        }
+
+        internal void HasPlanChecked(long TTDID,bool check)
+        {
+            cmd.Parameters["$ID"].Value = TTDID;
+            cmd.Parameters["$IntRow1"].Value = (check)? 1: 0;
+            cmd.CommandText = "update ThingToDo set IntRow1 = $IntRow1 where ID = $ID";
+
+            cnn.Open();
+            cmd.ExecuteNonQuery();
+            cnn.Close();
         }
     }
 }

@@ -41,7 +41,7 @@
             // 
             this.Passed_Label.AutoSize = true;
             this.Passed_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Passed_Label.Location = new System.Drawing.Point(40, 273);
+            this.Passed_Label.Location = new System.Drawing.Point(35, 273);
             this.Passed_Label.Name = "Passed_Label";
             this.Passed_Label.Size = new System.Drawing.Size(0, 29);
             this.Passed_Label.TabIndex = 12;
@@ -50,16 +50,16 @@
             // 
             this.Onwaiting_Panel.AutoScroll = true;
             this.Onwaiting_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Onwaiting_Panel.Location = new System.Drawing.Point(45, 77);
+            this.Onwaiting_Panel.Location = new System.Drawing.Point(39, 77);
             this.Onwaiting_Panel.Name = "Onwaiting_Panel";
-            this.Onwaiting_Panel.Size = new System.Drawing.Size(680, 174);
+            this.Onwaiting_Panel.Size = new System.Drawing.Size(595, 174);
             this.Onwaiting_Panel.TabIndex = 10;
             // 
             // Ongoing_Label
             // 
             this.Ongoing_Label.AutoSize = true;
             this.Ongoing_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Ongoing_Label.Location = new System.Drawing.Point(380, 273);
+            this.Ongoing_Label.Location = new System.Drawing.Point(332, 273);
             this.Ongoing_Label.Name = "Ongoing_Label";
             this.Ongoing_Label.Size = new System.Drawing.Size(0, 29);
             this.Ongoing_Label.TabIndex = 9;
@@ -72,7 +72,8 @@
             this.expiredDeadlinesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(774, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(677, 28);
             this.menuStrip1.TabIndex = 16;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -85,16 +86,17 @@
             // 
             // expiredDeadlinesToolStripMenuItem
             // 
+            this.expiredDeadlinesToolStripMenuItem.CheckOnClick = true;
             this.expiredDeadlinesToolStripMenuItem.Name = "expiredDeadlinesToolStripMenuItem";
-            this.expiredDeadlinesToolStripMenuItem.Size = new System.Drawing.Size(143, 24);
+            this.expiredDeadlinesToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
             this.expiredDeadlinesToolStripMenuItem.Text = "Expired Deadlines";
             this.expiredDeadlinesToolStripMenuItem.Click += new System.EventHandler(this.expiredDeadlinesToolStripMenuItem_Click);
             // 
             // DeadlineForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(774, 406);
+            this.ClientSize = new System.Drawing.Size(677, 406);
             this.Controls.Add(this.Passed_Label);
             this.Controls.Add(this.Onwaiting_Panel);
             this.Controls.Add(this.Ongoing_Label);

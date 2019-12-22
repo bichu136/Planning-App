@@ -37,12 +37,15 @@ namespace Do_An
 
         private void ShowDeadlinesBtn_Click(object sender, EventArgs e)
         {
+            Ddata.UpdateDropStatus();
             DeadlineForm dlForm = new DeadlineForm();
             dlForm.ShowDialog();
+
         }
 
         private void ShowEventsBtn_Click(object sender, EventArgs e)
         {
+            Ddata.UpdateDropStatus();
             EventForm evForm = new EventForm();
             evForm.ShowDialog();
         }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 
 namespace Do_An
 {
@@ -14,9 +15,12 @@ namespace Do_An
     {
         bool flag;
         private Dictionary<long, int> Scores;
-        StatData statData = new StatData();
+        private StatData statData = new StatData();
         TypeData typeData = new TypeData();
-        StatData data = new StatData();
+        StatData Data = new StatData();
+
+        public StatData data { get => Data; set => Data = value; }
+
         public AddThingsToDoComponent()
         {
             InitializeComponent();
@@ -29,7 +33,7 @@ namespace Do_An
             ScoreTxtBox.KeyPress += Default.OnlyNumberPress;
             ScoreTxtBox.TextChanged += ScoreChange;
             TypeCbBox.KeyPress += Default.SkipKeyPress;
-            StatsCbBox.KeyPress += Default.SkipKeyPress;
+            statsCbBox.KeyPress += Default.SkipKeyPress;
 
             TypeCbBox.DataSource = typeData.ReadDataTable();
             TypeCbBox.DisplayMember = "Name";
@@ -39,7 +43,7 @@ namespace Do_An
             TypeCbBox.SelectedIndex = 1;
             AddBtn.Click += AddThingsToDo;
             //in load event
-            StatsCbBox.SelectedValueChanged += StatsChange;
+            statsCbBox.SelectedValueChanged += StatsChange;
 
             
             Ex1CbBox.Items.AddRange(Enum.GetNames(typeof(DayOfWeek)));
@@ -47,29 +51,8 @@ namespace Do_An
         }
         private void AddNewStat(object sender, EventArgs e)
         {
-            Form addStat = new Form();
-            Label Namelbl = new Label() { Location = new Point(10, 10), AutoSize = true, Text = "Name" };
-            TextBox NameTxtBox = new TextBox();
-            NameTxtBox.Location = new Point(Namelbl.Location.X + Namelbl.Size.Width, Namelbl.Location.Y - 3);
-            Button addBtn = new Button() { Text = "Add", Location = new Point(NameTxtBox.Location.X, NameTxtBox.Location.Y + NameTxtBox.Size.Height + 2), AutoSize = true };
-            RichTextBox DesTxtBox = new RichTextBox() { Location = new Point(NameLbl.Location.X, Namelbl.Location.Y + Namelbl.Size.Height + 50), Size = new Size(addStat.Size.Width - Location.X - 10, addStat.Size.Height - Location.Y - 50) };
-            Label Deslbl = new Label() { Location = new Point(DesTxtBox.Location.X, DesTxtBox.Location.Y - 50), Text = "Description", AutoSize = true };
-            addStat.FormClosed += (object Sender1, FormClosedEventArgs E1) => { AddThingToDo_Load(Sender1, E1); };
-            addBtn.Click += (object Sender, EventArgs E) => {
-                List<string> buffer = new List<string>() { NameTxtBox.Text, DesTxtBox.Text };
-
-                data.Insert(buffer);
-                //Program.manager.Insert("Stats", new List<string> { "Name", "Description" }, new List<string> { Buffer1, Buffer2 });
-                this.StatsCbBox.DataSource = data.ReadDataTable();
-                addStat.Close();
-            };
-            addStat.Controls.Add(Namelbl);
-            addStat.Controls.Add(NameTxtBox);
-            addStat.Controls.Add(addBtn);
-            addStat.Controls.Add(DesTxtBox);
-            addStat.Controls.Add(Deslbl);
-            addStat.ShowDialog();
-            //this.AddThingToDo_Load(sender, e);
+            AddStatsForm addStatsForm = new AddStatsForm(this);
+            addStatsForm.ShowDialog();
         }
 
         private void TypeChange(object sender, EventArgs e)
@@ -122,10 +105,6 @@ namespace Do_An
 
         private void DailyShow()
         {
-            Ex1Lbl.Text = "factor";
-            Ex1Lbl.Show();
-            Ex1TxtBox.KeyPress += Default.OnlyNumberPress;
-            Ex1TxtBox.Show();
             Ex2Lbl.Text = "Day to do";
             Ex2Lbl.Show();
             Ex1CbBox.Show();
@@ -146,12 +125,13 @@ namespace Do_An
         {
             if (!checkReqirement())
             {
-                MessageBox.Show("not enough filling");
+                XtraMessageBox.Show(DevExpress.LookAndFeel.UserLookAndFeel.Default,"Wrong filling");
                 return;
             }
             ThingsToDo input;
             ThingsToDoData data;
             Do_An.TTDStatsData StatData = new TTDStatsData();
+
             switch (TypeCbBox.SelectedIndex)
             {
                 case 0:
@@ -159,7 +139,7 @@ namespace Do_An
                     data = new ObjectiveData();
                     break;
                 case 1:
-                    input = new Daily(NameTxtBox.Text, Scores, DateTime.Now, Convert.ToInt32(Ex1TxtBox.Text), Ex1CbBox.SelectedIndex);
+                    input = new Daily(NameTxtBox.Text, Scores, DateTime.Now, 1, Ex1CbBox.SelectedIndex);
                     data = new DailyData();
                     break;
                 case 2:
@@ -178,7 +158,7 @@ namespace Do_An
             //Program.manager.Data.Add(input);
             input.id = data.Insert(input).ToString();
             StatData.Insert(input);
-            MessageBox.Show("To Do Confirm!", "mesasge", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            XtraMessageBox.Show("To Do Confirm!", "mesasge", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 
@@ -186,7 +166,7 @@ namespace Do_An
         {
             try
             {
-                ScoreTxtBox.Text = Scores[(long)StatsCbBox.SelectedValue].ToString();
+                ScoreTxtBox.Text = Scores[(long)statsCbBox.SelectedValue].ToString();
             }
             catch (Exception ex) { }
         }
@@ -196,7 +176,7 @@ namespace Do_An
             if (ScoreTxtBox.Text != "")
                 try
                 {
-                    Scores[(long)StatsCbBox.SelectedValue] = Convert.ToInt32(ScoreTxtBox.Text);
+                    Scores[(long)statsCbBox.SelectedValue] = Convert.ToInt32(ScoreTxtBox.Text);
                 }
                 catch (Exception exp)
                 {
@@ -219,11 +199,11 @@ namespace Do_An
         private void AddThingToDo_Load(object sender, EventArgs e)
         {
             Dictionary<long, int> Old_Scores = this.Scores;
-            DataTable dt = statData.ReadDataTable();
-            StatsCbBox.DataSource = dt;
-            StatsCbBox.DisplayMember = "Name";
-            StatsCbBox.ValueMember = "ID";
-            foreach (DataRowView value in StatsCbBox.Items)
+            DataTable dt = data.ReadDataTable();
+            statsCbBox.DataSource = dt;
+            statsCbBox.DisplayMember = "Name";
+            statsCbBox.ValueMember = "ID";
+            foreach (DataRowView value in statsCbBox.Items)
             {
 
                 if (Old_Scores.ContainsKey((long)value["ID"]) == false)
@@ -252,9 +232,16 @@ namespace Do_An
             if (Ex1CbBox.Visible == true)
                 if (Ex1CbBox.Text.Length == 0)
                     return false;
-            if (StatsCbBox.Text.Length == 0)
+            if (statsCbBox.Text.Length == 0)
                 return false;
+            if(Ex1DateTime.Visible ==true)
+                if (Ex1DateTime.Value < DateTime.Now)
+                    return false;
+            if (Ex2DateTime.Visible == true)
+                if (Ex2DateTime.Value < DateTime.Now)
+                    return false;
             return true;
+
         }
     }
 }

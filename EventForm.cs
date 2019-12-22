@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Do_An
 {
-    public partial class EventForm : Form
+    public partial class EventForm : DevExpress.XtraEditors.XtraForm
     {
         List<ThingsToDoComponent> Ongoing_Event;
         List<ThingsToDoComponent> OnWaiting_Event;
@@ -59,6 +59,7 @@ namespace Do_An
         }
         private void EventForm_Load(object sender, EventArgs e)
         {
+            onToolStripMenuItem.BackColor = Color.FromArgb(124, 124, 124); //darkgray
             Onwaiting_Panel.Controls.Clear();
             Onwaiting_Panel.Controls.AddRange(Ongoing_Event.ToArray());
             Onwaiting_Panel.Controls.AddRange(OnWaiting_Event.ToArray());
@@ -66,6 +67,13 @@ namespace Do_An
 
         private void onToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            foreach (var item in menuStrip1.Items)
+            {
+                ToolStripMenuItem t = (ToolStripMenuItem)item;
+                t.BackColor = DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinMaskColor;
+            }
+            ToolStripMenuItem Input = (ToolStripMenuItem)sender;
+            Input.BackColor = Color.FromArgb(124, 124, 124); //darkgray
             Onwaiting_Panel.Controls.Clear();
             Onwaiting_Panel.Controls.AddRange(Ongoing_Event.ToArray());
             Onwaiting_Panel.Controls.AddRange(OnWaiting_Event.ToArray());
@@ -73,6 +81,13 @@ namespace Do_An
 
         private void passedToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            foreach (var item in menuStrip1.Items)
+            {
+                ToolStripMenuItem t = (ToolStripMenuItem)item;
+                t.BackColor = DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinMaskColor;
+            }
+            ToolStripMenuItem Input = (ToolStripMenuItem)sender;
+            Input.BackColor = Color.FromArgb(124, 124, 124); //darkgray
             Onwaiting_Panel.Controls.Clear();
             Onwaiting_Panel.Controls.AddRange(Passed_Event.ToArray());
         }

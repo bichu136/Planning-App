@@ -36,7 +36,7 @@
             this.panelPaint.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelPaint.Location = new System.Drawing.Point(0, 0);
             this.panelPaint.Name = "panelPaint";
-            this.panelPaint.Size = new System.Drawing.Size(400, 400);
+            this.panelPaint.Size = new System.Drawing.Size(301, 270);
             this.panelPaint.TabIndex = 0;
             // 
             // StatsComponent
@@ -44,7 +44,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.panelPaint);
             this.Name = "StatsComponent";
-            this.Size = new System.Drawing.Size(400, 400);
+            this.Size = new System.Drawing.Size(301, 270);
             this.ResumeLayout(false);
 
         }

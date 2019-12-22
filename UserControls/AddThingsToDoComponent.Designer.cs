@@ -1,4 +1,6 @@
-﻿namespace Do_An
+﻿using System.Windows.Forms;
+
+namespace Do_An
 {
     partial class AddThingsToDoComponent
     {
@@ -40,17 +42,13 @@
             this.ScoreTxtBox = new System.Windows.Forms.TextBox();
             this.AddBtn = new DevExpress.XtraEditors.SimpleButton();
             this.NewStatBtn = new DevExpress.XtraEditors.SimpleButton();
-            this.StatsCbBox = new System.Windows.Forms.ComboBox();
+            this.statsCbBox = new System.Windows.Forms.ComboBox();
             this.NameTxtBox = new System.Windows.Forms.TextBox();
             this.Stat = new DevExpress.XtraEditors.LabelControl();
             this.NameLbl = new DevExpress.XtraEditors.LabelControl();
             this.TypeLbl = new DevExpress.XtraEditors.LabelControl();
             this.TypeCbBox = new System.Windows.Forms.ComboBox();
             this.panelGeneral = new System.Windows.Forms.Panel();
-            //((System.ComponentModel.ISupportInitialize)(this.Ex2TxtBox.Properties)).BeginInit();
-            //((System.ComponentModel.ISupportInitialize)(this.Ex1TxtBox.Properties)).BeginInit();
-            //((System.ComponentModel.ISupportInitialize)(this.ScoreTxtBox.Properties)).BeginInit();
-            //((System.ComponentModel.ISupportInitialize)(this.NameTxtBox.Properties)).BeginInit();
             this.panelGeneral.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,14 +88,14 @@
             // 
             this.Ex2TxtBox.Location = new System.Drawing.Point(634, 67);
             this.Ex2TxtBox.Name = "Ex2TxtBox";
-            this.Ex2TxtBox.Size = new System.Drawing.Size(114, 22);
+            this.Ex2TxtBox.Size = new System.Drawing.Size(114, 23);
             this.Ex2TxtBox.TabIndex = 28;
             // 
             // Ex1TxtBox
             // 
             this.Ex1TxtBox.Location = new System.Drawing.Point(173, 66);
             this.Ex1TxtBox.Name = "Ex1TxtBox";
-            this.Ex1TxtBox.Size = new System.Drawing.Size(100, 22);
+            this.Ex1TxtBox.Size = new System.Drawing.Size(100, 23);
             this.Ex1TxtBox.TabIndex = 27;
             // 
             // Ex2Lbl
@@ -128,7 +126,7 @@
             // 
             this.ScoreTxtBox.Location = new System.Drawing.Point(98, 253);
             this.ScoreTxtBox.Name = "ScoreTxtBox";
-            this.ScoreTxtBox.Size = new System.Drawing.Size(247, 22);
+            this.ScoreTxtBox.Size = new System.Drawing.Size(247, 23);
             this.ScoreTxtBox.TabIndex = 23;
             // 
             // AddBtn
@@ -163,7 +161,7 @@
             // 
             this.NameTxtBox.Location = new System.Drawing.Point(78, 28);
             this.NameTxtBox.Name = "NameTxtBox";
-            this.NameTxtBox.Size = new System.Drawing.Size(399, 22);
+            this.NameTxtBox.Size = new System.Drawing.Size(399, 23);
             this.NameTxtBox.TabIndex = 19;
             // 
             // Stat
@@ -233,10 +231,6 @@
             this.Controls.Add(this.panelGeneral);
             this.Name = "AddThingsToDoComponent";
             this.Size = new System.Drawing.Size(1217, 567);
-            //((System.ComponentModel.ISupportInitialize)(this.Ex2TxtBox.Properties)).EndInit();
-            //((System.ComponentModel.ISupportInitialize)(this.Ex1TxtBox.Properties)).EndInit();
-            //((System.ComponentModel.ISupportInitialize)(this.ScoreTxtBox.Properties)).EndInit();
-            //((System.ComponentModel.ISupportInitialize)(this.NameTxtBox.Properties)).EndInit();
             this.panelGeneral.ResumeLayout(false);
             this.panelGeneral.PerformLayout();
             this.ResumeLayout(false);
@@ -264,5 +258,7 @@
         private DevExpress.XtraEditors.LabelControl TypeLbl;
         private System.Windows.Forms.ComboBox TypeCbBox;
         private System.Windows.Forms.Panel panelGeneral;
+
+        public ComboBox statsCbBox { get => StatsCbBox; set => StatsCbBox = value; }
     }
 }

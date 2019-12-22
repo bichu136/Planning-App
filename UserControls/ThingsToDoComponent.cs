@@ -46,7 +46,7 @@ namespace Do_An
         {            
             if(TimeConditions.Subtract(TimeSpan.FromTicks(TimeSpan.TicksPerMinute)) > TimeSpan.Zero)
             {
-                ConditionLbl.Text = TimeConditions.Days.ToString() + "Ngày " + TimeConditions.Hours.ToString() + "Giờ";
+                ConditionLbl.Text = TimeConditions.Days.ToString() + " Ngày " + TimeConditions.Hours.ToString() + "Giờ";
             }
             this.ThingsToDoComponent_Load(sender, e);
         }
@@ -60,22 +60,34 @@ namespace Do_An
             }
             this.NameLbl.Text = Name;
             this.StatusLbl.Text = getStatusString();
-            this.ConditionLbl.Text = TimeConditions.Days.ToString() + "Ngày ";
+            this.ConditionLbl.Text = TimeConditions.Days.ToString() + " Ngày ";
             this.BackColor = getBackGroundColor();
+            this.NameLbl.ForeColor = IdealTextColor(BackColor);
+            this.StatusLbl.ForeColor = IdealTextColor(BackColor);
+            this.ConditionLbl.ForeColor = IdealTextColor(BackColor);
         }
 
+        private Color IdealTextColor(Color bg)
+        {
+            int nThreshold = 105;
+            int bgDelta = Convert.ToInt32((bg.R * 0.299) + (bg.G * 0.587) +
+                                          (bg.B * 0.114));
+
+            Color foreColor = (255 - bgDelta < nThreshold) ? Color.Black : Color.White;
+            return foreColor;
+        }
         private Color getBackGroundColor()
         {
             switch(Status)
             {
                 case (int)ThingsToDo.statuses.Ongoing:
-                    return Color.Yellow;
+                    return Color.Yellow;//FromArgb(187,187,0);//YELLOW
                 case (int)ThingsToDo.statuses.Done:
-                    return Color.Green;
+                    return Color.FromArgb(31,128,00); //GREEN
                 case (int)ThingsToDo.statuses.Dropped:
-                    return Color.DarkGray;
+                    return Color.Orange;
                 case (int)ThingsToDo.statuses.Waiting:
-                    return Color.LightGray;
+                    return Color.LightSkyBlue;
                 case (int)ThingsToDo.statuses.Missed:
                     return Color.Red;
                 default:

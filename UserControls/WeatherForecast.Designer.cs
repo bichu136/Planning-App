@@ -28,14 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout(); 
+            this.SuspendLayout();
+            // 
+            // WeatherForecast
+            // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoScroll = true;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Name = "WeatherForecast";
             this.Size = new System.Drawing.Size(1217, 567);
             this.ResumeLayout(false);
-        #endregion
+
         }
-}
+        #endregion
+    }
 }

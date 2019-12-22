@@ -117,36 +117,36 @@
             this.Goal_DeadlineLbl.AutoSize = true;
             this.Goal_DeadlineLbl.Location = new System.Drawing.Point(426, 95);
             this.Goal_DeadlineLbl.Name = "Goal_DeadlineLbl";
-            this.Goal_DeadlineLbl.Size = new System.Drawing.Size(46, 17);
+            this.Goal_DeadlineLbl.Size = new System.Drawing.Size(42, 17);
             this.Goal_DeadlineLbl.TabIndex = 4;
-            this.Goal_DeadlineLbl.Text = "label2";
+            this.Goal_DeadlineLbl.Text = "None";
             // 
             // ValueGoal_DeadlineLbl
             // 
             this.ValueGoal_DeadlineLbl.AutoSize = true;
             this.ValueGoal_DeadlineLbl.Location = new System.Drawing.Point(478, 95);
             this.ValueGoal_DeadlineLbl.Name = "ValueGoal_DeadlineLbl";
-            this.ValueGoal_DeadlineLbl.Size = new System.Drawing.Size(46, 17);
+            this.ValueGoal_DeadlineLbl.Size = new System.Drawing.Size(42, 17);
             this.ValueGoal_DeadlineLbl.TabIndex = 4;
-            this.ValueGoal_DeadlineLbl.Text = "label2";
+            this.ValueGoal_DeadlineLbl.Text = "None";
             // 
             // ValueCurrentBtn
             // 
             this.ValueCurrentBtn.AutoSize = true;
             this.ValueCurrentBtn.Location = new System.Drawing.Point(478, 68);
             this.ValueCurrentBtn.Name = "ValueCurrentBtn";
-            this.ValueCurrentBtn.Size = new System.Drawing.Size(46, 17);
+            this.ValueCurrentBtn.Size = new System.Drawing.Size(42, 17);
             this.ValueCurrentBtn.TabIndex = 4;
-            this.ValueCurrentBtn.Text = "label2";
+            this.ValueCurrentBtn.Text = "None";
             // 
             // CurrentLbl
             // 
             this.CurrentLbl.AutoSize = true;
             this.CurrentLbl.Location = new System.Drawing.Point(426, 69);
             this.CurrentLbl.Name = "CurrentLbl";
-            this.CurrentLbl.Size = new System.Drawing.Size(46, 17);
+            this.CurrentLbl.Size = new System.Drawing.Size(42, 17);
             this.CurrentLbl.TabIndex = 4;
-            this.CurrentLbl.Text = "label2";
+            this.CurrentLbl.Text = "None";
             // 
             // StatPanel
             // 

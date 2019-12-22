@@ -129,6 +129,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddStatsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddStatsForm.Designer.cs">
+      <DependentUpon>AddStatsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DoingThings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,7 +234,9 @@
     <Compile Include="UserControls\AddThingsToDoComponent.Designer.cs">
       <DependentUpon>AddThingsToDoComponent.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\WeatherNode.cs" />
+    <Compile Include="UserControls\WeatherNode.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UserControls\WeatherNode.Designer.cs">
       <DependentUpon>WeatherNode.cs</DependentUpon>
     </Compile>
@@ -239,6 +247,9 @@
     <Compile Include="UserControls\WeatherForecast.Designer.cs">
       <DependentUpon>WeatherForecast.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddStatsForm.resx">
+      <DependentUpon>AddStatsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DoingThings.resx">
       <DependentUpon>DoingThings.cs</DependentUpon>
     </EmbeddedResource>
@@ -353,6 +364,9 @@
     <Content Include="resources\50d.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="resources\941560.png" />
+    <None Include="resources\computer.png" />
+    <None Include="resources\settings-gears.png" />
     <Content Include="resources\WeeklyAlert.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
