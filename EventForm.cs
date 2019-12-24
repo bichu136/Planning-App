@@ -56,6 +56,7 @@ namespace Do_An
                     OnWaiting_Event.Add(new ThingsToDoComponent(Name, Status, (ShowTime - DateTime.Now)) { Location = new Point(PanelOngoingOffset_X, Ongoing_Event.Count * 53 + PanelOngoingOffset_Y + OnWaiting_Event.Count) });
                 }
             }
+            panelControlGeneral.BackColor = Default.color;
         }
         private void EventForm_Load(object sender, EventArgs e)
         {

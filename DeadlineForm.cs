@@ -46,6 +46,7 @@ namespace Do_An
                         break;
                 }
                 //deadlinesToolStripMenuItem_Click(sender, e);
+                Onwaiting_Panel.BackColor = Default.color;
             }
         }
 

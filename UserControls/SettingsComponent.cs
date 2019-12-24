@@ -65,6 +65,7 @@ namespace Do_An
             comboBox1.Items.Add("thanh pho Ho Chi Minh");
             comboBox1.SelectedIndex = 0;
             comboBox1.TextChanged += ComboBox1_TextChanged;
+            panelControlGeneral.BackColor = Default.color;
         }
         private void ComboBox1_TextChanged(object sender, EventArgs e)
         {

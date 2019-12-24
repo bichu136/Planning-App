@@ -34,7 +34,7 @@
             this.SecLbl = new System.Windows.Forms.Label();
             this.MinLbl = new System.Windows.Forms.Label();
             this.HourLbl = new System.Windows.Forms.Label();
-            this.ToggleBtn = new System.Windows.Forms.Button();
+            this.ToggleBtn = new DevExpress.XtraEditors.SimpleButton();
             this.UnitPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -108,7 +108,7 @@
             this.ToggleBtn.Size = new System.Drawing.Size(119, 51);
             this.ToggleBtn.TabIndex = 0;
             this.ToggleBtn.Text = "LockBtn";
-            this.ToggleBtn.UseVisualStyleBackColor = true;
+            //this.ToggleBtn.UseVisualStyleBackColor = true;
             // 
             // TimeComponent
             // 
@@ -129,7 +129,7 @@
         private System.Windows.Forms.Label HourLbl;
         private System.Windows.Forms.Label SecLbl;
         private System.Windows.Forms.Label MinLbl;
-        private System.Windows.Forms.Button ToggleBtn;
+        private DevExpress.XtraEditors.SimpleButton ToggleBtn;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
     }

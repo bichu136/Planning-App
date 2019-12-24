@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Do_An
 {
-    public partial class DoingThings : Form
+    public partial class DoingThings : DevExpress.XtraEditors.XtraForm
     {
         TypeData typedata;
         ThingsToDoData ttdData;
@@ -31,12 +31,13 @@ namespace Do_An
             pData = new ProjectData();
             oData = new ObjectiveData();
             InitializeComponent();
-            this.Controls.Add(timeComponent);
+            panelControlGenneral.Controls.Add(timeComponent);
             CurrentTxtBox.KeyPress += Default.OnlyNumberPress;
             TypeCbBox.DataSource = typedata.ReadDataTable();
             TypeCbBox.DisplayMember = "Name";
             TypeCbBox.ValueMember = "ID";
             TypeCbBox.SelectedIndex = 1;
+            panelControlGenneral.BackColor = Default.color;
         }
         private void NameCbBox_SelectedIndexChanged(object sender, EventArgs e)
         {

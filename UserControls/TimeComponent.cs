@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 
 namespace Do_An
 {
@@ -39,7 +40,7 @@ namespace Do_An
         private void BeginTimer_Click(object sender, EventArgs e)
         {
                 timer.Start();
-                Button x = (Button)sender;
+                SimpleButton x = (SimpleButton)sender;
                 x.Click -= BeginTimer_Click;
                 x.Click += EndTimer_Click;
                 x.Text = "Pause";
@@ -55,7 +56,7 @@ namespace Do_An
         private void EndTimer_Click(object sender, EventArgs e)
         {
             timer.Stop();
-            Button x = (Button)sender;
+            SimpleButton x = (SimpleButton)sender;
             x.Click += BeginTimer_Click;
             x.Click -= EndTimer_Click;
             x.Text = "Resume";

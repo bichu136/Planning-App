@@ -42,7 +42,7 @@ namespace Do_An
             this.ScoreTxtBox = new System.Windows.Forms.TextBox();
             this.AddBtn = new DevExpress.XtraEditors.SimpleButton();
             this.NewStatBtn = new DevExpress.XtraEditors.SimpleButton();
-            this.statsCbBox = new System.Windows.Forms.ComboBox();
+            this.StatsCbBox = new System.Windows.Forms.ComboBox();
             this.NameTxtBox = new System.Windows.Forms.TextBox();
             this.Stat = new DevExpress.XtraEditors.LabelControl();
             this.NameLbl = new DevExpress.XtraEditors.LabelControl();

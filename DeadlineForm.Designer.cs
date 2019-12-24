@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Passed_Label = new System.Windows.Forms.Label();
-            this.Onwaiting_Panel = new System.Windows.Forms.Panel();
-            this.Ongoing_Label = new System.Windows.Forms.Label();
+            this.Passed_Label = new DevExpress.XtraEditors.LabelControl();
+            this.Onwaiting_Panel = new DevExpress.XtraEditors.PanelControl();
+            this.Ongoing_Label = new DevExpress.XtraEditors.LabelControl();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.deadlinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.expiredDeadlinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,10 +49,10 @@
             // Onwaiting_Panel
             // 
             this.Onwaiting_Panel.AutoScroll = true;
-            this.Onwaiting_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Onwaiting_Panel.Location = new System.Drawing.Point(39, 77);
+            this.Onwaiting_Panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Onwaiting_Panel.Location = new System.Drawing.Point(0, 28);
             this.Onwaiting_Panel.Name = "Onwaiting_Panel";
-            this.Onwaiting_Panel.Size = new System.Drawing.Size(595, 174);
+            this.Onwaiting_Panel.Size = new System.Drawing.Size(677, 378);
             this.Onwaiting_Panel.TabIndex = 10;
             // 
             // Ongoing_Label
@@ -88,7 +88,7 @@
             // 
             this.expiredDeadlinesToolStripMenuItem.CheckOnClick = true;
             this.expiredDeadlinesToolStripMenuItem.Name = "expiredDeadlinesToolStripMenuItem";
-            this.expiredDeadlinesToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.expiredDeadlinesToolStripMenuItem.Size = new System.Drawing.Size(143, 24);
             this.expiredDeadlinesToolStripMenuItem.Text = "Expired Deadlines";
             this.expiredDeadlinesToolStripMenuItem.Click += new System.EventHandler(this.expiredDeadlinesToolStripMenuItem_Click);
             // 
@@ -113,9 +113,9 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label Passed_Label;
-        private System.Windows.Forms.Panel Onwaiting_Panel;
-        private System.Windows.Forms.Label Ongoing_Label;
+        private DevExpress.XtraEditors.LabelControl Passed_Label;
+        private DevExpress.XtraEditors.PanelControl Onwaiting_Panel;
+        private DevExpress.XtraEditors.LabelControl Ongoing_Label;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem deadlinesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem expiredDeadlinesToolStripMenuItem;

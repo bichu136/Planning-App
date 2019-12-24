@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+﻿<<<<<<< HEAD
 # Phần mềm Planning App
 
 ## Mô tả
@@ -68,6 +68,9 @@
 
  ![alt text](https://github.com/bichu136/Planning-App/raw/master/UI/Road_map.png "Road map")
 >>>>>>> 136b7cab4915d2143cd345d06dc2e0e53f0d7859
+
+## Dependency:
+- DevExpress: https://go.devexpress.com/DevexpressDownload_UniversalTrial.aspx (Download link)
 =======
 # Project-Mau
 nhung bai tap tu dat ra
