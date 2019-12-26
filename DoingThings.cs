@@ -144,7 +144,7 @@ namespace Do_An
                 switch ((long)TypeCbBox.SelectedValue)
                 {
                     default:
-                        Rdata.Insert(new Record() { TTD_ID = (int)NameCbBox.SelectedValue, Date = DateTime.Now.Date, Current = 0 });
+                        Rdata.Insert(new Record() { TTD_ID = (long)NameCbBox.SelectedValue, Date = DateTime.Now.Date, Current = 0 });
                         break;
                     case (long)ThingsToDo.types.Project:
                         pData.HasPlanChecked((long)NameCbBox.SelectedValue,HasPlanChkBox.Checked);
